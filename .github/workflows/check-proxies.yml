@@ -63,8 +63,87 @@ jobs:
       - name: Verify xray
         run: bin/xray version
 
+      - name: Scrape Telegram channels
+        env:
+          TG_API_ID: ${{ secrets.TG_API_ID }}
+          TG_API_HASH: ${{ secrets.TG_API_HASH }}
+          TG_SESSION: ${{ secrets.TG_SESSION }}
+        run: |
+          python3 -c "
+          import asyncio, os, re
+          from telethon import TelegramClient
+          from telethon.sessions import StringSession
+
+          API_ID = int(os.environ['TG_API_ID'])
+          API_HASH = os.environ['TG_API_HASH']
+          SESSION = os.environ.get('TG_SESSION', '')
+          SCHEME_RE = re.compile(r'(?:vless|vmess|trojan|ss|hysteria2|hy2|tuic)://[^\s<>\"\n]+', re.IGNORECASE)
+
+          CHANNELS = [
+              'VIPROXYS',
+              'v2rayfreedaily',
+              'vrayconfigs',
+              'HomayounConfigs',
+              'v2rayng_configsss',
+              'V2ray_configs2',
+              'oneclickvpnkeys',
+          ]
+
+          def extract(msg):
+              configs = set()
+              if msg.text:
+                  for m in SCHEME_RE.finditer(msg.text):
+                      c = m.group(0).strip().rstrip('.,|)')
+                      if len(c) > 20:
+                          configs.add(c)
+              return configs
+
+          async def scrape():
+              client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
+              await client.start()
+              os.makedirs('sources_tg', exist_ok=True)
+              for channel in CHANNELS:
+                  configs = set()
+                  try:
+                      async for msg in client.iter_messages(channel, limit=500):
+                          configs |= extract(msg)
+                      with open(f'sources_tg/{channel}.txt', 'w') as f:
+                          f.write('\n'.join(sorted(configs)))
+                      print(f'{channel}: {len(configs)} configs')
+                  except Exception as e:
+                      print(f'Error {channel}: {e}')
+              await client.disconnect()
+
+          asyncio.run(scrape())
+          "
+
       - name: Collect sources
-        run: python check_proxies.py
+        run: |
+          python check_proxies.py
+          # Добавляем конфиги из TG каналов
+          python3 -c "
+          import glob, os
+          seen = set()
+          lines = []
+          if os.path.exists('input_proxies.txt'):
+              with open('input_proxies.txt') as f:
+                  for l in f:
+                      l = l.strip()
+                      if l and l not in seen:
+                          seen.add(l)
+                          lines.append(l)
+          SCHEMES = ('vless://','vmess://','trojan://','ss://','hysteria2://','hy2://','tuic://')
+          for fname in glob.glob('sources_tg/*.txt'):
+              with open(fname) as f:
+                  for l in f:
+                      l = l.strip()
+                      if l and any(l.lower().startswith(s) for s in SCHEMES) and l not in seen:
+                          seen.add(l)
+                          lines.append(l)
+          with open('input_proxies.txt', 'w') as f:
+              f.write('\n'.join(lines))
+          print(f'Total with TG sources: {len(lines)}')
+          "
 
       - name: Run xray checker
         run: |
