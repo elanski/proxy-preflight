@@ -1,4 +1,4 @@
-name: Proxy Preflight Check
+name: Proxy Preflight Check (xray)
 
 on:
   schedule:
@@ -8,7 +8,7 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 55
 
     steps:
       - name: Checkout
@@ -22,13 +22,79 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install aiohttp requests
+        run: pip install aiohttp requests rich
 
-      - name: Run TCP checker
-        env:
-          CHECK_TIMEOUT: "5"
-          CHECK_CONCURRENCY: "300"
+      - name: Download MK_XRAYchecker
+        run: |
+          curl -sL "https://raw.githubusercontent.com/MKultra6969/MK_XRAYchecker/main/v2rayChecker.py" > v2rayChecker.py
+          curl -sL "https://raw.githubusercontent.com/MKultra6969/MK_XRAYchecker/main/xray_installer.py" > xray_installer.py
+          curl -sL "https://raw.githubusercontent.com/MKultra6969/MK_XRAYchecker/main/requirements.txt" > requirements_mk.txt
+          pip install -r requirements_mk.txt -q
+
+      - name: Install xray
+        run: |
+          python -c "
+          import xray_installer, json, os
+          os.makedirs('bin', exist_ok=True)
+          xray_installer.ensure_xray_installed()
+          "
+          ls -la bin/ || ls -la *.zip 2>/dev/null || true
+          # fallback: download xray directly
+          if [ ! -f "bin/xray" ]; then
+            echo "Fallback: downloading xray directly..."
+            XRAY_URL=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "import sys,json; assets=json.load(sys.stdin)['assets']; url=[a['browser_download_url'] for a in assets if 'linux-64' in a['name'] and a['name'].endswith('.zip')]; print(url[0] if url else '')")
+            echo "URL: $XRAY_URL"
+            curl -sL "$XRAY_URL" -o xray.zip
+            unzip -q xray.zip xray -d bin/
+            chmod +x bin/xray
+          fi
+          bin/xray version
+
+      - name: Collect sources
         run: python check_proxies.py
+
+      - name: Run xray checker
+        run: |
+          TOTAL=$(wc -l < input_proxies.txt)
+          echo "Checking $TOTAL proxies with xray..."
+          python v2rayChecker.py \
+            -f input_proxies.txt \
+            --no-update \
+            --engine xray \
+            -c bin/xray \
+            -t 5 \
+            -T 10 \
+            -o proxies_live.txt \
+            --max-ping 3000 \
+            2>&1 | tail -20
+        env:
+          MKXRAY_SKIP_SELF_UPDATE: "1"
+
+      - name: Show results
+        run: |
+          echo "=== Results ==="
+          wc -l proxies_live.txt || echo "No output file"
+          head -5 proxies_live.txt || true
+
+      - name: Prepare final output
+        run: |
+          python3 -c "
+          import datetime, os
+          now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+          proxies = []
+          try:
+              with open('proxies_live.txt') as f:
+                  proxies = [l.strip() for l in f if l.strip() and not l.startswith('#')]
+          except FileNotFoundError:
+              pass
+          total_in = len(open('input_proxies.txt').readlines())
+          with open('proxies_live.txt', 'w') as f:
+              f.write(f'# Proxy preflight (xray) — {len(proxies)} live / {total_in} total\n')
+              f.write(f'# Updated: {now}\n')
+              for p in proxies:
+                  f.write(p + '\n')
+          print(f'Final: {len(proxies)} live / {total_in} total')
+          "
 
       - name: Send results to Telegram
         env:
