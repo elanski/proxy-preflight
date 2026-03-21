@@ -87,6 +87,13 @@ jobs:
               'v2rayng_configsss',
               'V2ray_configs2',
               'oneclickvpnkeys',
+              'V2RAYNG_VPNT',
+              'v2rayfresh',
+              'config_vless',
+              'freeeirannet',
+              'v2rayng_hub',
+              'Vepeer_VPN',
+              'nV_v2ray',
           ]
 
           def extract(msg):
