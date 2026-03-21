@@ -159,6 +159,19 @@ jobs:
         run: |
           TOTAL=$(wc -l < input_proxies.txt)
           echo "Checking $TOTAL proxies with xray..."
+          # Статистика по протоколам
+          echo "Protocol breakdown:"
+          for proto in vless vmess trojan ss hysteria2 hy2 tuic; do
+            COUNT=$(grep -c "^${proto}://" input_proxies.txt 2>/dev/null || echo 0)
+            echo "  ${proto}: ${COUNT}"
+          done
+          # Показываем примеры каждого протокола
+          echo "Sample vless:"
+          grep "^vless://" input_proxies.txt | head -2 || echo "  none"
+          echo "Sample vmess:"
+          grep "^vmess://" input_proxies.txt | head -2 || echo "  none"
+          echo "Sample ss:"
+          grep "^ss://" input_proxies.txt | head -2 || echo "  none"
           python v2rayChecker.py \
             -f input_proxies.txt \
             --no-update \
