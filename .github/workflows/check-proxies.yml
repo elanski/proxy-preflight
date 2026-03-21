@@ -64,6 +64,7 @@ jobs:
         run: bin/xray version
 
       - name: Scrape Telegram channels
+        continue-on-error: true
         env:
           TG_API_ID: ${{ secrets.TG_API_ID }}
           TG_API_HASH: ${{ secrets.TG_API_HASH }}
@@ -74,7 +75,10 @@ jobs:
           from telethon import TelegramClient
           from telethon.sessions import StringSession
 
-          API_ID = int(os.environ['TG_API_ID'])
+          API_ID = int(os.environ.get('TG_API_ID') or '0') or 0
+          if not API_ID:
+              print('TG_API_ID not set, skipping TG scraping')
+              exit(0)
           API_HASH = os.environ['TG_API_HASH']
           SESSION = os.environ.get('TG_SESSION', '')
           SCHEME_RE = re.compile(r'(?:vless|vmess|trojan|ss|hysteria2|hy2|tuic)://[^\s<>\"\n]+', re.IGNORECASE)
