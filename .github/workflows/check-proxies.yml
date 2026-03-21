@@ -27,14 +27,13 @@ jobs:
       - name: Download MK_XRAYchecker
         run: |
           curl -sL "https://raw.githubusercontent.com/MKultra6969/MK_XRAYchecker/main/v2rayChecker.py" > v2rayChecker.py
-          curl -sL "https://raw.githubusercontent.com/MKultra6969/MK_XRAYchecker/main/xray_installer.py" > xray_installer.py
           curl -sL "https://raw.githubusercontent.com/MKultra6969/MK_XRAYchecker/main/requirements.txt" > requirements_mk.txt
           pip install -r requirements_mk.txt -q
 
       - name: Get latest xray version
         id: xray_version
         run: |
-          VER=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
+          VER=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
           echo "version=$VER" >> $GITHUB_OUTPUT
           echo "Xray latest: $VER"
 
@@ -49,10 +48,10 @@ jobs:
         if: steps.cache_xray.outputs.cache-hit != 'true'
         run: |
           echo "Cache miss — downloading xray ${{ steps.xray_version.outputs.version }}..."
-          XRAY_URL=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "
+          XRAY_URL=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "
           import sys,json
           assets = json.load(sys.stdin)['assets']
-          url = [a['browser_download_url'] for a in assets if 'linux-64.zip' in a['name'] and 'arm' not in a['name']]
+          url = [a['browser_download_url'] for a in assets if a['name'] == 'Xray-linux-64.zip']
           print(url[0] if url else '')
           ")
           echo "Downloading: $XRAY_URL"
@@ -60,13 +59,9 @@ jobs:
           curl -sL "$XRAY_URL" -o xray.zip
           unzip -q xray.zip xray -d bin/
           chmod +x bin/xray
-          echo "Downloaded xray:"
-          bin/xray version
 
       - name: Verify xray
-        run: |
-          echo "Xray version:"
-          bin/xray version
+        run: bin/xray version
 
       - name: Collect sources
         run: python check_proxies.py
@@ -83,8 +78,7 @@ jobs:
             -t 5 \
             -T 10 \
             -o proxies_live.txt \
-            --max-ping 3000 \
-            2>&1 | tail -30
+            --max-ping 3000
         env:
           MKXRAY_SKIP_SELF_UPDATE: "1"
 
