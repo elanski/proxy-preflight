@@ -191,21 +191,33 @@ jobs:
       - name: Prepare final output
         run: |
           python3 -c "
-          import datetime
+          import datetime, os
           now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
-          proxies = []
+          # xray results (ss/trojan/hysteria2)
+          xray_live = []
           try:
               with open('proxies_live.txt') as f:
-                  proxies = [l.strip() for l in f if l.strip() and not l.startswith('#')]
+                  xray_live = [l.strip() for l in f if l.strip() and not l.startswith('#')]
           except FileNotFoundError:
               pass
-          total_in = sum(1 for _ in open('input_proxies.txt'))
+          # TCP results (vless/vmess)
+          tcp_live = []
+          try:
+              with open('tcp_live_proxies.txt') as f:
+                  tcp_live = [l.strip() for l in f if l.strip() and not l.startswith('#')]
+          except FileNotFoundError:
+              pass
+          all_live = xray_live + tcp_live
+          total_in = 0
+          try:
+              total_in = sum(1 for _ in open('input_proxies.txt'))
+          except: pass
           with open('proxies_live.txt', 'w') as f:
-              f.write(f'# Proxy preflight (xray) — {len(proxies)} live / {total_in} total\n')
+              f.write(f'# Proxy preflight — {len(all_live)} live ({len(xray_live)} xray + {len(tcp_live)} tcp)\n')
               f.write(f'# Updated: {now}\n')
-              for p in proxies:
+              for p in all_live:
                   f.write(p + '\n')
-          print(f'Final: {len(proxies)} live / {total_in} total')
+          print(f'Final: {len(all_live)} live ({len(xray_live)} xray + {len(tcp_live)} tcp)')
           "
 
       - name: Send results to Telegram
@@ -218,7 +230,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add proxies_live.txt sources_tg/ input_proxies.txt || true
+          git add proxies_live.txt tcp_live_proxies.txt sources_tg/ input_proxies.txt || true
           git diff --staged --quiet && echo "No changes" && exit 0
           git commit -m "Update proxies $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]"
           git pull --rebase origin main
