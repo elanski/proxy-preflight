@@ -37,7 +37,10 @@
     "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list_raw.txt",
     "https://raw.githubusercontent.com/LalatinaHub/Mineral/master/result/nodes",
     "https://raw.githubusercontent.com/mfuu/v2ray/master/merge/merge.txt",
-    "https://raw.githubusercontent.com/Kwinshadow/TelegramV2rayCollector/main/sublinks/mix.txt"
+    "https://raw.githubusercontent.com/Kwinshadow/TelegramV2rayCollector/main/sublinks/mix.txt",
+    "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/All_Configs_Sub.txt",
+    "https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/main/subscriptions/mix.txt",
+    "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/mix.txt"
   ],
   "ru": [
     "https://raw.githubusercontent.com/nikita29a/FreeProxyList/main/mirror/1.txt",
