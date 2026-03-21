@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install aiohttp requests rich
 
       - name: Download MK_XRAYchecker
@@ -31,23 +31,41 @@ jobs:
           curl -sL "https://raw.githubusercontent.com/MKultra6969/MK_XRAYchecker/main/requirements.txt" > requirements_mk.txt
           pip install -r requirements_mk.txt -q
 
-      - name: Install xray
+      - name: Get latest xray version
+        id: xray_version
         run: |
-          python -c "
-          import xray_installer, json, os
-          os.makedirs('bin', exist_ok=True)
-          xray_installer.ensure_xray_installed()
-          "
-          ls -la bin/ || ls -la *.zip 2>/dev/null || true
-          # fallback: download xray directly
-          if [ ! -f "bin/xray" ]; then
-            echo "Fallback: downloading xray directly..."
-            XRAY_URL=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "import sys,json; assets=json.load(sys.stdin)['assets']; url=[a['browser_download_url'] for a in assets if 'linux-64' in a['name'] and a['name'].endswith('.zip')]; print(url[0] if url else '')")
-            echo "URL: $XRAY_URL"
-            curl -sL "$XRAY_URL" -o xray.zip
-            unzip -q xray.zip xray -d bin/
-            chmod +x bin/xray
-          fi
+          VER=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
+          echo "version=$VER" >> $GITHUB_OUTPUT
+          echo "Xray latest: $VER"
+
+      - name: Cache xray binary
+        id: cache_xray
+        uses: actions/cache@v4
+        with:
+          path: bin/xray
+          key: xray-${{ steps.xray_version.outputs.version }}-linux-amd64
+
+      - name: Install xray (if not cached)
+        if: steps.cache_xray.outputs.cache-hit != 'true'
+        run: |
+          echo "Cache miss — downloading xray ${{ steps.xray_version.outputs.version }}..."
+          XRAY_URL=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "
+          import sys,json
+          assets = json.load(sys.stdin)['assets']
+          url = [a['browser_download_url'] for a in assets if 'linux-64.zip' in a['name'] and 'arm' not in a['name']]
+          print(url[0] if url else '')
+          ")
+          echo "Downloading: $XRAY_URL"
+          mkdir -p bin
+          curl -sL "$XRAY_URL" -o xray.zip
+          unzip -q xray.zip xray -d bin/
+          chmod +x bin/xray
+          echo "Downloaded xray:"
+          bin/xray version
+
+      - name: Verify xray
+        run: |
+          echo "Xray version:"
           bin/xray version
 
       - name: Collect sources
@@ -66,20 +84,14 @@ jobs:
             -T 10 \
             -o proxies_live.txt \
             --max-ping 3000 \
-            2>&1 | tail -20
+            2>&1 | tail -30
         env:
           MKXRAY_SKIP_SELF_UPDATE: "1"
-
-      - name: Show results
-        run: |
-          echo "=== Results ==="
-          wc -l proxies_live.txt || echo "No output file"
-          head -5 proxies_live.txt || true
 
       - name: Prepare final output
         run: |
           python3 -c "
-          import datetime, os
+          import datetime
           now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
           proxies = []
           try:
@@ -87,7 +99,7 @@ jobs:
                   proxies = [l.strip() for l in f if l.strip() and not l.startswith('#')]
           except FileNotFoundError:
               pass
-          total_in = len(open('input_proxies.txt').readlines())
+          total_in = sum(1 for _ in open('input_proxies.txt'))
           with open('proxies_live.txt', 'w') as f:
               f.write(f'# Proxy preflight (xray) — {len(proxies)} live / {total_in} total\n')
               f.write(f'# Updated: {now}\n')
