@@ -94,6 +94,9 @@ jobs:
               'v2rayng_hub',
               'Vepeer_VPN',
               'nV_v2ray',
+              'h110vpnchat',
+              'sigma_smart_vpn',
+              'OkeyVPNfree',
           ]
 
           def extract(msg):
