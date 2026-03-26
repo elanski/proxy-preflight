@@ -1,14 +1,25 @@
-name: Proxy Preflight Check (xray)
+name: Proxy Preflight Check
 
 on:
   schedule:
     - cron: "0 */4 * * *"
   workflow_dispatch:
 
+concurrency:
+  group: proxy-preflight-serial
+  cancel-in-progress: false
+
+env:
+  MAX_PING: "2500"
+  CONNECT_TIMEOUT: "8"
+  STRIP_FAST: "1"
+  AUTO_COMMENT: " verified · proxy-preflight"
+  CIDR_WHITELIST_URL: "https://raw.githubusercontent.com/hxehex/russia-mobile-internet-whitelist/refs/heads/main/cidrwhitelist.txt"
+
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 110
 
     steps:
       - name: Checkout
@@ -21,8 +32,15 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
       - name: Install Python dependencies
-        run: pip install aiohttp requests rich
+        run: pip install -r requirements.txt
 
       - name: Download MK_XRAYchecker
         run: |
@@ -33,7 +51,9 @@ jobs:
       - name: Get latest xray version
         id: xray_version
         run: |
-          VER=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
+          VER=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
           echo "version=$VER" >> $GITHUB_OUTPUT
           echo "Xray latest: $VER"
 
@@ -47,14 +67,15 @@ jobs:
       - name: Install xray (if not cached)
         if: steps.cache_xray.outputs.cache-hit != 'true'
         run: |
-          echo "Cache miss — downloading xray ${{ steps.xray_version.outputs.version }}..."
-          XRAY_URL=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com/repos/XTLS/Xray-core/releases/latest | python3 -c "
+          echo "Downloading xray ${{ steps.xray_version.outputs.version }}..."
+          XRAY_URL=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "
           import sys,json
           assets = json.load(sys.stdin)['assets']
           url = [a['browser_download_url'] for a in assets if a['name'] == 'Xray-linux-64.zip']
           print(url[0] if url else '')
           ")
-          echo "Downloading: $XRAY_URL"
           mkdir -p bin
           curl -sL "$XRAY_URL" -o xray.zip
           unzip -q xray.zip xray -d bin/
@@ -62,6 +83,29 @@ jobs:
 
       - name: Verify xray
         run: bin/xray version
+
+      - name: Restore notworkers DB cache
+        uses: actions/cache@v4
+        with:
+          path: configs/notworkers.db
+          key: notworkers-db-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            notworkers-db-${{ github.ref_name }}-
+            notworkers-db-
+
+      - name: Update cidrlist from CIDR_WHITELIST_URL
+        run: |
+          echo "Fetching CIDR whitelist..."
+          content=$(curl -sLf --connect-timeout 15 --max-time 30 "$CIDR_WHITELIST_URL") || \
+            { echo "::warning::Failed to fetch CIDR list, using existing"; exit 0; }
+          echo "$content" | grep -v '^[[:space:]]*$' | grep -v '^#' > cidrlist_new
+          if [ -s cidrlist_new ]; then
+            echo "# Updated: $(date -u '+%Y-%m-%d %H:%M:%S') UTC" > cidrlist
+            cat cidrlist_new >> cidrlist
+            echo "cidrlist updated: $(wc -l < cidrlist) lines"
+          else
+            echo "::warning::Empty CIDR list received, keeping existing"
+          fi
 
       - name: Scrape Telegram channels
         continue-on-error: true
@@ -72,9 +116,12 @@ jobs:
         run: |
           python3 -c "
           import asyncio, os, re
-          from telethon import TelegramClient
-          from telethon.sessions import StringSession
-
+          try:
+              from telethon import TelegramClient
+              from telethon.sessions import StringSession
+          except ImportError:
+              print('telethon not installed, skipping TG scraping')
+              exit(0)
           API_ID = int(os.environ.get('TG_API_ID') or '0') or 0
           if not API_ID:
               print('TG_API_ID not set, skipping TG scraping')
@@ -82,27 +129,12 @@ jobs:
           API_HASH = os.environ['TG_API_HASH']
           SESSION = os.environ.get('TG_SESSION', '')
           SCHEME_RE = re.compile(r'(?:vless|vmess|trojan|ss|hysteria2|hy2|tuic)://[^\s<>\"\n]+', re.IGNORECASE)
-
           CHANNELS = [
-              'VIPROXYS',
-              'v2rayfreedaily',
-              'vrayconfigs',
-              'HomayounConfigs',
-              'v2rayng_configsss',
-              'V2ray_configs2',
-              'oneclickvpnkeys',
-              'V2RAYNG_VPNT',
-              'v2rayfresh',
-              'config_vless',
-              'freeeirannet',
-              'v2rayng_hub',
-              'Vepeer_VPN',
-              'nV_v2ray',
-              'h110vpnchat',
-              'sigma_smart_vpn',
-              'OkeyVPNfree',
+              'VIPROXYS', 'v2rayfreedaily', 'vrayconfigs', 'HomayounConfigs',
+              'v2rayng_configsss', 'V2ray_configs2', 'oneclickvpnkeys', 'V2RAYNG_VPNT',
+              'v2rayfresh', 'config_vless', 'freeeirannet', 'v2rayng_hub',
+              'Vepeer_VPN', 'nV_v2ray', 'h110vpnchat', 'sigma_smart_vpn', 'OkeyVPNfree',
           ]
-
           def extract(msg):
               configs = set()
               if msg.text:
@@ -111,7 +143,6 @@ jobs:
                       if len(c) > 20:
                           configs.add(c)
               return configs
-
           async def scrape():
               client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
               await client.start()
@@ -127,110 +158,169 @@ jobs:
                   except Exception as e:
                       print(f'Error {channel}: {e}')
               await client.disconnect()
-
           asyncio.run(scrape())
           "
 
-      - name: Collect sources
-        run: |
-          python check_proxies.py
-          # Добавляем конфиги из TG каналов
-          python3 -c "
-          import glob, os
-          seen = set()
-          lines = []
-          if os.path.exists('input_proxies.txt'):
-              with open('input_proxies.txt') as f:
-                  for l in f:
-                      l = l.strip()
-                      if l and l not in seen:
-                          seen.add(l)
-                          lines.append(l)
-          SCHEMES = ('vless://','vmess://','trojan://','ss://','hysteria2://','hy2://','tuic://')
-          for fname in glob.glob('sources_tg/*.txt'):
-              with open(fname) as f:
-                  for l in f:
-                      l = l.strip()
-                      if l and any(l.lower().startswith(s) for s in SCHEMES) and l not in seen:
-                          seen.add(l)
-                          lines.append(l)
-          with open('input_proxies.txt', 'w') as f:
-              f.write('\n'.join(lines))
-          print(f'Total with TG sources: {len(lines)}')
-          "
+      - name: Collect proxies from all sources
+        run: python check_proxies.py
 
-      - name: Run xray checker
+      - name: Filter known-bad proxies (notworkers)
+        run: |
+          python3 - << 'PY'
+          import os, sys
+          sys.path.insert(0, os.getcwd())
+          try:
+              from notworkers_sqlite.store import init_db, is_notworker, normalize_proxy_key, get_stats
+          except ImportError:
+              print("notworkers_sqlite not available, skipping filter")
+              exit(0)
+          db_path = "configs/notworkers.db"
+          if not os.path.isfile(db_path):
+              print("No notworkers.db yet, skipping filter")
+              exit(0)
+          conn = init_db(db_path)
+          stats = get_stats(conn)
+          print(f"notworkers DB: {stats.total} known-bad entries")
+          if not os.path.isfile("input_proxies.txt"):
+              exit(0)
+          with open("input_proxies.txt") as f:
+              lines = [l.strip() for l in f if l.strip()]
+          filtered = []
+          skipped = 0
+          for line in lines:
+              key = normalize_proxy_key(line)
+              if key and is_notworker(conn, key):
+                  skipped += 1
+              else:
+                  filtered.append(line)
+          conn.close()
+          with open("input_proxies.txt", "w") as f:
+              f.write("\n".join(filtered))
+          print(f"notworkers filter: {len(lines)} → {len(filtered)} (skipped {skipped} known-bad)")
+          PY
+
+      - name: Run xray checker (E2E — all protocols)
         run: |
           TOTAL=$(wc -l < input_proxies.txt)
-          echo "Checking $TOTAL proxies with xray..."
-          # Статистика по протоколам
+          echo "Checking $TOTAL proxies with xray E2E..."
           echo "Protocol breakdown:"
           for proto in vless vmess trojan ss hysteria2 hy2 tuic; do
             COUNT=$(grep -c "^${proto}://" input_proxies.txt 2>/dev/null || echo 0)
-            echo "  ${proto}: ${COUNT}"
+            [ "$COUNT" -gt 0 ] && echo "  ${proto}: ${COUNT}"
           done
-          # Показываем примеры каждого протокола
-          echo "Sample vless:"
-          grep "^vless://" input_proxies.txt | head -2 || echo "  none"
-          echo "Sample vmess:"
-          grep "^vmess://" input_proxies.txt | head -2 || echo "  none"
-          echo "Sample ss:"
-          grep "^ss://" input_proxies.txt | head -2 || echo "  none"
           python v2rayChecker.py \
             -f input_proxies.txt \
             --no-update \
             --engine xray \
             -c bin/xray \
-            -t 5 \
-            -T 10 \
+            -t 8 \
+            -T 15 \
             -o proxies_live.txt \
-            --max-ping 3000
+            --max-ping ${{ env.MAX_PING }}
         env:
           MKXRAY_SKIP_SELF_UPDATE: "1"
 
+      - name: Update notworkers DB with failed proxies
+        run: |
+          python3 - << 'PY'
+          import os, sys
+          sys.path.insert(0, os.getcwd())
+          try:
+              from notworkers_sqlite.store import init_db, upsert_notworker, normalize_proxy_key, expire_old, prune_to_max
+          except ImportError:
+              exit(0)
+          with open("input_proxies.txt") as f:
+              input_set = {l.strip() for l in f if l.strip()}
+          live_set = set()
+          if os.path.isfile("proxies_live.txt"):
+              with open("proxies_live.txt") as f:
+                  for l in f:
+                      l = l.strip()
+                      if l and not l.startswith("#"):
+                          live_set.add(l.split("#")[0].strip())
+          conn = init_db("configs/notworkers.db")
+          added = 0
+          for line in input_set:
+              key = normalize_proxy_key(line)
+              if key and key not in live_set:
+                  upsert_notworker(conn, key, line, source="xray_check")
+                  added += 1
+          conn.commit()
+          expired = expire_old(conn, max_age_days=14)
+          pruned = prune_to_max(conn, max_rows=50000)
+          conn.close()
+          print(f"notworkers: +{added} failed, expired={expired}, pruned={pruned}")
+          PY
+
+      - name: Filter RU proxies by CIDR
+        run: |
+          if [ -f cidrlist ] && [ -s cidrlist ]; then
+            python filter_cidr.py proxies_live.txt proxies_ru.txt --cidrlist cidrlist
+          else
+            echo "::warning::No cidrlist found, skipping RU filter"
+            cp proxies_live.txt proxies_ru.txt 2>/dev/null || true
+          fi
+
+      - name: Add GeoIP comments (fast mode)
+        run: |
+          if [ -s proxies_live.txt ]; then
+            STRIP_FAST=1 AUTO_COMMENT="${{ env.AUTO_COMMENT }}" \
+              python strip_comments.py proxies_live.txt -o proxies_live.txt
+          fi
+
       - name: Prepare final output
         run: |
-          python3 -c "
+          python3 - << 'PY'
           import datetime, os
           now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
-          # xray results (ss/trojan/hysteria2)
           xray_live = []
-          try:
-              with open('proxies_live.txt') as f:
-                  xray_live = [l.strip() for l in f if l.strip() and not l.startswith('#')]
-          except FileNotFoundError:
-              pass
-          # TCP results (vless/vmess)
-          tcp_live = []
-          try:
-              with open('tcp_live_proxies.txt') as f:
-                  tcp_live = [l.strip() for l in f if l.strip() and not l.startswith('#')]
-          except FileNotFoundError:
-              pass
-          all_live = xray_live + tcp_live
+          if os.path.isfile("proxies_live.txt"):
+              with open("proxies_live.txt") as f:
+                  xray_live = [l.strip() for l in f if l.strip() and not l.startswith("#")]
+          ru_live = []
+          if os.path.isfile("proxies_ru.txt"):
+              with open("proxies_ru.txt") as f:
+                  ru_live = [l.strip() for l in f if l.strip() and not l.startswith("#")]
           total_in = 0
-          try:
-              total_in = sum(1 for _ in open('input_proxies.txt'))
-          except: pass
-          with open('proxies_live.txt', 'w') as f:
-              f.write(f'# Proxy preflight — {len(all_live)} live ({len(xray_live)} xray + {len(tcp_live)} tcp)\n')
-              f.write(f'# Updated: {now}\n')
-              for p in all_live:
-                  f.write(p + '\n')
-          print(f'Final: {len(all_live)} live ({len(xray_live)} xray + {len(tcp_live)} tcp)')
-          "
+          if os.path.isfile("input_proxies.txt"):
+              with open("input_proxies.txt") as f:
+                  total_in = sum(1 for l in f if l.strip())
+          with open("proxies_live.txt", "w") as f:
+              f.write(f"# Proxy preflight — {len(xray_live)} live / {total_in} total (xray E2E)\n")
+              f.write(f"# Updated: {now}\n")
+              for p in xray_live:
+                  f.write(p + "\n")
+          if ru_live:
+              with open("proxies_ru.txt", "w") as f:
+                  f.write(f"# RU proxies (CIDR-filtered) — {len(ru_live)} live\n")
+                  f.write(f"# Updated: {now}\n")
+                  for p in ru_live:
+                      f.write(p + "\n")
+          with open("proxies_top100.txt", "w") as f:
+              f.write(f"# Top 100 proxies — proxy-preflight\n")
+              f.write(f"# Updated: {now}\n")
+              for p in xray_live[:100]:
+                  f.write(p + "\n")
+          print(f"Final: {len(xray_live)} live | {len(ru_live)} RU | {total_in} total checked")
+          PY
 
       - name: Send results to Telegram
+        if: ${{ env.TG_BOT_TOKEN != '' }}
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          OUTPUT_FILE: proxies_live.txt
         run: python send_results.py
+        continue-on-error: true
 
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add proxies_live.txt tcp_live_proxies.txt sources_tg/ input_proxies.txt || true
+          git add proxies_live.txt proxies_ru.txt proxies_top100.txt \
+                  sources_tg/ input_proxies.txt cidrlist \
+                  check_proxies.py send_results.py sources.json requirements.txt \
+                  filter_cidr.py strip_comments.py notworkers_sqlite/ || true
           git diff --staged --quiet && echo "No changes" && exit 0
-          git commit -m "Update proxies $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]"
+          git commit -m "feat: xray E2E all protos, notworkers DB, CIDR filter, MTProto sources"
           git push --force-with-lease || git push --force

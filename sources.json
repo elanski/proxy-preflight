@@ -75,5 +75,11 @@
   "us": [
     "https://raw.githubusercontent.com/sevcator/5ubscrpt10n/main/working/countries/United%20States.txt",
     "https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/main/splitted-by-country/United_States.txt"
+  ],
+  "mtproto": [
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-proxies-collector/main/proxies/fa/mtproto",
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-proxies-collector/main/proxies/en/mtproto",
+    "https://raw.githubusercontent.com/mheidari98/.proxy/main/mtproto",
+    "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/MTProto-list.txt"
   ]
 }
