@@ -1,0 +1,109 @@
+name: MTProto check
+
+on:
+  workflow_run:
+    workflows: ["Speedtest"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  OUTPUT_DIR: configs
+  MAX_WORKERS: 500
+  CONNECT_TIMEOUT: 3
+  MTPROTO_ATTEMPTS: 3
+  MTPROTO_MIN_SUCCESS_RATE: 0.8
+  MTPROTO_TOP_N: 100
+  MTPROTO_STRICT: 'true'
+  AUTO_COMMENT: ' verified · proxy-preflight'
+
+concurrency:
+  group: proxy-preflight-serial
+  cancel-in-progress: false
+
+jobs:
+  mtproto-check:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt -q
+
+      - name: Collect MTProto proxies from sources.json
+        run: |
+          python3 -c "
+import json, urllib.request, os
+with open('sources.json') as f:
+    sources = json.load(f)
+urls = sources.get('mtproto', [])
+proxies = []
+for url in urls:
+    try:
+        with urllib.request.urlopen(url, timeout=15) as r:
+            content = r.read().decode('utf-8', errors='replace')
+        MTPROTO_SCHEMES = ('tg://proxy', 'tg://socks', 'https://t.me/proxy', 'https://t.me/socks', 'http://t.me/proxy', 'http://t.me/socks')
+        for line in content.splitlines():
+            line = line.strip()
+            if any(line.lower().startswith(s) for s in MTPROTO_SCHEMES):
+                proxies.append(line)
+    except Exception as e:
+        print('WARN ' + url + ': ' + str(e))
+os.makedirs('configs', exist_ok=True)
+with open('configs/mtproto_input.txt', 'w') as f:
+    f.write('
+'.join(set(proxies)))
+print('MTProto proxies collected: ' + str(len(set(proxies))))
+"
+
+      - name: Check MTProto proxies
+        run: |
+          if [ ! -s configs/mtproto_input.txt ]; then
+            echo "No MTProto proxies to check"
+            exit 0
+          fi
+          TOTAL=$(wc -l < configs/mtproto_input.txt)
+          echo "Checking $TOTAL MTProto proxies..."
+          python3 -m lib.mtproto_checker configs/mtproto_input.txt \
+            --output configs/mtproto \
+            --top ${{ env.MTPROTO_TOP_N }} \
+            --attempts ${{ env.MTPROTO_ATTEMPTS }} \
+            --min-success-rate ${{ env.MTPROTO_MIN_SUCCESS_RATE }} \
+            --workers ${{ env.MAX_WORKERS }} || echo "MTProto checker finished"
+
+      - name: Make top100
+        run: |
+          if [ -f configs/mtproto ]; then
+            head -n 100 configs/mtproto > "configs/mtproto(top100)"
+          fi
+
+      - name: Commit MTProto results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add configs/mtproto "configs/mtproto(top100)" configs/mtproto_input.txt || true
+          git diff --staged --quiet && echo "No changes" && exit 0
+          MT=$(wc -l < configs/mtproto 2>/dev/null || echo 0)
+          git commit -m "chore: ${MT} live MTProto proxies"
+          git push --force-with-lease || git push --force

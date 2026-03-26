@@ -1,0 +1,169 @@
+name: Actualize notworkers
+
+on:
+  schedule:
+    - cron: '0 23 * * *'   # 23:00 UTC daily
+  workflow_dispatch:
+
+concurrency:
+  group: proxy-preflight-serial
+  cancel-in-progress: false
+
+env:
+  MODE: notworkers
+  OUTPUT_DIR: configs
+  OUTPUT_FILE: notworkers_alive
+  MAX_WORKERS: 500
+  XRAY_PATH: xray_dist/xray
+  NOTWORKERS_UPDATE_ENABLED: 'true'
+
+jobs:
+  actualize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt -q
+
+      - name: Get latest xray version
+        id: xray_version
+        run: |
+          VER=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
+          echo "version=$VER" >> $GITHUB_OUTPUT
+          echo "Xray latest: $VER"
+
+      - name: Cache xray binary
+        id: cache_xray
+        uses: actions/cache@v4
+        with:
+          path: xray_dist/xray
+          key: xray-${{ steps.xray_version.outputs.version }}-linux-amd64
+
+      - name: Install xray (if not cached)
+        if: steps.cache_xray.outputs.cache-hit != 'true'
+        run: |
+          echo "Downloading xray ${{ steps.xray_version.outputs.version }}..."
+          XRAY_URL=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "
+          import sys,json
+          assets = json.load(sys.stdin)['assets']
+          url = [a['browser_download_url'] for a in assets if a['name'] == 'Xray-linux-64.zip']
+          print(url[0] if url else '')
+          ")
+          mkdir -p xray_dist
+          curl -sL "$XRAY_URL" -o xray.zip
+          unzip -q xray.zip xray -d xray_dist/
+          chmod +x xray_dist/xray
+
+      - name: Verify xray
+        run: xray_dist/xray version
+
+      - name: Restore notworkers DB cache
+        uses: actions/cache@v4
+        with:
+          path: configs/notworkers.db
+          key: notworkers-db-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            notworkers-db-${{ github.ref_name }}-
+            notworkers-db-
+
+      - name: Run notworkers actualize
+        env:
+          MODE: notworkers
+          XRAY_PATH: xray_dist/xray
+          MAX_WORKERS: 500
+          OUTPUT_DIR: configs
+          OUTPUT_FILE: notworkers_alive
+          NOTWORKERS_UPDATE_ENABLED: 'true'
+          TEST_URLS: http://www.google.com/generate_204,http://www.cloudflare.com/cdn-cgi/trace
+          TEST_URLS_HTTPS: https://www.gstatic.com/generate_204
+          REQUIRE_HTTPS: 'true'
+          STRONG_STYLE_TEST: 'true'
+          STRONG_STYLE_TIMEOUT: 6
+          STRONG_MAX_RESPONSE_TIME: 5
+          STRONG_DOUBLE_CHECK: 'true'
+          STRONG_ATTEMPTS: 4
+          REQUESTS_PER_URL: 3
+          MIN_SUCCESSFUL_REQUESTS: 2
+          MIN_SUCCESSFUL_URLS: 2
+          REQUEST_DELAY: 0.1
+          CONNECT_TIMEOUT: 6
+          CONNECT_TIMEOUT_SLOW: 14
+          USE_ADAPTIVE_TIMEOUT: 'false'
+          MAX_RETRIES: 3
+          MAX_RESPONSE_TIME: 6
+          MIN_RESPONSE_SIZE: 0
+          MAX_LATENCY_MS: 2800
+          VERIFY_HTTPS_SSL: 'false'
+          STABILITY_CHECKS: 1
+          STABILITY_CHECK_DELAY: 1.5
+          STRICT_MODE: 'true'
+          STRICT_MODE_REQUIRE_ALL: 'true'
+          TEST_POST_REQUESTS: 'false'
+          XRAY_STARTUP_WAIT: 2.0
+          XRAY_STARTUP_POLL_INTERVAL: 0.2
+          XRAY_PORT_WAIT: 8
+          BASE_PORT: 20000
+          EXPORT_FORMAT: txt
+          ENABLE_CACHE: 'false'
+        run: |
+          mkdir -p configs
+          echo "Running notworkers actualize..."
+          python3 -m lib.vless_checker --mode notworkers
+
+      - name: Check if any alive proxies found and add back to available
+        run: |
+          if [ -f "configs/notworkers_alive" ] && [ -s "configs/notworkers_alive" ]; then
+            ALIVE_COUNT=$(wc -l < configs/notworkers_alive)
+            echo "Found $ALIVE_COUNT proxies that came back alive"
+            if [ -f "configs/available" ]; then
+              cat configs/notworkers_alive >> configs/available
+              echo "Added alive proxies back to configs/available"
+            else
+              cp configs/notworkers_alive configs/available
+              echo "Created configs/available from alive proxies"
+            fi
+          else
+            echo "No alive proxies found in notworkers DB"
+          fi
+
+      - name: Prune notworkers DB
+        run: |
+          if [ -f "configs/notworkers.db" ]; then
+            python3 -m notworkers_sqlite.cli prune --db configs/notworkers.db --days 14 --max-rows 50000
+            echo "notworkers DB pruned"
+          fi
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add configs/available configs/notworkers.db notworkers_sqlite/ lib/ || true
+          git diff --staged --quiet && echo "No changes" && exit 0
+          ALIVE=$(wc -l < configs/notworkers_alive 2>/dev/null || echo 0)
+          git commit -m "chore: actualize notworkers (${ALIVE} recovered) [notworkers-actualize]"
+          git push --force-with-lease || git push --force

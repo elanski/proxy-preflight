@@ -1,0 +1,70 @@
+name: Update tools
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # daily at 6 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: proxy-preflight-serial
+  cancel-in-progress: false
+
+jobs:
+  update-tools:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Get latest xray version
+        id: xray_version
+        run: |
+          VER=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
+          echo "version=$VER" >> $GITHUB_OUTPUT
+          echo "Xray latest: $VER"
+
+      - name: Download latest xray
+        run: |
+          echo "Downloading xray ${{ steps.xray_version.outputs.version }}..."
+          XRAY_URL=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "
+import sys,json
+assets = json.load(sys.stdin)['assets']
+url = [a['browser_download_url'] for a in assets if a['name'] == 'Xray-linux-64.zip']
+print(url[0] if url else '')
+")
+          mkdir -p xray_dist
+          curl -sL "$XRAY_URL" -o xray.zip
+          unzip -q xray.zip xray -d xray_dist/
+          chmod +x xray_dist/xray
+          xray_dist/xray version
+          echo "${{ steps.xray_version.outputs.version }}" > xray_dist/version.txt
+
+      - name: Update cidrlist
+        run: |
+          CIDR_URL='https://raw.githubusercontent.com/hxehex/russia-mobile-internet-whitelist/refs/heads/main/cidrwhitelist.txt'
+          content=$(curl -sLf --connect-timeout 15 --max-time 30 "$CIDR_URL") || exit 0
+          echo "$content" | grep -v '^[[:space:]]*$' | grep -v '^#' > cidrlist_new
+          if [ -s cidrlist_new ]; then
+            echo "# Updated: $(date -u '+%Y-%m-%d %H:%M:%S') UTC" > cidrlist
+            cat cidrlist_new >> cidrlist
+            echo "cidrlist: $(wc -l < cidrlist) lines"
+          fi
+
+      - name: Commit xray binary and cidrlist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add xray_dist/ cidrlist || true
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -m "chore: update xray to ${{ steps.xray_version.outputs.version }}"
+          git push

@@ -1,0 +1,472 @@
+name: Nightly FULL check
+
+on:
+  schedule:
+    - cron: '30 23 * * *'   # 23:30 UTC daily
+  workflow_run:
+    workflows: ['Actualize notworkers']
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: proxy-preflight-serial
+  cancel-in-progress: false
+
+env:
+  MODE: merge
+  LINKS_FILE: links.txt
+  OUTPUT_FILE: available
+  OUTPUT_DIR: configs
+  OUTPUT_ADD_DATE: 'false'
+  MAX_WORKERS: 700
+  EXPORT_FORMAT: txt
+  ENABLE_CACHE: 'false'
+  TEST_URLS: http://www.google.com/generate_204,http://www.cloudflare.com/cdn-cgi/trace
+  TEST_URLS_HTTPS: https://www.gstatic.com/generate_204
+  REQUIRE_HTTPS: 'true'
+  STRONG_STYLE_TEST: 'true'
+  STRONG_STYLE_TIMEOUT: 6
+  STRONG_MAX_RESPONSE_TIME: 5
+  STRONG_DOUBLE_CHECK: 'true'
+  STRONG_ATTEMPTS: 4
+  REQUESTS_PER_URL: 3
+  MIN_SUCCESSFUL_REQUESTS: 3
+  MIN_SUCCESSFUL_URLS: 2
+  REQUEST_DELAY: 0.1
+  CONNECT_TIMEOUT: 6
+  CONNECT_TIMEOUT_SLOW: 14
+  USE_ADAPTIVE_TIMEOUT: 'false'
+  MAX_RETRIES: 3
+  MAX_RESPONSE_TIME: 6
+  MIN_RESPONSE_SIZE: 0
+  MAX_LATENCY_MS: 1500
+  VERIFY_HTTPS_SSL: 'false'
+  STABILITY_CHECKS: 3
+  STABILITY_CHECK_DELAY: 2.5
+  STRICT_MODE: 'true'
+  STRICT_MODE_REQUIRE_ALL: 'true'
+  TEST_POST_REQUESTS: 'false'
+  XRAY_STARTUP_WAIT: 2.0
+  XRAY_STARTUP_POLL_INTERVAL: 0.2
+  XRAY_PORT_WAIT: 8
+  BASE_PORT: 20000
+  AUTO_COMMENT: ' verified · proxy-preflight'
+  CIDR_WHITELIST_URL: "https://raw.githubusercontent.com/hxehex/russia-mobile-internet-whitelist/refs/heads/main/cidrwhitelist.txt"
+  SPEED_TEST_ENABLED: 'true'
+  NOTWORKERS_UPDATE_ENABLED: 'true'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt -q
+
+      - name: Get latest xray version
+        id: xray_version
+        run: |
+          VER=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
+          echo "version=$VER" >> $GITHUB_OUTPUT
+          echo "Xray latest: $VER"
+
+      - name: Cache xray binary
+        id: cache_xray
+        uses: actions/cache@v4
+        with:
+          path: xray_dist/xray
+          key: xray-${{ steps.xray_version.outputs.version }}-linux-amd64
+
+      - name: Install xray (if not cached)
+        if: steps.cache_xray.outputs.cache-hit != 'true'
+        run: |
+          echo "Downloading xray ${{ steps.xray_version.outputs.version }}..."
+          XRAY_URL=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+            https://api.github.com/repos/XTLS/Xray-core/releases/latest \
+            | python3 -c "
+          import sys,json
+          assets = json.load(sys.stdin)['assets']
+          url = [a['browser_download_url'] for a in assets if a['name'] == 'Xray-linux-64.zip']
+          print(url[0] if url else '')
+          ")
+          mkdir -p xray_dist
+          curl -sL "$XRAY_URL" -o xray.zip
+          unzip -q xray.zip xray -d xray_dist/
+          chmod +x xray_dist/xray
+
+      - name: Verify xray
+        run: xray_dist/xray version
+
+      - name: Restore notworkers DB cache
+        uses: actions/cache@v4
+        with:
+          path: configs/notworkers.db
+          key: notworkers-db-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            notworkers-db-${{ github.ref_name }}-
+            notworkers-db-
+
+      - name: Update cidrlist from CIDR_WHITELIST_URL
+        run: |
+          echo "Fetching CIDR whitelist..."
+          content=$(curl -sLf --connect-timeout 15 --max-time 30 "$CIDR_WHITELIST_URL") || \
+            { echo "::warning::Failed to fetch CIDR list, using existing"; exit 0; }
+          echo "$content" | grep -v '^[[:space:]]*$' | grep -v '^#' > cidrlist_new
+          if [ -s cidrlist_new ]; then
+            echo "# Updated: $(date -u '+%Y-%m-%d %H:%M:%S') UTC" > cidrlist
+            cat cidrlist_new >> cidrlist
+            echo "cidrlist updated: $(wc -l < cidrlist) lines"
+          else
+            echo "::warning::Empty CIDR list received, keeping existing"
+          fi
+
+      - name: Scrape Telegram channels
+        continue-on-error: true
+        env:
+          TG_API_ID: ${{ secrets.TG_API_ID }}
+          TG_API_HASH: ${{ secrets.TG_API_HASH }}
+          TG_SESSION: ${{ secrets.TG_SESSION }}
+        run: |
+          python3 -c "
+          import asyncio, os, re
+          try:
+              from telethon import TelegramClient
+              from telethon.sessions import StringSession
+          except ImportError:
+              print('telethon not installed, skipping TG scraping')
+              exit(0)
+          API_ID = int(os.environ.get('TG_API_ID') or '0') or 0
+          if not API_ID:
+              print('TG_API_ID not set, skipping TG scraping')
+              exit(0)
+          API_HASH = os.environ['TG_API_HASH']
+          SESSION = os.environ.get('TG_SESSION', '')
+          SCHEME_RE = re.compile(r'(?:vless|vmess|trojan|ss|hysteria2|hy2|tuic)://[^\s<>\"\n]+', re.IGNORECASE)
+          CHANNELS = [
+              'VIPROXYS', 'v2rayfreedaily', 'vrayconfigs', 'HomayounConfigs',
+              'v2rayng_configsss', 'V2ray_configs2', 'oneclickvpnkeys', 'V2RAYNG_VPNT',
+              'v2rayfresh', 'config_vless', 'freeeirannet', 'v2rayng_hub',
+              'Vepeer_VPN', 'nV_v2ray', 'h110vpnchat', 'sigma_smart_vpn', 'OkeyVPNfree',
+          ]
+          def extract(msg):
+              configs = set()
+              if msg.text:
+                  for m in SCHEME_RE.finditer(msg.text):
+                      c = m.group(0).strip().rstrip('.,|)')
+                      if len(c) > 20:
+                          configs.add(c)
+              return configs
+          async def scrape():
+              client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
+              await client.start()
+              os.makedirs('sources_tg', exist_ok=True)
+              for channel in CHANNELS:
+                  configs = set()
+                  try:
+                      async for msg in client.iter_messages(channel, limit=500):
+                          configs |= extract(msg)
+                      with open(f'sources_tg/{channel}.txt', 'w') as f:
+                          f.write('\n'.join(sorted(configs)))
+                      print(f'{channel}: {len(configs)} configs')
+                  except Exception as e:
+                      print(f'Error {channel}: {e}')
+              await client.disconnect()
+          asyncio.run(scrape())
+          "
+
+      - name: Add TG channel files to links.txt
+        run: |
+          python3 -c "
+          import os, glob
+          tg_files = glob.glob('sources_tg/*.txt')
+          if not tg_files:
+              print('No TG source files found')
+              exit(0)
+          with open('links.txt', 'a') as out:
+              out.write('\n# === telegram_channels ===\n')
+              for fname in sorted(tg_files):
+                  abs_path = os.path.abspath(fname)
+                  out.write('file://' + abs_path + '\n')
+          print('Added ' + str(len(tg_files)) + ' TG channel files to links.txt')
+          "
+
+      - name: Merge all proxy sources into configs/merged_xray.txt
+        run: |
+          mkdir -p configs
+          python3 -c "
+          import os, re, base64, glob
+          SCHEMES = ('vless://', 'vmess://', 'trojan://', 'ss://', 'hysteria2://', 'hy2://', 'tuic://')
+          def decode(text):
+              stripped = text.strip()
+              for s in SCHEMES:
+                  if s.lower() in stripped.lower():
+                      return stripped
+              try:
+                  decoded = base64.b64decode(stripped + '==').decode('utf-8', errors='replace')
+                  if any(s in decoded for s in SCHEMES):
+                      return decoded
+              except Exception:
+                  pass
+              return stripped
+
+          import urllib.request, urllib.error
+          proxies, seen = [], set()
+          with open('links.txt') as f:
+              urls = [l.strip() for l in f if l.strip() and not l.startswith('#')]
+
+          for url in urls:
+              try:
+                  if url.startswith('file://'):
+                      path = url[7:]
+                      with open(path) as f:
+                          content = f.read()
+                  else:
+                      req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+                      with urllib.request.urlopen(req, timeout=15) as r:
+                          content = r.read().decode('utf-8', errors='replace')
+                  content = decode(content)
+                  for line in content.splitlines():
+                      line = line.strip()
+                      if any(line.lower().startswith(s) for s in SCHEMES):
+                          base = line.split('#')[0].strip()
+                          if base not in seen:
+                              seen.add(base)
+                              proxies.append(line)
+              except Exception as e:
+                  print('WARN ' + url[:60] + ': ' + str(e))
+
+          os.makedirs('configs', exist_ok=True)
+          with open('configs/merged_xray.txt', 'w') as f:
+              f.write('\n'.join(proxies))
+          print('Merged ' + str(len(proxies)) + ' unique proxies -> configs/merged_xray.txt')
+          for proto in ['vless', 'vmess', 'trojan', 'ss', 'hysteria2', 'hy2', 'tuic']:
+              c = sum(1 for p in proxies if p.lower().startswith(proto + '://'))
+              if c: print('  ' + proto + ': ' + str(c))
+          "
+
+      - name: Filter known-bad proxies (notworkers DB)
+        run: |
+          python3 -c "
+          import os, sys
+          sys.path.insert(0, os.getcwd())
+          try:
+              from notworkers_sqlite.store import init_db, is_notworker, normalize_proxy_key, get_stats
+          except ImportError:
+              print('notworkers_sqlite not available, skipping filter')
+              exit(0)
+          db_path = 'configs/notworkers.db'
+          if not os.path.isfile(db_path):
+              print('No notworkers.db yet, skipping filter')
+              exit(0)
+          conn = init_db(db_path)
+          stats = get_stats(conn)
+          print('notworkers DB: ' + str(stats.total) + ' known-bad entries')
+          src = 'configs/merged_xray.txt'
+          if not os.path.isfile(src):
+              exit(0)
+          with open(src) as f:
+              lines = [l.strip() for l in f if l.strip()]
+          filtered, skipped = [], 0
+          for line in lines:
+              key = normalize_proxy_key(line)
+              if key and is_notworker(conn, key):
+                  skipped += 1
+              else:
+                  filtered.append(line)
+          conn.close()
+          with open(src, 'w') as f:
+              f.write('\n'.join(filtered))
+          print('notworkers filter: ' + str(len(lines)) + ' -> ' + str(len(filtered)) + ' (skipped ' + str(skipped) + ' known-bad)')
+          "
+
+      - name: Xray fast screen (phase 1)
+        env:
+          XRAY_PATH: xray_dist/xray
+          MAX_WORKERS: ${{ env.MAX_WORKERS }}
+          TEST_URLS: ${{ env.TEST_URLS }}
+          TEST_URLS_HTTPS: ${{ env.TEST_URLS_HTTPS }}
+          REQUIRE_HTTPS: ${{ env.REQUIRE_HTTPS }}
+          STRONG_STYLE_TEST: ${{ env.STRONG_STYLE_TEST }}
+          STRONG_STYLE_TIMEOUT: '3'
+          STRONG_STYLE_CONNECT_T_MIN: '1'
+          STRONG_STYLE_READ_T_MIN: '2'
+          STRONG_MAX_RESPONSE_TIME: '1.5'
+          STRONG_DOUBLE_CHECK: 'false'
+          STRONG_ATTEMPTS: '2'
+          REQUESTS_PER_URL: '1'
+          MIN_SUCCESSFUL_REQUESTS: '1'
+          MIN_SUCCESSFUL_URLS: '1'
+          REQUEST_DELAY: '0.0'
+          CONNECT_TIMEOUT: ${{ env.CONNECT_TIMEOUT }}
+          CONNECT_TIMEOUT_SLOW: ${{ env.CONNECT_TIMEOUT_SLOW }}
+          MAX_RESPONSE_TIME: '3'
+          MAX_LATENCY_MS: ${{ env.MAX_LATENCY_MS }}
+          STRICT_MODE: 'true'
+          STRICT_MODE_REQUIRE_ALL: 'false'
+          STABILITY_CHECKS: '1'
+          STABILITY_CHECK_DELAY: '0'
+          XRAY_STARTUP_WAIT: '1.0'
+          XRAY_PORT_WAIT: '3'
+          BASE_PORT: ${{ env.BASE_PORT }}
+          MODE: single
+          OUTPUT_FILE: available_phase1_candidates
+          OUTPUT_DIR: configs
+          EXPORT_FORMAT: txt
+          ENABLE_CACHE: 'false'
+          NOTWORKERS_UPDATE_ENABLED: 'false'
+          CHECKER_DIAG_FAILURE_TYPES: 'true'
+          CHECKER_DIAG_FAILURE_TOP_N: '5'
+          TRANSIENT_RETRY_COUNT: '1'
+        run: |
+          mkdir -p configs
+          rm -f configs/available_phase1_candidates || true
+          TOTAL=$(wc -l < configs/merged_xray.txt 2>/dev/null || echo 0)
+          echo "Phase 1: fast screen of $TOTAL proxies..."
+          if [ -s configs/merged_xray.txt ]; then
+            python3 -m lib.vless_checker configs/merged_xray.txt
+          else
+            echo "No proxies to check"
+            touch configs/available_phase1_candidates
+          fi
+          CANDIDATES=$(wc -l < configs/available_phase1_candidates 2>/dev/null || echo 0)
+          echo "Phase 1 done: $CANDIDATES candidates -> phase 2"
+
+      - name: Xray full strong (phase 2)
+        env:
+          XRAY_PATH: xray_dist/xray
+          MAX_WORKERS: ${{ env.MAX_WORKERS }}
+          TEST_URLS: ${{ env.TEST_URLS }}
+          TEST_URLS_HTTPS: ${{ env.TEST_URLS_HTTPS }}
+          REQUIRE_HTTPS: ${{ env.REQUIRE_HTTPS }}
+          STRONG_STYLE_TEST: ${{ env.STRONG_STYLE_TEST }}
+          STRONG_STYLE_TIMEOUT: ${{ env.STRONG_STYLE_TIMEOUT }}
+          STRONG_MAX_RESPONSE_TIME: ${{ env.STRONG_MAX_RESPONSE_TIME }}
+          STRONG_DOUBLE_CHECK: ${{ env.STRONG_DOUBLE_CHECK }}
+          STRONG_ATTEMPTS: ${{ env.STRONG_ATTEMPTS }}
+          REQUESTS_PER_URL: ${{ env.REQUESTS_PER_URL }}
+          MIN_SUCCESSFUL_REQUESTS: ${{ env.MIN_SUCCESSFUL_REQUESTS }}
+          MIN_SUCCESSFUL_URLS: ${{ env.MIN_SUCCESSFUL_URLS }}
+          REQUEST_DELAY: ${{ env.REQUEST_DELAY }}
+          CONNECT_TIMEOUT: ${{ env.CONNECT_TIMEOUT }}
+          CONNECT_TIMEOUT_SLOW: ${{ env.CONNECT_TIMEOUT_SLOW }}
+          MAX_RESPONSE_TIME: ${{ env.MAX_RESPONSE_TIME }}
+          MAX_LATENCY_MS: ${{ env.MAX_LATENCY_MS }}
+          STRICT_MODE: ${{ env.STRICT_MODE }}
+          STRICT_MODE_REQUIRE_ALL: ${{ env.STRICT_MODE_REQUIRE_ALL }}
+          STABILITY_CHECKS: ${{ env.STABILITY_CHECKS }}
+          STABILITY_CHECK_DELAY: ${{ env.STABILITY_CHECK_DELAY }}
+          XRAY_STARTUP_WAIT: ${{ env.XRAY_STARTUP_WAIT }}
+          XRAY_PORT_WAIT: ${{ env.XRAY_PORT_WAIT }}
+          BASE_PORT: ${{ env.BASE_PORT }}
+          MODE: single
+          OUTPUT_FILE: available
+          OUTPUT_DIR: configs
+          EXPORT_FORMAT: txt
+          ENABLE_CACHE: 'false'
+          NOTWORKERS_UPDATE_ENABLED: ${{ env.NOTWORKERS_UPDATE_ENABLED }}
+        run: |
+          CANDIDATES=$(wc -l < configs/available_phase1_candidates 2>/dev/null || echo 0)
+          echo "Phase 2: full strong check of $CANDIDATES candidates..."
+          if [ -s configs/available_phase1_candidates ]; then
+            python3 -m lib.vless_checker configs/available_phase1_candidates
+          else
+            echo "No phase1 candidates for full check"
+            touch configs/available
+          fi
+
+      - name: Prune notworkers DB
+        run: |
+          if [ -f "configs/notworkers.db" ]; then
+            python3 -m notworkers_sqlite.cli prune --db configs/notworkers.db --days 14 --max-rows 50000
+          fi
+
+      - name: Filter RU proxies by CIDR
+        run: |
+          if [ -f cidrlist ] && [ -s cidrlist ]; then
+            python3 filter_cidr.py configs/available configs/available_ru --cidrlist cidrlist || \
+              cp configs/available configs/available_ru
+          else
+            echo "::warning::No cidrlist found, skipping RU filter"
+          fi
+
+      - name: Make top100
+        run: |
+          if [ -f configs/available ]; then
+            head -n 100 configs/available > "configs/available(top100)"
+            echo "Top 100 written"
+          fi
+
+      - name: Add GeoIP comments
+        run: |
+          if [ -s configs/available ]; then
+            STRIP_VPN_COMMENTS_FAST=1 AUTO_COMMENT="${{ env.AUTO_COMMENT }}" \
+              python3 lib/strip_vpn_comments.py configs/available -o configs/available
+          fi
+
+      - name: Prepare header stats
+        run: |
+          python3 -c "
+          import datetime, os
+          now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+          for fname in ['configs/available', 'configs/available_ru', 'configs/available(top100)']:
+              if not os.path.isfile(fname):
+                  continue
+              with open(fname) as f:
+                  lines = [l.strip() for l in f if l.strip() and not l.startswith('#')]
+              total_in = 0
+              if os.path.isfile('configs/merged_xray.txt'):
+                  with open('configs/merged_xray.txt') as f:
+                      total_in = sum(1 for l in f if l.strip())
+              with open(fname, 'w') as f:
+                  label = os.path.basename(fname)
+                  f.write('# Proxy preflight — ' + str(len(lines)) + ' live / ' + str(total_in) + ' total (xray E2E)\n')
+                  f.write('# Updated: ' + now + '\n')
+                  for p in lines:
+                      f.write(p + '\n')
+          print('Stats headers written, updated: ' + now)
+          "
+
+      - name: Send results to Telegram
+        if: ${{ env.TG_BOT_TOKEN != '' }}
+        continue-on-error: true
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          OUTPUT_FILE: configs/available
+        run: python3 send_results.py
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add configs/available "configs/available(top100)" configs/available_ru \
+                  sources_tg/ links.txt cidrlist \
+                  send_results.py sources.json requirements.txt \
+                  filter_cidr.py strip_comments.py notworkers_sqlite/ lib/ || true
+          git diff --staged --quiet && echo "No changes" && exit 0
+          LIVE=$(wc -l < configs/available 2>/dev/null || echo 0)
+          git commit -m "chore: ${LIVE} live proxies [nightly-check E2E]"
+          git push --force-with-lease || git push --force
