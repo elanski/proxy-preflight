@@ -1,0 +1,41 @@
+name: Update Subscription
+
+on:
+  schedule:
+    - cron: "0 * * * *"   # каждый час
+  workflow_dispatch:
+
+concurrency:
+  group: proxy-preflight-sub
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Update subscription from xraycheck
+        run: python3 make_mihomo_sub.py
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add configs/sub.txt configs/sub_ru.txt configs/proxies_raw.txt
+          git diff --staged --quiet && echo "No changes" && exit 0
+          TOTAL=$(wc -l < configs/proxies_raw.txt 2>/dev/null || echo 0)
+          git commit -m "chore: update subscription (${TOTAL} proxies)"
+          git push --force-with-lease || git push --force
