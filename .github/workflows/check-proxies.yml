@@ -325,8 +325,7 @@ jobs:
           XRAY_STARTUP_WAIT: ${{ env.XRAY_STARTUP_WAIT }}
           XRAY_PORT_WAIT: ${{ env.XRAY_PORT_WAIT }}
           BASE_PORT: ${{ env.BASE_PORT }}
-          MODE: merge
-          LINKS_FILE: links.txt
+          MODE: single
           OUTPUT_FILE: available
           OUTPUT_DIR: configs
           EXPORT_FORMAT: txt
@@ -362,7 +361,7 @@ jobs:
       - name: Add GeoIP comments
         run: |
           if [ -s configs/available ]; then
-            STRIP_FAST=1 AUTO_COMMENT="${{ env.AUTO_COMMENT }}" \
+            STRIP_VPN_COMMENTS_FAST=1 AUTO_COMMENT="${{ env.AUTO_COMMENT }}" \
               python3 lib/strip_vpn_comments.py configs/available -o configs/available
           fi
 
@@ -404,7 +403,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add configs/available "configs/available(top100)" configs/available_ru \
                   sources_tg/ links.txt cidrlist \
-                  check_proxies.py send_results.py sources.json requirements.txt \
+                  send_results.py sources.json requirements.txt \
                   filter_cidr.py strip_comments.py notworkers_sqlite/ lib/ || true
           git diff --staged --quiet && echo "No changes" && exit 0
           LIVE=$(wc -l < configs/available 2>/dev/null || echo 0)
