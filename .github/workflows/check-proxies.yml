@@ -298,7 +298,59 @@ jobs:
           print('notworkers filter: ' + str(len(lines)) + ' -> ' + str(len(filtered)) + ' (skipped ' + str(skipped) + ' known-bad)')
           "
 
-      - name: Run xray checker (vless_checker — E2E all protocols)
+      - name: Xray fast screen (phase 1)
+        env:
+          XRAY_PATH: xray_dist/xray
+          MAX_WORKERS: ${{ env.MAX_WORKERS }}
+          TEST_URLS: ${{ env.TEST_URLS }}
+          TEST_URLS_HTTPS: ${{ env.TEST_URLS_HTTPS }}
+          REQUIRE_HTTPS: ${{ env.REQUIRE_HTTPS }}
+          STRONG_STYLE_TEST: ${{ env.STRONG_STYLE_TEST }}
+          STRONG_STYLE_TIMEOUT: '3'
+          STRONG_STYLE_CONNECT_T_MIN: '1'
+          STRONG_STYLE_READ_T_MIN: '2'
+          STRONG_MAX_RESPONSE_TIME: '1.5'
+          STRONG_DOUBLE_CHECK: 'false'
+          STRONG_ATTEMPTS: '2'
+          REQUESTS_PER_URL: '1'
+          MIN_SUCCESSFUL_REQUESTS: '1'
+          MIN_SUCCESSFUL_URLS: '1'
+          REQUEST_DELAY: '0.0'
+          CONNECT_TIMEOUT: ${{ env.CONNECT_TIMEOUT }}
+          CONNECT_TIMEOUT_SLOW: ${{ env.CONNECT_TIMEOUT_SLOW }}
+          MAX_RESPONSE_TIME: '3'
+          MAX_LATENCY_MS: ${{ env.MAX_LATENCY_MS }}
+          STRICT_MODE: 'true'
+          STRICT_MODE_REQUIRE_ALL: 'false'
+          STABILITY_CHECKS: '1'
+          STABILITY_CHECK_DELAY: '0'
+          XRAY_STARTUP_WAIT: '1.0'
+          XRAY_PORT_WAIT: '3'
+          BASE_PORT: ${{ env.BASE_PORT }}
+          MODE: single
+          OUTPUT_FILE: available_phase1_candidates
+          OUTPUT_DIR: configs
+          EXPORT_FORMAT: txt
+          ENABLE_CACHE: 'false'
+          NOTWORKERS_UPDATE_ENABLED: 'false'
+          CHECKER_DIAG_FAILURE_TYPES: 'true'
+          CHECKER_DIAG_FAILURE_TOP_N: '5'
+          TRANSIENT_RETRY_COUNT: '1'
+        run: |
+          mkdir -p configs
+          rm -f configs/available_phase1_candidates || true
+          TOTAL=$(wc -l < configs/merged_xray.txt 2>/dev/null || echo 0)
+          echo "Phase 1: fast screen of $TOTAL proxies..."
+          if [ -s configs/merged_xray.txt ]; then
+            python3 -m lib.vless_checker configs/merged_xray.txt
+          else
+            echo "No proxies to check"
+            touch configs/available_phase1_candidates
+          fi
+          CANDIDATES=$(wc -l < configs/available_phase1_candidates 2>/dev/null || echo 0)
+          echo "Phase 1 done: $CANDIDATES candidates -> phase 2"
+
+      - name: Xray full strong (phase 2)
         env:
           XRAY_PATH: xray_dist/xray
           MAX_WORKERS: ${{ env.MAX_WORKERS }}
@@ -332,9 +384,14 @@ jobs:
           ENABLE_CACHE: 'false'
           NOTWORKERS_UPDATE_ENABLED: 'true'
         run: |
-          TOTAL=$(wc -l < configs/merged_xray.txt || echo 0)
-          echo "Checking $TOTAL proxies with xray E2E (lib/vless_checker)..."
-          python3 -m lib.vless_checker configs/merged_xray.txt
+          CANDIDATES=$(wc -l < configs/available_phase1_candidates 2>/dev/null || echo 0)
+          echo "Phase 2: full strong check of $CANDIDATES candidates..."
+          if [ -s configs/available_phase1_candidates ]; then
+            python3 -m lib.vless_checker configs/available_phase1_candidates
+          else
+            echo "No phase1 candidates for full check"
+            touch configs/available
+          fi
 
       - name: Prune notworkers DB
         run: |
