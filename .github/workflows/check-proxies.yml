@@ -254,6 +254,12 @@ jobs:
               except Exception as e:
                   print('WARN ' + url[:60] + ': ' + str(e))
 
+          import random
+          MAX_INPUT = 8000
+          if len(proxies) > MAX_INPUT:
+              random.shuffle(proxies)
+              proxies = proxies[:MAX_INPUT]
+              print('Shuffled and limited to ' + str(MAX_INPUT) + ' proxies')
           os.makedirs('configs', exist_ok=True)
           with open('configs/merged_xray.txt', 'w') as f:
               f.write('\n'.join(proxies))
