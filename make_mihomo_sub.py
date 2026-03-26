@@ -11,16 +11,13 @@ import datetime
 import os
 
 SOURCES_ALL = [
-    # Отсортированные по скорости (приоритет)
-    "https://raw.githubusercontent.com/WhitePrime/xraycheck/main/configs/available_st",
-    # RU прокси
-    "https://raw.githubusercontent.com/WhitePrime/xraycheck/main/configs/white-list_available",
-    # Все живые
-    "https://raw.githubusercontent.com/WhitePrime/xraycheck/main/configs/available",
+    # Топ 100 отсортированных по скорости
+    "https://raw.githubusercontent.com/WhitePrime/xraycheck/main/configs/available_st(top100)",
 ]
 
 SOURCES_RU = [
-    "https://raw.githubusercontent.com/WhitePrime/xraycheck/main/configs/white-list_available",
+    # RU топ 100
+    "https://raw.githubusercontent.com/WhitePrime/xraycheck/main/configs/white-list_available(top100)",
 ]
 
 SCHEMES = ("vless://", "vmess://", "trojan://", "ss://", "hysteria2://", "hy2://", "tuic://")
