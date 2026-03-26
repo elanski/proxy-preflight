@@ -73,9 +73,8 @@ def main():
     ru_proxies = collect(SOURCES_RU)
     print(f"RU: {len(ru_proxies)} proxies")
 
-    # Write raw
+    # Write raw (NO comments — mihomo/clash needs plain proxy list)
     with open("configs/proxies_raw.txt", "w") as f:
-        f.write(f"# xraycheck proxies — {len(all_proxies)} live | {now}\n")
         for p in all_proxies:
             f.write(p + "\n")
     print(f"\nWrote configs/proxies_raw.txt ({len(all_proxies)} proxies)")
