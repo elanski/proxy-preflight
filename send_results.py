@@ -6,7 +6,7 @@ import requests
 
 BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
 CHAT_ID = os.environ["TG_CHAT_ID"]
-OUTPUT_FILE = os.environ.get("OUTPUT_FILE", "proxies_live.txt")
+OUTPUT_FILE = os.environ.get("OUTPUT_FILE", "configs/available")
 
 
 def read_stats():
@@ -28,11 +28,13 @@ def read_stats():
                     proto_counts[proto] = proto_counts.get(proto, 0) + 1
     except FileNotFoundError:
         pass
-    try:
-        with open("proxies_ru.txt") as f:
-            ru_count = sum(1 for l in f if l.strip() and not l.strip().startswith("#"))
-    except FileNotFoundError:
-        pass
+    for ru_path in ("configs/available_ru", "proxies_ru.txt"):
+        try:
+            with open(ru_path) as f:
+                ru_count = sum(1 for l in f if l.strip() and not l.strip().startswith("#"))
+            break
+        except FileNotFoundError:
+            pass
     return live, total, updated, proto_counts, ru_count
 
 
@@ -63,8 +65,9 @@ def main():
     r.raise_for_status()
     print(f"Sent file with {live} live proxies")
 
-    if ru_count > 0 and os.path.isfile("proxies_ru.txt"):
-        with open("proxies_ru.txt", "rb") as f:
+    ru_file = "configs/available_ru" if os.path.isfile("configs/available_ru") else "proxies_ru.txt"
+    if ru_count > 0 and os.path.isfile(ru_file):
+        with open(ru_file, "rb") as f:
             requests.post(
                 f"https://api.telegram.org/bot{BOT_TOKEN}/sendDocument",
                 data={"chat_id": CHAT_ID,

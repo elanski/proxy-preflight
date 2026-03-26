@@ -5,9 +5,12 @@ from contextlib import closing
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional
+from typing import Iterable, Optional
 
+# Путь по умолчанию для SQLite-хранилища notworkers
 DB_PATH = Path("configs") / "notworkers.db"
+
+# Формат времени: ISO-8601 UTC, чтобы сортировка по строке совпадала со временем
 DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 
 
@@ -15,8 +18,10 @@ def _utc_now_str() -> str:
     return datetime.utcnow().strftime(DATETIME_FORMAT)
 
 
-def init_db(db_path=DB_PATH) -> sqlite3.Connection:
-    """Создаёт БД и таблицу notworkers, возвращает подключение."""
+def init_db(db_path: Path | str = DB_PATH) -> sqlite3.Connection:
+    """
+    Создаёт (при необходимости) файл БД и таблицу notworkers, возвращает подключение.
+    """
     path = Path(db_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(str(path))
@@ -47,11 +52,14 @@ def upsert_notworker(
     source: Optional[str] = None,
     seen_at: Optional[str] = None,
 ) -> None:
-    """Добавляет или обновляет запись о нерабочем прокси."""
+    """
+    Добавляет или обновляет запись о notworker по нормализованному ключу.
+    """
     if not key:
         return
     if seen_at is None:
         seen_at = _utc_now_str()
+
     conn.execute(
         """
         INSERT INTO notworkers (key, raw, first_seen, last_seen, fail_count, source)
@@ -67,6 +75,9 @@ def upsert_notworker(
 
 
 def is_notworker(conn: sqlite3.Connection, key: str) -> bool:
+    """
+    Проверяет, есть ли нормализованный ключ в хранилище.
+    """
     if not key:
         return False
     cur = conn.execute("SELECT 1 FROM notworkers WHERE key = ? LIMIT 1", (key,))
@@ -74,25 +85,57 @@ def is_notworker(conn: sqlite3.Connection, key: str) -> bool:
 
 
 def expire_old(conn: sqlite3.Connection, max_age_days: int) -> int:
+    """
+    Удаляет записи, у которых last_seen старше max_age_days дней.
+    Возвращает количество удалённых строк.
+    """
     if max_age_days <= 0:
         return 0
     cutoff = datetime.utcnow() - timedelta(days=max_age_days)
-    cur = conn.execute("DELETE FROM notworkers WHERE last_seen < ?",
-                       (cutoff.strftime(DATETIME_FORMAT),))
+    cutoff_str = cutoff.strftime(DATETIME_FORMAT)
+    cur = conn.execute("DELETE FROM notworkers WHERE last_seen < ?", (cutoff_str,))
+    conn.commit()
+    return cur.rowcount
+
+
+def delete_where_fail_count_gt(conn: sqlite3.Connection, max_fail_count: int) -> int:
+    """
+    Удаляет записи с fail_count строго больше max_fail_count (при max_fail_count=6
+    остаются ключи с 1-6 фиксациями отказа, с 7+ удаляются). Возвращает число удалённых строк.
+
+    При max_fail_count=0 удаляются все строки с fail_count >= 1 (обычно вся таблица).
+    """
+    if max_fail_count < 0:
+        return 0
+    cur = conn.execute(
+        "DELETE FROM notworkers WHERE fail_count > ?", (max_fail_count,)
+    )
     conn.commit()
     return cur.rowcount
 
 
 def prune_to_max(conn: sqlite3.Connection, max_rows: int) -> int:
+    """
+    Оставляет не более max_rows самых свежих записей (по last_seen).
+    Возвращает количество удалённых строк.
+    """
     if max_rows <= 0:
         return 0
-    total = conn.execute("SELECT COUNT(*) FROM notworkers").fetchone()[0] or 0
+    cur = conn.execute("SELECT COUNT(*) FROM notworkers")
+    total = cur.fetchone()[0] or 0
     if total <= max_rows:
         return 0
+    to_delete = total - max_rows
     cur = conn.execute(
-        "DELETE FROM notworkers WHERE id IN "
-        "(SELECT id FROM notworkers ORDER BY last_seen ASC LIMIT ?)",
-        (total - max_rows,),
+        """
+        DELETE FROM notworkers
+        WHERE id IN (
+            SELECT id FROM notworkers
+            ORDER BY last_seen ASC
+            LIMIT ?
+        )
+        """,
+        (to_delete,),
     )
     conn.commit()
     return cur.rowcount
@@ -106,14 +149,88 @@ class NotworkersStats:
 
 
 def get_stats(conn: sqlite3.Connection) -> NotworkersStats:
-    row = conn.execute(
+    """
+    Возвращает простую сводную статистику по таблице notworkers.
+    """
+    cur = conn.execute(
         "SELECT COUNT(*), MIN(first_seen), MAX(last_seen) FROM notworkers"
-    ).fetchone()
+    )
+    row = cur.fetchone()
     if not row:
         return NotworkersStats(total=0, min_first_seen=None, max_last_seen=None)
-    return NotworkersStats(total=int(row[0]), min_first_seen=row[1], max_last_seen=row[2])
+    total, min_first_seen, max_last_seen = row
+    return NotworkersStats(
+        total=int(total),
+        min_first_seen=min_first_seen,
+        max_last_seen=max_last_seen,
+    )
 
 
-def normalize_proxy_key(line: str) -> str:
-    """Нормализует строку прокси в ключ (убирает комментарий)."""
-    return line.split("#")[0].strip()
+def migrate_from_flat(
+    flat_path: Path | str = Path("configs") / "notworkers",
+    db_path: Path | str = DB_PATH,
+    source: str = "flat",
+) -> tuple[int, int]:
+    """
+    Однократная/повторяемая миграция содержимого текстового configs/notworkers в SQLite.
+
+    Возвращает (inserted, updated).
+    """
+    from lib.parsing import load_notworkers_with_lines  # импортируем по требованию
+
+    flat = Path(flat_path)
+    if not flat.is_file():
+        return 0, 0
+
+    existing_set, normalized_to_full = load_notworkers_with_lines(str(flat))
+    if not normalized_to_full:
+        return 0, 0
+
+    with closing(init_db(db_path)) as conn:
+        inserted = 0
+        updated = 0
+        for norm, full in normalized_to_full.items():
+            cur = conn.execute(
+                "SELECT 1 FROM notworkers WHERE key = ? LIMIT 1", (norm,)
+            )
+            exists = cur.fetchone() is not None
+            upsert_notworker(conn, norm, full, source=source)
+            if exists:
+                updated += 1
+            else:
+                inserted += 1
+        conn.commit()
+        return inserted, updated
+
+
+def export_to_flat(
+    db_path: Path | str = DB_PATH,
+    flat_path: Path | str = Path("configs") / "notworkers_from_db",
+) -> int:
+    """
+    Экспортирует содержимое notworkers из БД в текстовый файл (по полю raw).
+    Возвращает количество записей.
+    """
+    db = Path(db_path)
+    if not db.is_file():
+        return 0
+
+    flat = Path(flat_path)
+    flat.parent.mkdir(parents=True, exist_ok=True)
+
+    with closing(sqlite3.connect(str(db))) as conn, flat.open(
+        "w", encoding="utf-8"
+    ) as f:
+        cur = conn.execute(
+            "SELECT raw FROM notworkers ORDER BY key"
+        )
+        count = 0
+        for (raw,) in cur:
+            # raw уже содержит перевод строки (как в исходном файле notworkers)
+            if raw.endswith("\n"):
+                f.write(raw)
+            else:
+                f.write(raw + "\n")
+            count += 1
+        return count
+
