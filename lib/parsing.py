@@ -49,8 +49,8 @@ def get_output_path(list_url: str) -> str:
 
 
 # Префиксы протоколов для проверки «уже раскодировано»
-# Оставляем только VLESS (фильтрация до Reality+XTLS-Vision идёт в parse_proxy_lines/is_vless_reality_vision)
-_SUBSCRIPTION_PROTOCOLS = ("vless://",)
+# VLESS+Reality+XTLS-Vision и Hysteria2
+_SUBSCRIPTION_PROTOCOLS = ("vless://", "hysteria2://", "hy2://")
 
 
 def normalize_proxy_link(link: str) -> str:
@@ -259,7 +259,7 @@ def is_vless_reality_vision(link: str) -> bool:
 
 
 def parse_proxy_lines(text: str) -> list[tuple[str, str]]:
-    """Возвращает список (прокси_ссылка, полная_строка) только для VLESS+Reality+XTLS-Vision."""
+    """Возвращает список (прокси_ссылка, полная_строка) для VLESS+Reality+XTLS-Vision и Hysteria2."""
     result = []
     for line in text.splitlines():
         line = line.strip()
@@ -268,6 +268,10 @@ def parse_proxy_lines(text: str) -> list[tuple[str, str]]:
         if line.startswith("vless://"):
             link = line.split(maxsplit=1)[0].strip()
             if link and is_vless_reality_vision(link):
+                result.append((link, line))
+        elif line.startswith("hysteria2://") or line.startswith("hy2://"):
+            link = line.split(maxsplit=1)[0].strip()
+            if link:
                 result.append((link, line))
     return result
 

@@ -160,7 +160,7 @@ jobs:
               exit(0)
           API_HASH = os.environ['TG_API_HASH']
           SESSION = os.environ.get('TG_SESSION', '')
-          SCHEME_RE = re.compile(r'vless://[^\s<>\"\n]+', re.IGNORECASE)
+          SCHEME_RE = re.compile(r'(?:vless|hysteria2|hy2)://[^\s<>\"\n]+', re.IGNORECASE)
           CHANNELS = [
               'VIPROXYS', 'v2rayfreedaily', 'vrayconfigs', 'HomayounConfigs',
               'v2rayng_configsss', 'V2ray_configs2', 'oneclickvpnkeys', 'V2RAYNG_VPNT',
@@ -236,11 +236,11 @@ jobs:
 
           def decode(text):
               stripped = text.strip()
-              if 'vless://' in stripped:
+              if 'vless://' in stripped or 'hysteria2://' in stripped or 'hy2://' in stripped:
                   return stripped
               try:
                   decoded = base64.b64decode(stripped + '==').decode('utf-8', errors='replace')
-                  if 'vless://' in decoded:
+                  if 'vless://' in decoded or 'hysteria2://' in decoded or 'hy2://' in decoded:
                       return decoded
               except Exception:
                   pass
@@ -264,7 +264,7 @@ jobs:
                   content = decode(content)
                   for line in content.splitlines():
                       line = line.strip()
-                      if is_vless_reality_vision(line):
+                      if is_vless_reality_vision(line) or line.startswith('hysteria2://') or line.startswith('hy2://'):
                           base = line.split('#')[0].strip()
                           if base not in seen:
                               seen.add(base)
@@ -278,10 +278,12 @@ jobs:
               random.shuffle(proxies)
               proxies = proxies[:MAX_INPUT]
               print('Shuffled and limited to ' + str(MAX_INPUT) + ' proxies')
+          vless_count = sum(1 for p in proxies if p.startswith('vless://'))
+          hy2_count = sum(1 for p in proxies if p.startswith('hysteria2://') or p.startswith('hy2://'))
           os.makedirs('configs', exist_ok=True)
           with open('configs/merged_xray.txt', 'w') as f:
               f.write('\n'.join(proxies))
-          print('Merged ' + str(len(proxies)) + ' VLESS+Reality+XTLS-Vision proxies -> configs/merged_xray.txt')
+          print('Merged ' + str(len(proxies)) + ' proxies -> configs/merged_xray.txt (vless=' + str(vless_count) + ' hy2=' + str(hy2_count) + ')')
           "
 
       - name: Filter known-bad proxies (notworkers DB)

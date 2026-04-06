@@ -511,6 +511,8 @@ def _strip_latency_prefix(text: str) -> str:
 
 _PROTOCOL_PREFIXES = (
     "vless://",
+    "hysteria2://",
+    "hy2://",
 )
 
 
@@ -624,7 +626,7 @@ def save_results_and_exit(available: list[tuple[str, float]], all_metrics: dict,
                     line = line.strip()
                     if line.startswith('[') and 'ms]' in line:
                         line = line.split(']', 1)[1].strip()
-                    if line.startswith('vless://'):
+                    if line.startswith(('vless://', 'hysteria2://', 'hy2://')):
                         link = line.split(maxsplit=1)[0].strip()
                         if link:
                             available_links.add(link)
