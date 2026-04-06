@@ -164,7 +164,7 @@ jobs:
               exit(0)
           API_HASH = os.environ['TG_API_HASH']
           SESSION = os.environ.get('TG_SESSION', '')
-          SCHEME_RE = re.compile(r'(?:vless|vmess|trojan|ss|hysteria2|hy2|tuic)://[^\s<>\"\n]+', re.IGNORECASE)
+          SCHEME_RE = re.compile(r'vless://[^\s<>\"\n]+', re.IGNORECASE)
           CHANNELS = [
               'VIPROXYS', 'v2rayfreedaily', 'vrayconfigs', 'HomayounConfigs',
               'v2rayng_configsss', 'V2ray_configs2', 'oneclickvpnkeys', 'V2RAYNG_VPNT',
@@ -218,15 +218,27 @@ jobs:
           mkdir -p configs
           python3 -c "
           import os, re, base64, glob
-          SCHEMES = ('vless://', 'vmess://', 'trojan://', 'ss://', 'hysteria2://', 'hy2://', 'tuic://')
+          from urllib.parse import urlparse, parse_qs
+          # Только VLESS+Reality+XTLS-Vision
+          def is_vless_reality_vision(line):
+              if not line.startswith('vless://'):
+                  return False
+              try:
+                  parsed = urlparse(line.split()[0].split('#')[0])
+                  q = parse_qs(parsed.query or '')
+                  security = (q.get('security', [''])[0] or '').strip().lower()
+                  flow = (q.get('flow', [''])[0] or '').strip().lower()
+                  return security == 'reality' and flow == 'xtls-rprx-vision'
+              except Exception:
+                  return False
+
           def decode(text):
               stripped = text.strip()
-              for s in SCHEMES:
-                  if s.lower() in stripped.lower():
-                      return stripped
+              if 'vless://' in stripped:
+                  return stripped
               try:
                   decoded = base64.b64decode(stripped + '==').decode('utf-8', errors='replace')
-                  if any(s in decoded for s in SCHEMES):
+                  if 'vless://' in decoded:
                       return decoded
               except Exception:
                   pass
@@ -250,7 +262,7 @@ jobs:
                   content = decode(content)
                   for line in content.splitlines():
                       line = line.strip()
-                      if any(line.lower().startswith(s) for s in SCHEMES):
+                      if is_vless_reality_vision(line):
                           base = line.split('#')[0].strip()
                           if base not in seen:
                               seen.add(base)
@@ -261,10 +273,7 @@ jobs:
           os.makedirs('configs', exist_ok=True)
           with open('configs/merged_xray.txt', 'w') as f:
               f.write('\n'.join(proxies))
-          print('Merged ' + str(len(proxies)) + ' unique proxies -> configs/merged_xray.txt')
-          for proto in ['vless', 'vmess', 'trojan', 'ss', 'hysteria2', 'hy2', 'tuic']:
-              c = sum(1 for p in proxies if p.lower().startswith(proto + '://'))
-              if c: print('  ' + proto + ': ' + str(c))
+          print('Merged ' + str(len(proxies)) + ' VLESS+Reality+XTLS-Vision proxies -> configs/merged_xray.txt')
           "
 
       - name: Filter known-bad proxies (notworkers DB)

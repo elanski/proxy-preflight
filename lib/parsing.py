@@ -49,7 +49,8 @@ def get_output_path(list_url: str) -> str:
 
 
 # Префиксы протоколов для проверки «уже раскодировано»
-_SUBSCRIPTION_PROTOCOLS = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "hy2://")
+# Оставляем только VLESS (фильтрация до Reality+XTLS-Vision идёт в parse_proxy_lines/is_vless_reality_vision)
+_SUBSCRIPTION_PROTOCOLS = ("vless://",)
 
 
 def normalize_proxy_link(link: str) -> str:
@@ -234,21 +235,31 @@ def load_urls_from_file(path: str) -> list[str]:
     return urls
 
 
+def is_vless_reality_vision(link: str) -> bool:
+    """
+    Возвращает True только для VLESS + Reality + XTLS-Vision прокси.
+    Критерии: протокол vless://, security=reality, flow=xtls-rprx-vision.
+    """
+    if not link.startswith("vless://"):
+        return False
+    parsed = urlparse(link)
+    query = parse_qs(parsed.query or "", keep_blank_values=True)
+    security = (query.get("security", [""])[0] or "").strip().lower()
+    flow = (query.get("flow", [""])[0] or "").strip().lower()
+    return security == "reality" and flow == "xtls-rprx-vision"
+
+
 def parse_proxy_lines(text: str) -> list[tuple[str, str]]:
-    """Возвращает список (прокси_ссылка, полная_строка) для строк с поддерживаемыми протоколами."""
-    supported_protocols = ("vless://", "vmess://", "trojan://", "ss://", "hysteria://", "hysteria2://", "hy2://")
+    """Возвращает список (прокси_ссылка, полная_строка) только для VLESS+Reality+XTLS-Vision."""
     result = []
     for line in text.splitlines():
         line = line.strip()
         if not line:
             continue
-        # Проверяем, начинается ли строка с одного из поддерживаемых протоколов
-        for protocol in supported_protocols:
-            if line.startswith(protocol):
-                link = line.split(maxsplit=1)[0].strip()
-                if link:
-                    result.append((link, line))
-                break
+        if line.startswith("vless://"):
+            link = line.split(maxsplit=1)[0].strip()
+            if link and is_vless_reality_vision(link):
+                result.append((link, line))
     return result
 
 
