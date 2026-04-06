@@ -238,7 +238,8 @@ def load_urls_from_file(path: str) -> list[str]:
 def is_vless_reality_vision(link: str) -> bool:
     """
     Возвращает True только для VLESS + Reality + XTLS-Vision прокси.
-    Критерии: протокол vless://, security=reality, flow=xtls-rprx-vision.
+    Критерии: протокол vless://, security=reality, flow=xtls-rprx-vision,
+    валидный shortId (sid) — hex строка длиной 0,2,4,6,8,10,12,14,16 символов.
     """
     if not link.startswith("vless://"):
         return False
@@ -246,7 +247,15 @@ def is_vless_reality_vision(link: str) -> bool:
     query = parse_qs(parsed.query or "", keep_blank_values=True)
     security = (query.get("security", [""])[0] or "").strip().lower()
     flow = (query.get("flow", [""])[0] or "").strip().lower()
-    return security == "reality" and flow == "xtls-rprx-vision"
+    if security != "reality" or flow != "xtls-rprx-vision":
+        return False
+    # Проверяем shortId: должен быть hex длиной 0,2,4,6,8,10,12,14,16 символов
+    sid = (query.get("sid", [""])[0] or "").strip()
+    if sid:
+        import re as _re
+        if not _re.fullmatch(r"[0-9a-fA-F]{2,16}", sid) or len(sid) % 2 != 0:
+            return False
+    return True
 
 
 def parse_proxy_lines(text: str) -> list[tuple[str, str]]:

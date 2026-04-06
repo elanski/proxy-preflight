@@ -224,11 +224,17 @@ jobs:
               if not line.startswith('vless://'):
                   return False
               try:
+                  import re
                   parsed = urlparse(line.split()[0].split('#')[0])
                   q = parse_qs(parsed.query or '')
                   security = (q.get('security', [''])[0] or '').strip().lower()
                   flow = (q.get('flow', [''])[0] or '').strip().lower()
-                  return security == 'reality' and flow == 'xtls-rprx-vision'
+                  if security != 'reality' or flow != 'xtls-rprx-vision':
+                      return False
+                  sid = (q.get('sid', [''])[0] or '').strip()
+                  if sid and (not re.fullmatch(r'[0-9a-fA-F]{2,16}', sid) or len(sid) % 2 != 0):
+                      return False
+                  return True
               except Exception:
                   return False
 
