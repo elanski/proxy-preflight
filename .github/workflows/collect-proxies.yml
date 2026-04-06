@@ -156,17 +156,17 @@ jobs:
                   print('WARN ' + url[:60] + ': ' + str(e))
 
           os.makedirs('configs', exist_ok=True)
-          with open('configs/collected_raw', 'w') as f:
+          with open('configs/VLESS+Reality+XTLS', 'w') as f:
               f.write('\n'.join(proxies))
-          print('Collected ' + str(len(proxies)) + ' VLESS+Reality+XTLS-Vision proxies -> configs/collected_raw')
+          print('Collected ' + str(len(proxies)) + ' VLESS+Reality+XTLS-Vision proxies -> configs/VLESS+Reality+XTLS')
           "
 
       - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add configs/collected_raw sources_tg/ links.txt || true
+          git add "configs/VLESS+Reality+XTLS" sources_tg/ links.txt || true
           git diff --staged --quiet && echo "No changes" && exit 0
-          TOTAL=$(wc -l < configs/collected_raw 2>/dev/null || echo 0)
+          TOTAL=$(wc -l < "configs/VLESS+Reality+XTLS" 2>/dev/null || echo 0)
           git commit -m "chore: collected ${TOTAL} VLESS+Reality+Vision proxies (no check)"
           git push --force-with-lease || git push --force
