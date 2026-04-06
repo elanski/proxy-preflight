@@ -77,3 +77,22 @@ https://raw.githubusercontent.com/ALIILAPRO/v2rayNG-Config/main/server.txt
 # === us ===
 https://raw.githubusercontent.com/sevcator/5ubscrpt10n/main/working/countries/United%20States.txt
 https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/main/splitted-by-country/United_States.txt
+
+# === telegram_channels ===
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/HomayounConfigs.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/OkeyVPNfree.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/V2RAYNG_VPNT.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/V2ray_configs2.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/VIPROXYS.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/Vepeer_VPN.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/config_vless.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/freeeirannet.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/h110vpnchat.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/nV_v2ray.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/oneclickvpnkeys.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/sigma_smart_vpn.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayfreedaily.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayfresh.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayng_configsss.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayng_hub.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/vrayconfigs.txt
