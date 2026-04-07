@@ -1,10 +1,10 @@
-# Proxy preflight — 8 live / 6669 total (xray E2E)
-# Updated: 2026-04-07 09:44 UTC
+# Proxy preflight — 8 live / 6659 total (xray E2E)
+# Updated: 2026-04-07 11:31 UTC
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
 vless://d1209ffb-c159-48d5-b40d-542ce11fc768@us1.axinode.sbs:10965?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=lHxeD2nYtDb1V7JseV-sUTEuqH6_jie7U_iOARX7cT0&security=reality&sid=9f3a7c6d2e8b41af&sni=deepl.com&type=tcp#%F0%9F%8E%A019@oneclickvpnkeys
-vless://c8d1c6d3-388f-48fc-a8f0-ed90d955d096@185.177.238.15:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=www.vk.com&pbk=nPcUKydxoRI66O3tT9O4QCZpLjOBvkGsiXG7pDX1BBw&sid=6ba85179e30d4fc2#%F0%9F%87%A6%F0%9F%87%B1%20Albania%20%E2%80%94%20%23204
-vless://6fa40e7f-f363-425d-9331-43f07a423b5b@91.242.229.129:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=pLXdzqnXM5iopIHD95v5DdIqJFeb0VbX1SjebKqw6z0&security=reality&sid=ee346054204e99bd&sni=eh.vk.com&type=tcp#%F0%9F%AA%B441@oneclickvpnkeys
 vless://e2e1ddaa-1acf-4c4c-a211-92284f6440ed@nll.scroogethebest.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=AYQOZFxjvHN-RIzKYEibwFiFsp03cdlWGdCmyFfuNVc&security=reality&sid=4fa44664f6a566d3&sni=nll.scroogethebest.com&type=tcp#%F0%9F%9A%8242@oneclickvpnkeys
-vless://c8d1c6d3-388f-48fc-a8f0-ed90d955d096@185.177.238.87:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=www.vk.com&pbk=nPcUKydxoRI66O3tT9O4QCZpLjOBvkGsiXG7pDX1BBw&sid=6ba85179e30d4fc2#%F0%9F%87%A6%F0%9F%87%B1%20Albania%20%E2%80%94%20%23203
+vless://d1209ffb-c159-48d5-b40d-542ce11fc768@it1.axinode.sbs:10965?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=lHxeD2nYtDb1V7JseV-sUTEuqH6_jie7U_iOARX7cT0&security=reality&sid=9f3a7c6d2e8b41af&sni=deepl.com&type=tcp#%F0%9F%91%9147@oneclickvpnkeys
+vless://a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9@midorinote.ru:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY&security=reality&sid=f7aa9e61197d3ac6&sni=tradingview.com&type=tcp#%F0%9F%8C%8F10@oneclickvpnkeys
 vless://d1209ffb-c159-48d5-b40d-542ce11fc768@5rp8xz.maps-yandex.com:10121?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=4DdA8dBVn5zB_UTbgBY45YqM0HU8zrjXYdzg3-wz5Rg&security=reality&sid=9c2a7d4e5f18b6a3&sni=apple.com&type=tcp#%F0%9F%9A%9C25@oneclickvpnkeys
-vless://04bc282e-6d1a-4b03-bf6b-929bb4de29d3@5.188.115.23:666?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=randomized&sni=yandex.ru&pbk=HlY026ybIy--Y4D5IBGC-a3qNRIsq-uvKPRK9vawVyo&sid=ad7dab462a323acb#%F0%9F%87%B7%F0%9F%87%BA%20Selectel%20%E2%80%94%20%23181
+vless://5b77fb18-cece-4759-9a81-571f1be53e0c@msk3.frostbot.ru:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=jdua-L9jgUfUe_7lPh72TV4JJALvOmdwH68C8pMP8RQ&sid=fe&sni=msk3.frostbot.ru#1689 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
+vless://c67f81df-34e8-4cb3-ab43-599585775fa9@der.jojack.ru:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=xpv3OgIQ4ND_ZaiLxjHk1JsykVAVUY73UkyxPlU8Clc&security=reality&sid=695f0df252f9889d&sni=der.jojack.ru&type=tcp#%F0%9F%9B%8418@oneclickvpnkeys
