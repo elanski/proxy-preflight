@@ -1,12 +1,6 @@
-# Proxy preflight — 10 live / 6527 total (xray E2E)
-# Updated: 2026-04-08 22:08 UTC
+# Proxy preflight — 4 live / 6535 total (xray E2E)
+# Updated: 2026-04-08 23:08 UTC
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
-vless://256c5f48-4908-4255-83d1-c86cb58f22b4@fr.denditop.site:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wgoLhL4pRP0y6fu6He4qW_ElohCM_ANWJF3HEoUhNz4&security=reality&sid=9c2378562188c3cb&sni=fr.denditop.site&type=tcp#%F0%9F%9B%8465@oneclickvpnkeys
+vless://d1209ffb-c159-48d5-b40d-542ce11fc768@us1.axinode.sbs:10965?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=lHxeD2nYtDb1V7JseV-sUTEuqH6_jie7U_iOARX7cT0&security=reality&sid=9f3a7c6d2e8b41af&sni=deepl.com&type=tcp#%F0%9F%8E%A019@oneclickvpnkeys
 vless://a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9@midorinote.ru:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY&security=reality&sid=f7aa9e61197d3ac6&sni=tradingview.com&type=tcp#%F0%9F%8C%8F10@oneclickvpnkeys
-vless://e2e1ddaa-1acf-4c4c-a211-92284f6440ed@nll.scroogethebest.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=AYQOZFxjvHN-RIzKYEibwFiFsp03cdlWGdCmyFfuNVc&security=reality&sid=4fa44664f6a566d3&sni=nll.scroogethebest.com&type=tcp#%F0%9F%9A%8242@oneclickvpnkeys
-vless://6d0e9ded-d23d-4ffb-b165-7bc757be84d3@nl6.404-it.ru:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=iJtV4K5gN-o-af3KRJVBggeV90fl2UgbquhiORgc9SM&security=reality&sid=35a9370ef24eb007&sni=nl6.404-it.ru&type=tcp#🇳🇱[openproxylist.com]
-vless://5b77fb18-cece-4759-9a81-571f1be53e0c@fin5.frostbot.ru:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=iCY6H8CpnIfqmIkEABduJEAeJrnYS089R1-jKEyVp3w&sid=92463ae1603044&sni=vk.com&path=&host=#@v2rayconfigamir
 vless://d1209ffb-c159-48d5-b40d-542ce11fc768@it1.axinode.sbs:10965?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=lHxeD2nYtDb1V7JseV-sUTEuqH6_jie7U_iOARX7cT0&security=reality&sid=9f3a7c6d2e8b41af&sni=deepl.com&type=tcp#%F0%9F%91%9147@oneclickvpnkeys
-vless://d1209ffb-c159-48d5-b40d-542ce11fc768@5rp8xz.maps-yandex.com:10121?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=4DdA8dBVn5zB_UTbgBY45YqM0HU8zrjXYdzg3-wz5Rg&security=reality&sid=9c2a7d4e5f18b6a3&sni=apple.com&type=tcp#%F0%9F%9A%9C25@oneclickvpnkeys
-vless://256c5f48-4908-4255-83d1-c86cb58f22b4@austria.denditop.site:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wgoLhL4pRP0y6fu6He4qW_ElohCM_ANWJF3HEoUhNz4&security=reality&sid=9c2378562188c3cb&sni=austria.denditop.site&type=tcp#%F0%9F%9A%8269@oneclickvpnkeys
-vless://c67f81df-34e8-4cb3-ab43-599585775fa9@der.jojack.ru:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=xpv3OgIQ4ND_ZaiLxjHk1JsykVAVUY73UkyxPlU8Clc&security=reality&sid=695f0df252f9889d&sni=der.jojack.ru&type=tcp#%F0%9F%9B%8418@oneclickvpnkeys
