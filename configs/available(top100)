@@ -1,34 +1,26 @@
-# Proxy preflight — 32 live / 6898 total (xray E2E)
-# Updated: 2026-04-17 14:06 UTC
+# Proxy preflight — 24 live / 6923 total (xray E2E)
+# Updated: 2026-04-17 15:38 UTC
 hysteria2://github.com/Alvin9999-newpac/fanqiang@178.18.147.66:29900/?insecure=1&sni=www.microsoft.com#🚹1@oneclickvpnkeys
-hysteria2://dongtaiwang.com@163.172.113.118:40022?sni=www.microsoft.com&insecure=1#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Paris%20%7C%20%5BBL%5D
-hysteria2://dongtaiwang.com@163.172.113.118:40022/?insecure=1&sni=www.microsoft.com#🚹47@oneclickvpnkeys
+vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.195:23576/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#%3E%3E%40oneclickvpnkeys%3A%3AUS
+vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.197:23576?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#APPXA
+vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.206:23576?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#APPXA
 hysteria2://dongtaiwang.com@163.172.113.118:40022?insecure=1&sni=www.microsoft.com&mport=41000#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Paris%20%7C%20%5BBL%5D
-hysteria2://dongtaiwang.com@163.172.113.118:40022?insecure=1&sni=www.microsoft.com&mport=41000-42000#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Paris%20%7C%20%5BBL%5D
+hysteria2://dongtaiwang.com@163.172.113.118:40022/?insecure=1&sni=www.microsoft.com#🚹47@oneclickvpnkeys
 hysteria2://dongtaiwang.com@163.172.113.118:40022?insecure=1&sni=www.microsoft.com#%F0%9F%9A%B947%40oneclickvpnkeys
-vless://14c80e0e-f7ce-4991-94fc-99a1db4a9b1e@159.89.87.21:28190?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno&security=reality&sni=aws.amazon.com&type=tcp#%3E%3E%40oneclickvpnkeys%3A%3AUS
-hysteria2://123456789StrongPass@144.31.224.14:443?insecure=1&sni=www.cloudflare.com#0232 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
-hysteria2://123456789StrongPass@144.31.224.14:443?insecure=1#1959 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
-hysteria2://123456789StrongPass@144.31.224.14:443/?insecure=1#2181 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
-hysteria2://123456789StrongPass@144.31.224.14:443/?insecure=1&sni=www.cloudflare.com#2361 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
-hy2://123456789StrongPass@144.31.224.14:443/?insecure=1&sni=www.cloudflare.com#%3E%3E%40oneclickvpnkeys%3A%3ANL
-vless://14c80e0e-f7ce-4991-94fc-99a1db4a9b1e@159.89.87.21:28190/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=aws.amazon.com&fp=chrome&security=reality&pbk=ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno&sid=#%F0%9F%87%BA%F0%9F%87%B8United%20States%20-%3E%20%F0%9F%87%BA%F0%9F%87%B8United%20States%20%E2%9A%A1%40DeamNet_Proxy%20%2823%29
+hysteria2://dongtaiwang.com@163.172.113.118:40022?insecure=1&sni=www.microsoft.com&mport=41000-42000#%F0%9F%87%AB%F0%9F%87%B7%20France%2C%20Paris%20%7C%20%5BBL%5D
 hysteria2://123456789StrongPass@144.31.224.14:443?sni=www.cloudflare.com#2417 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
+hysteria2://123456789StrongPass@144.31.224.14:443/?insecure=1#2181 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
+hy2://123456789StrongPass@144.31.224.14:443/?insecure=1&sni=www.cloudflare.com#%3E%3E%40oneclickvpnkeys%3A%3ANL
+hysteria2://123456789StrongPass@144.31.224.14:443?insecure=1&sni=www.cloudflare.com#0232 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@15.204.97.197:23576/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#%3E%3E%40oneclickvpnkeys%3A%3AUS
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.103:23576?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#%F0%9F%8E%A087@oneclickvpnkeys
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.20:23576/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#%3E%3E%40oneclickvpnkeys%3A%3ANL
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.19:23576?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#%F0%9F%8D%AA20@oneclickvpnkeys
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.25:23576/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#%3E%3E%40oneclickvpnkeys%3A%3ANL
+hysteria2://123456789StrongPass@144.31.224.14:443?upmbps=10&downmbps=50&security=tls&sni=eh.%40solidtrust.com&allowInsecure=true#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%7C%20%5BBL%5D
+hysteria2://123456789StrongPass@144.31.224.14:443?insecure=1#1959 | 🇳🇱 Netherlands | HYSTERIA2 | 📺 YT | TG: @YoutubeUnBlockRu
+hysteria2://123456789StrongPass@144.31.224.14:443?security=tls&allowInsecure=true#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%2C%20Amsterdam%20%7C%20%5BBL%5D
+vless://22863fac-f680-45e9-82c1-e902076631c4@173.211.42.136:443?&security=reality&flow=xtls-rprx-vision&pbk=VW2WJYWcnHGiZWucpI76sh5nNLOatijTYkFttBleVlE&sid=d8c76f&fp=chrome&sni=www.linkedin.com&type=tcp&headerType=none&path=%2F#%E7%BE%8E%E5%9B%BD%2028
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.87:23576?encryption=none&flow=xtls-rprx-vision&security=reality&sni=fuck.rkn&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01&type=tcp&headerType=none#
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.93:23576?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#%F0%9F%90%BB34@oneclickvpnkeys
-vless://256c5f48-4908-4255-83d1-c86cb58f22b4@185.171.202.38:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wgoLhL4pRP0y6fu6He4qW_ElohCM_ANWJF3HEoUhNz4&security=reality&sid=9c2378562188c3cb&sni=fr.denditop.site&type=tcp#APPXA
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.97:23576?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#%E2%9A%9B%EF%B8%8F30@oneclickvpnkeys
-vless://43488128-319e-f480-64ea-0acdc712e2a8@51.255.71.16:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=ZnlCl_Jc2dV5-KK_ymmMcEDoe5lPyZ-5z_LGMRoiNTU&security=reality&sid=b87063a35aaa942e&sni=www.booking.com&type=tcp#APPXA
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.80:23576/?type=raw&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#%F0%9F%87%B3%F0%9F%87%B1The%2BNetherlands%2B-%3E%2B%F0%9F%87%B3%F0%9F%87%B1The%2BNetherlands%2B%E2%9A%A1%40DeamNet_Proxy%20%287%29
-vless://586fadab-c08c-4160-bfd3-e4bcbbf87590@159.195.70.85:8443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=qq&pbk=eHgRhHYifD2njbtjzgMsNPGnvbpAK8SSXC5-wFuQnQ4&sid=65b5280b52e0532c&sni=fastsync.xyz&spx=/#2370 | 🇩🇪 Germany | VLESS | 📺 YT | TG: @YoutubeUnBlockRu
-vless://8b648e4c-ac38-4809-951b-e1c8862b13d1@45.149.115.148:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=0pX0dvxDHHJS2uK0t_SHauP1LB65JsRD1kQp9MK9vjI&security=reality&sid=96&sni=google.com&type=tcp#%F0%9F%90%B886@oneclickvpnkeys
-vless://8b648e4c-ac38-4809-951b-e1c8862b13d1@45.149.115.148:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=google.com&fp=chrome&security=reality&pbk=0pX0dvxDHHJS2uK0t_SHauP1LB65JsRD1kQp9MK9vjI&sid=96#%F0%9F%93%8A16%40oneclickvpnkeys
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.98:23576?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&security=reality&sid=01&sni=fuck.rkn&type=tcp#%F0%9F%8F%8668@oneclickvpnkeys
-vless://43488128-319e-f480-64ea-0acdc712e2a8@86.54.82.239:443?&security=reality&flow=xtls-rprx-vision&pbk=xzCEjrybgdtiyOYNKgEAEWzHjvsE2Pkj198_Ch1gZ2U&sid=41427aa565e28984&fp=chrome&sni=store.steampowered.com&type=tcp&headerType=none&path=%2F#GB_d8d6d_0008
-vless://7a169e43-ff85-4572-9843-ba7207d07319@192.9.162.122:1443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=swdist.apple.com&fp=chrome&security=reality&pbk=ZIBYUH_qQSeI1T6xImXG6MEZXP2yZW3NqGa8W69Cfyk&sid=dde50f55d81116#%F0%9F%90%9298%40oneclickvpnkeys
+vless://e346f220-4ca4-4f69-a66b-52e992b3b625@138.124.186.80:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=www.fh-aachen.de&fp=chrome&security=reality&pbk=BhTJ3phnq-Z-10aFKSsj1lzhA8mULR4L6leE4-0WTAs&sid=#%F0%9F%90%B884%40oneclickvpnkeys
+vless://e346f220-4ca4-4f69-a66b-52e992b3b625@138.124.186.52:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=BhTJ3phnq-Z-10aFKSsj1lzhA8mULR4L6leE4-0WTAs&security=reality&sni=www.fh-aachen.de&type=tcp#%F0%9F%8C%8F7@oneclickvpnkeys
+vless://e346f220-4ca4-4f69-a66b-52e992b3b625@138.124.186.202:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=www.fh-aachen.de&fp=chrome&security=reality&pbk=BhTJ3phnq-Z-10aFKSsj1lzhA8mULR4L6leE4-0WTAs&sid=#%F0%9F%A5%8E11%40oneclickvpnkeys
+vless://2c564cf2-2291-4c8a-ad02-d8db601c41f9@5.180.47.159:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=Bg1P8Pv18fdeezfJWpqfUScMYHUUInCgdXsXEWBNBFo&security=reality&sid=9edc548e1e284d84&sni=google.com&type=tcp#🕳️19@oneclickvpnkeys
+vless://a0b067ac-162d-4237-956d-10b8b471d3f5@54.37.75.187:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=DHsthrDRMCGcOyJd4xTce_4CCSAJZGwxCdfNrkB_Pgs&security=reality&sid=479826bdfc3eb86e&sni=www.speedtest.net&type=tcp#%F0%9F%8C%B152@oneclickvpnkeys
+vless://a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9@midorinote.ru:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY&security=reality&sid=f7aa9e61197d3ac6&sni=tradingview.com&type=tcp#%F0%9F%8C%8F10@oneclickvpnkeys
