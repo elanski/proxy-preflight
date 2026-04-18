@@ -3573,3 +3573,22 @@ file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayfresh.t
 file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayng_configsss.txt
 file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayng_hub.txt
 file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/vrayconfigs.txt
+
+# === telegram_channels ===
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/HomayounConfigs.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/OkeyVPNfree.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/V2RAYNG_VPNT.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/V2ray_configs2.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/VIPROXYS.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/Vepeer_VPN.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/config_vless.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/freeeirannet.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/h110vpnchat.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/nV_v2ray.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/oneclickvpnkeys.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/sigma_smart_vpn.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayfreedaily.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayfresh.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayng_configsss.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/v2rayng_hub.txt
+file:///home/runner/work/proxy-preflight/proxy-preflight/sources_tg/vrayconfigs.txt
