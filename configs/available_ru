@@ -1,12 +1,6 @@
-# Proxy preflight — 10 live / 7640 total (xray E2E)
-# Updated: 2026-04-20 07:33 UTC
+# Proxy preflight — 4 live / 7748 total (xray E2E)
+# Updated: 2026-04-20 09:30 UTC
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
-vless://5b77fb18-cece-4759-9a81-571f1be53e0c@185.234.64.42:6443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=x-VSf_bBIC1iELDvaoM4SKMTK2YAAnUlVkhAWBbvpSc&sid=b9605803fb4b&sni=fra1.frostbot.ru#1442 | 🇫🇷 France | VLESS | 📺 YT | TG: @YoutubeUnBlockRu
-vless://2c78c246-5556-47bf-9a22-0ed5d6237389@es.plus-hit.ru:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=random&pbk=M-0dwwcFDBGdbQvFUJGH3V_t246TA4I_mEE8OpCRzUU&sid=7c8e3d4a9b1f26d3&sni=es.plus-hit.ru#1882 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://5b77fb18-cece-4759-9a81-571f1be53e0c@fra1.frostbot.ru:6443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=x-VSf_bBIC1iELDvaoM4SKMTK2YAAnUlVkhAWBbvpSc&sid=b9605803fb4b#2341 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://c5bbdac7-6ff5-4762-87bf-870f55a03581@nld.pink-world.ru:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=tB6tQr-pmLTdMM8DVOb9KsS27lDkAjjelbdu_Gp1SR0&sid=f27d8b541b5f48bf#1751 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://256c5f48-4908-4255-83d1-c86cb58f22b4@austria.denditop.site:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wgoLhL4pRP0y6fu6He4qW_ElohCM_ANWJF3HEoUhNz4&security=reality&sid=9c2378562188c3cb&sni=austria.denditop.site&type=tcp#%F0%9F%9A%8269@oneclickvpnkeys
-vless://2c78c246-5556-47bf-9a22-0ed5d6237389@es.plus-hit.ru:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=random&pbk=M-0dwwcFDBGdbQvFUJGH3V_t246TA4I_mEE8OpCRzUU&sid=ea9f32c58bd74201&sni=es.plus-hit.ru#1815 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://2c78c246-5556-47bf-9a22-0ed5d6237389@fi.plus-hit.ru:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=random&pbk=ayJjf8TJwT_INFKDDHk9uv3zyoERmbG2gECNX1fwFxo&sid=1bf38d2c67ae5d90&sni=fi.plus-hit.ru#1668 | 🇫🇮 Finland | VLESS | 📺 YT | TG: @YoutubeUnBlockRu
-vless://f5a3bf49-07ca-0021-a96b-9606781e3600@fl.musicperec.ru:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4&sid=6e3f0a5b&sni=www.amd.com#1574 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
 vless://256c5f48-4908-4255-83d1-c86cb58f22b4@fr.denditop.site:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wgoLhL4pRP0y6fu6He4qW_ElohCM_ANWJF3HEoUhNz4&security=reality&sid=9c2378562188c3cb&sni=fr.denditop.site&type=tcp#%F0%9F%9B%8465@oneclickvpnkeys
+vless://256c5f48-4908-4255-83d1-c86cb58f22b4@fr.denditop.site:443?security=reality&encryption=none&pbk=wgoLhL4pRP0y6fu6He4qW_ElohCM_ANWJF3HEoUhNz4&headerType=none&fp=chrome&spx=/&type=tcp&flow=xtls-rprx-vision&sni=fr.denditop.site&sid=9c2378562188c3cb#APPXA
+vless://256c5f48-4908-4255-83d1-c86cb58f22b4@austria.denditop.site:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wgoLhL4pRP0y6fu6He4qW_ElohCM_ANWJF3HEoUhNz4&security=reality&sid=9c2378562188c3cb&sni=austria.denditop.site&type=tcp#%F0%9F%9A%8269@oneclickvpnkeys
