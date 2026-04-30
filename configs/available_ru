@@ -1,6 +1,8 @@
-# Proxy preflight — 4 live / 7016 total (xray E2E)
-# Updated: 2026-04-30 16:05 UTC
-hysteria2://github.com/Alvin9999-newpac/fanqiang@83.243.86.103:12855?insecure=1&sni=www.microsoft.com#B%20-%20%F0%9F%87%A9%F0%9F%87%AA%20DE%2021%20TG%3A%20%40nodpai
+# Proxy preflight — 6 live / 7076 total (xray E2E)
+# Updated: 2026-04-30 17:53 UTC
 hysteria2://github.com/Alvin9999-newpac/fanqiang@178.18.147.66:29900?insecure=1&sni=www.microsoft.com#B%20-%20%F0%9F%87%A9%F0%9F%87%AA%20DE%2022%20TG%3A%20%40nodpai
+hysteria2://github.com/Alvin9999-newpac/fanqiang@83.243.86.103:12855?insecure=1&sni=www.microsoft.com#B%20-%20%F0%9F%87%A9%F0%9F%87%AA%20DE%2021%20TG%3A%20%40nodpai
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
 vless://c7ba57bf-0418-4b66-89bb-d320b5cdd8e5@ch2.fastlanehosting.ru:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=Z--Ieq3GtHx_Qtqj3NUyK5wY2foVBtlOkyzXqESeswU&security=reality&sid=0c80cc39&sni=store.steampowered.com&type=tcp#%F0%9F%9B%B816@oneclickvpnkeys
+vless://a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9@midorinote.ru:8443?security=reality&encryption=none&pbk=wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=tradingview.com&sid=f7aa9e61197d3ac6#REALITY|NL🇳🇱
+vless://a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9@midorinote.ru:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=tradingview.com&fp=chrome&security=reality&pbk=wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY&sid=f7aa9e61197d3ac6#hamedvpns-107-%F0%9F%87%B3%F0%9F%87%B1
