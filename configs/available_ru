@@ -1,12 +1,7 @@
-# Proxy preflight — 10 live / 6796 total (xray E2E)
-# Updated: 2026-05-13 16:42 UTC
+# Proxy preflight — 5 live / 6954 total (xray E2E)
+# Updated: 2026-05-13 19:19 UTC
 hysteria2://github.com/Alvin9999-newpac/fanqiang@178.18.147.66:29900/?insecure=1&sni=www.microsoft.com#⛰️39@oneclickvpnkeys
-hysteria2://github.com/Alvin9999-newpac/fanqiang@178.18.147.66:29900?insecure=1&sni=www.microsoft.com#%F0%9F%87%B3%F0%9F%87%B1NL_2%7C1.1MB/s
-hysteria2://hy2_nrsipx3s%3AzpQI3Vu7o9NdC6rS3L8JYXC7Q58HYUjv@lv2.cleanersaz.help:443?security=tls&insecure=1&sni=washing.help#%F0%9F%87%B1%F0%9F%87%BB%20Latvia%2C%20Riga%20%7C%20%5BBL%5D
-hysteria2://hy2_nrsipx3s%3AvXdqhMZXwgtHYDyu0aJAYooucfZaafeN@gb.cleanersaz.help:443?headerType=none&encryption=none&sni=gb.cleanersaz.help&insecure=1#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
 hysteria2://hy2_nrsipx3s%3AvXdqhMZXwgtHYDyu0aJAYooucfZaafeN@gb2.cleanersaz.help:443?sni=gb2.cleanersaz.help&insecure=1&allowInsecure=1#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
-hysteria2://hy2_nrsipx3s%3AvXdqhMZXwgtHYDyu0aJAYooucfZaafeN@gb2.cleanersaz.help:443?insecure=1&sni=gb2.cleanersaz.help#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
-hysteria2://hy2_nrsipx3s%3AKY1GuGdHSpDuPxzLkDtJLUexoyt5dksu@washing.help:443?sni=washing.help&insecure=1&allowInsecure=1#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20Helsinki%20%7C%20%5BBL%5D
-vless://cc976b15-418b-4f0b-89ce-cd685ffbaf20@62.141.42.201:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=odbiaA-5s0mkehtfrf2SBcrKAMDP1sFjxKHJYdDCKgc&security=reality&sid=81&sni=google.com&type=tcp#%E2%9A%9B%EF%B8%8F3@oneclickvpnkeys
-vless://a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9@midorinote.ru:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY&security=reality&sid=f7aa9e61197d3ac6&sni=tradingview.com&type=tcp#%F0%9F%8C%8F10@oneclickvpnkeys
-vless://c7ba57bf-0418-4b66-89bb-d320b5cdd8e5@ch2.fastlanehosting.ru:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=Z--Ieq3GtHx_Qtqj3NUyK5wY2foVBtlOkyzXqESeswU&security=reality&sid=0c80cc39&sni=store.steampowered.com&type=tcp#%F0%9F%9B%B816@oneclickvpnkeys
+hysteria2://hy2_nrsipx3s%3AvXdqhMZXwgtHYDyu0aJAYooucfZaafeN@gb2.cleanersaz.help:443?headerType=none&encryption=none&sni=gb2.cleanersaz.help&insecure=1#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
+hysteria2://hy2_nrsipx3s%3AvXdqhMZXwgtHYDyu0aJAYooucfZaafeN@gb.cleanersaz.help:443?insecure=1&sni=gb.cleanersaz.help#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
+hysteria2://hy2_nrsipx3s%3AvXdqhMZXwgtHYDyu0aJAYooucfZaafeN@gb.cleanersaz.help:443?sni=gb.cleanersaz.help&insecure=1&allowInsecure=1#%F0%9F%87%AC%F0%9F%87%A7%20United%20Kingdom%2C%20London%20%7C%20%5BBL%5D
