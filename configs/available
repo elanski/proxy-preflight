@@ -1,15 +1,6 @@
-# Proxy preflight — 13 live / 6632 total (xray E2E)
-# Updated: 2026-05-15 18:01 UTC
-vless://14c80e0e-f7ce-4991-94fc-99a1db4a9b1e@159.89.87.21:28190/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=aws.amazon.com&fp=chrome&security=reality&pbk=ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno&sid=#🌐 verified · proxy-preflight
+# Proxy preflight — 4 live / 6593 total (xray E2E)
+# Updated: 2026-05-15 20:02 UTC
 hysteria2://dongtaiwang.com@62.210.124.146:22000/?insecure=1&sni=www.microsoft.com#🌐 verified · proxy-preflight
-hysteria2://dongtaiwang.com@62.210.124.146:22000?security=tls&sni=www.microsoft.com&allowInsecure=true#🌐 verified · proxy-preflight
-hysteria2://dongtaiwang.com@62.210.124.146:22000?security=tls&insecure=1&sni=www.microsoft.com#🌐 verified · proxy-preflight
-vless://14c80e0e-f7ce-4991-94fc-99a1db4a9b1e@159.89.87.21:28190/?type=raw&encryption=none&flow=xtls-rprx-vision&sni=aws.amazon.com&fp=chrome&security=reality&pbk=ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno&sid=#🌐 verified · proxy-preflight
-vless://e6567a1e-260f-4b0e-8de3-e2e12f90e854@152.53.80.40:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE&security=reality&sid=ff776ff77be48b88&sni=sha.helper-internet.com&type=tcp#🌐 verified · proxy-preflight
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.8:23576?security=reality&encryption=none&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&headerType=&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=fuck.rkn&sid=01#🌐 verified · proxy-preflight
-vless://cc976b15-418b-4f0b-89ce-cd685ffbaf20@62.141.42.201:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=odbiaA-5s0mkehtfrf2SBcrKAMDP1sFjxKHJYdDCKgc&security=reality&sid=81&sni=google.com&type=tcp#🌐 verified · proxy-preflight
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.98:23576/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=fuck.rkn&fp=chrome&security=reality&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01#🌐 verified · proxy-preflight
-vless://c7ba57bf-0418-4b66-89bb-d320b5cdd8e5@5.182.36.90:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=Z--Ieq3GtHx_Qtqj3NUyK5wY2foVBtlOkyzXqESeswU&security=reality&sid=0c80cc39&sni=store.steampowered.com&type=tcp#🌐 verified · proxy-preflight
-vless://11348c0f-b646-446a-bad7-b2b39c6de767@138.124.9.190:16558?flow=xtls-rprx-vision&fp=chrome&pbk=vDKgmefC_2JaSrrvQSsb7DU3KBeKUlXG1V0vgdjv_i4&security=reality&sid=0a856e071790b1&sni=gpuopen.com&type=tcp#🌐 verified · proxy-preflight
-vless://c7ba57bf-0418-4b66-89bb-d320b5cdd8e5@ch2.fastlanehosting.ru:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=Z--Ieq3GtHx_Qtqj3NUyK5wY2foVBtlOkyzXqESeswU&security=reality&sid=0c80cc39&sni=store.steampowered.com&type=tcp#🌐 verified · proxy-preflight
-vless://e346f220-4ca4-4f69-a66b-52e992b3b625@138.124.186.80:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=BhTJ3phnq-Z-10aFKSsj1lzhA8mULR4L6leE4-0WTAs&security=reality&sni=www.fh-aachen.de&type=tcp#🌐 verified · proxy-preflight
+hysteria2://dongtaiwang.com@62.210.124.146:22000?sni=www.microsoft.com&insecure=1&allowInsecure=1#🌐 verified · proxy-preflight
+vless://e99c68ee-c766-4f20-b1c7-5c8dde417fee@18.130.112.27:26029?type=tcp&encryption=none&security=reality&pbk=YoeZDg8aH2mkltXBbP9OfDS94rbgSwg8RiidBWAtTTA&fp=firefox&sni=www.yahoo.com&sid=f92081e9834a&spx=/&flow=xtls-rprx-vision#🌐 verified · proxy-preflight
+vless://8477aa4b-8fb2-4b75-9e21-6b2a57f6f4cd@158.178.236.83:443?flow=xtls-rprx-vision&fp=chrome&pbk=KsOXdJFQC-zahqfSmDcR4BrRK2R0o19T9SBgARXkHSU&security=reality&sid=c16b8a1f2b520040&sni=addons.mozilla.org#🌐 verified · proxy-preflight
