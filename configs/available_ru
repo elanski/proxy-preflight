@@ -1,9 +1,6 @@
-# Proxy preflight — 7 live / 8000 total (xray E2E)
-# Updated: 2026-05-22 15:32 UTC
+# Proxy preflight — 4 live / 8000 total (xray E2E)
+# Updated: 2026-05-22 17:27 UTC
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
-vless://3275a667-4a67-4d43-b0ba-54da2d1145dd@us.gryaz-vpn.com:19131?encryption=none&flow=xtls-rprx-vision&fp=&pbk=yxRy8t-W5pCOglMeGNTeen8vQPK1SG0sM49vL6GLpjo&security=reality&sid=0a8a84dcb5&sni=cloudflare.com&type=tcp#
-vless://200290dc-8698-4284-a6e5-0ffd91be8589@nl.gryaz-vpn.com:35750?encryption=none&flow=xtls-rprx-vision&fp=&pbk=rtqKOfjHLaN8qzlOOGHXrxWnEoqzQKQLSi8ZGIMjVlQ&security=reality&sid=01f43c37b8&sni=cloudflare.com&type=tcp#
-vless://ade831db-e4b3-4524-b495-9533a75d11a4@va01.bestservern11etwork.ir:2096?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=D8uvi--0Aq7Hjc7cYnfcJGY0h4SSBCrPh7wEp1mvFlw&sid=b7b70c104ad267b8&sni=play.google.com&path=&host=
-vless://c0b54664-0d52-499d-ab21-b0093f918e8b@51.250.24.222:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=cdp.x5.ru&pbk=wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI&sid=8ec792bfd725be8a#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%20%E2%80%94%20%23441
-vless://abcd6b4c-2d85-4de5-be7f-62791b0f5085@fi.gryaz-vpn.com:34572?security=reality&type=tcp&sni=cloudflare.com&fp=chrome&flow=xtls-rprx-vision&sid=88acba&pbk=8PkeN5hkQBkoBt0I2JdcDC865gUXui86897Th8DaDlY&encryption=none#REALITY|FI🇫🇮
-vless://7475eca4-67f6-4191-866b-59f3b33f0b7f@178.154.215.113:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=wl-4-1.legendary.ac&pbk=E-nzKjkLlehnOE5Lub_r6tCOQcvnxVaSAETjFHESciw&sid=30e93292b543f308#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%20%E2%80%94%20%23423
+vless://10e82fcc-94ec-4d09-8855-579bb55b77e4@178.22.31.178:8443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=N0QyBaacGqSpRv_Ib4jsSx5A1kfE8IE1w0HcDB5w1BE&security=reality&sni=www.google.com&type=tcp#
+vless://f6431ff1-dec0-4a6c-be4a-ce917913b589@bc-at-ph.ray-balance.space:10443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=WeShDM0MdunM6N8btrY8tXlL0GT1Ah-0jcplNQf9FEo&sni=www.cloudflare.com#%5BOpenRay%5D%20Dynamic-225
+vless://40bf709c-4353-4552-ba26-406d2bf7821d@fr.gryaz-vpn.com:20567?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1WOtQYIQ-3sJtbrhSA1LW6gAnO-wG0Z5aCnlL_zoiXQ&security=reality&sid=b82d7208fe23&sni=cloudflare.com&type=tcp#
