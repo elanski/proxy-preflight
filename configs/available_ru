@@ -1,15 +1,13 @@
-# Proxy preflight — 13 live / 8000 total (xray E2E)
-# Updated: 2026-05-23 14:12 UTC
-hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60009?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NTdiNA==#B%20-%20%F0%9F%87%AD%F0%9F%87%B0%20HK%2003%20TG%3A%20%40nodpai
-hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60008?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NTdiNA==#B%20-%20%F0%9F%87%AD%F0%9F%87%B0%20HK%2004%20TG%3A%20%40nodpai
-hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60001?insecure=1&obfs=salamander&obfs-password=ZDQxZDhjZDk4ZFAwYjIwNA==#B%20-%20%F0%9F%87%BA%F0%9F%87%B8%20US%2039%20TG%3A%20%40nodpai
+# Proxy preflight — 11 live / 8000 total (xray E2E)
+# Updated: 2026-05-23 15:43 UTC
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60007?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NTdiNA==#B%20-%20%F0%9F%87%AD%F0%9F%87%B0%20HK%2005%20TG%3A%20%40nodpai
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
 hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60006?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NTdiNA==#B%20-%20%F0%9F%87%AD%F0%9F%87%B0%20HK%2007%20TG%3A%20%40nodpai
-vless://404b057c-3b66-407e-b465-240893bc9337@1mik16svvkk.country-24.de-nfast.com:443?type=tcp&headerType=none&security=reality&encryption=none&sni=tradingview.com&fp=qq&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50&spx=%2F&flow=xtls-rprx-vision#
-vless://10e82fcc-94ec-4d09-8855-579bb55b77e4@185.236.20.17:8443?type=tcp&security=reality&sni=www.google.com&flow=xtls-rprx-vision&pbk=N0QyBaacGqSpRv_Ib4jsSx5A1kfE8IE1w0HcDB5w1BE#
-vless://c931f737-cafe-4e4f-998a-a65517941256@node-de.dostup-est.info:8444?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=Hp6K5hsiPY4_zATgAtef9YTxNGpSkhAHTTo9MUO7fik&sid=77e934f68f02ab4c&sni=cdnjs.com
-vless://49f3fec2-1a21-481e-ae65-7c32ae262582@serv-ne-4.whit3.net:10444?encryption=none&flow=xtls-rprx-vision&fp=&pbk=praGYag8YPbz_rcd_Pa6Fqsi_IiQtO3e1AosYBcu6h4&security=reality&sid=378086fbdb7c61cd&sni=serv-ne-4.whit3.net&type=tcp#
-vless://be0e7d89-9c35-4950-a460-d3bf5aae5f91@fl.locklance.lol:443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=_ftr7AiRUt0qvp9EiM4k83zzApIm430inagF_R2--CE&security=reality&sid=a74c10074f1816d5&sni=fl.locklance.lol&type=tcp#%F0%9F%8C%B6%EF%B8%8F98@SHOP_GAMING1011
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60001?insecure=1&obfs=salamander&obfs-password=ZDQxZDhjZDk4ZFAwYjIwNA==#B%20-%20%F0%9F%87%BA%F0%9F%87%B8%20US%2039%20TG%3A%20%40nodpai
+hysteria2://a7c5d30b-ce9b-4e34-b5cb-66f8308790ef@zf.9966690.xyz:60008?insecure=1&obfs=salamander&obfs-password=YzgyOTkwNDk4ZTU2NTdiNA==#B%20-%20%F0%9F%87%AD%F0%9F%87%B0%20HK%2004%20TG%3A%20%40nodpai
+hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
+vless://e7bd788f-5533-494c-9618-02fa39a35f69@84.201.172.166:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=www.vk.com&pbk=66kZLshj9fxAIQA7NsABohNwgiOcY71enc6as_Frqw0&sid=3c1523da43287ec4&spx=%2F#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%E2%80%94%20%2390
+vless://c931f737-cafe-4e4f-998a-a65517941256@185.242.247.206:8443?flow=xtls-rprx-vision&security=reality&encryption=none&sni=cdnjs.com&fp=chrome&pbk=Ubibgn_MlW_zHo9LwjNH_b6SLNWwTJFwq7wW2ggLtUs&sid=88ce6b586fcaf681&type=tcp&path=%2f#%f0%9f%87%a8%f0%9f%87%b3%20CN%201
+vless://980231fb-4372-5c81-b696-20aa34d33af0@swe-8t.freeonline.pro:443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=978-Yxgtd3AWTVfiXEQqCstdwrT1qgsgleGPIRGQDl8&security=reality&sid=bdac121c7debdaba&sni=www.microsoft.com&type=tcp#
+vless://0e3a9376-1bf0-4b9e-a328-f28083bf6c34@us.skysafe.online:443?flow=xtls-rprx-vision&fp=chrome&headertype=none&pbk=4iuR2mv0RnnPZbwvQuZ4L07Bois8hMUczEbMeDF0iRc&security=reality&sid=fb38c1c83009e1&sni=us.skysafe.online&spx=%2F&type=tcp#
 vless://c931f737-cafe-4e4f-998a-a65517941256@185.242.247.206:8443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=Ubibgn_MlW_zHo9LwjNH_b6SLNWwTJFwq7wW2ggLtUs&sid=88ce6b586fcaf681&sni=cdnjs.com
-vless://abcd6b4c-2d85-4de5-be7f-62791b0f5085@fi.gryaz-vpn.com:34572?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=8PkeN5hkQBkoBt0I2JdcDC865gUXui86897Th8DaDlY&security=reality&sid=88acba&sni=cloudflare.com&type=tcp#%E6%9C%AA%E7%9F%A5%20VLESS-792%20%7C%20free-nodes
+vless://73b7ea7f-2e71-4ced-8e0f-0f441d08960b@api.xwhiteness.site:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&sni=api.xwhiteness.site&fp=chrome&pbk=6D3MsXVNHjWAmxIRlBTmZAw7fK8bCQIBN3TkZ2_F-hg&sid=#
