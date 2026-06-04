@@ -1,5 +1,4 @@
-# Proxy preflight — 3 live / 8000 total (xray E2E)
-# Updated: 2026-06-04 17:32 UTC
-vless://703fe724-d2b9-40f9-934f-3089403a109d@79.141.164.40:28167?Telegram=%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad&security=reality&encryption=none&pbk=edl7x700EJzY6NIN1pZXo-QiyRAScQCW5UO-0ZQXpA0&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=ya.ru&sid=aabbccdd#
-vless://8546145579@swe-8t.freeonline.pro:443?security=reality&type=raw&sni=www.microsoft.com&fp=chrome&flow=xtls-rprx-vision&sid=bdac121c7debdaba&pbk=978-Yxgtd3AWTVfiXEQqCstdwrT1qgsgleGPIRGQDl8&encryption=none#
-vless://99f1fc84-29a9-4715-bc60-e25fc4f56ff9@drm3y.videoaiconverter.com:8081?Telegram=%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad%2C%40GozargahAzad&security=reality&type=tcp&sni=sun6-21.userapi.com&fp=chrome&flow=xtls-rprx-vision&sid=4326&pbk=QHkXBS2ENHV0khgY9VBYi8_9bpfqnUYDcfQN4cW5Qg0&encryption=none#
+# Proxy preflight — 2 live / 8000 total (xray E2E)
+# Updated: 2026-06-04 19:40 UTC
+hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
+vless://703fe724-d2b9-40f9-934f-3089403a109d@79.141.164.40:28167?type=tcp&headerType=none&security=reality&encryption=none&sni=ya.ru&fp=chrome&pbk=edl7x700EJzY6NIN1pZXo-QiyRAScQCW5UO-0ZQXpA0&sid=aabbccdd&flow=xtls-rprx-vision#
