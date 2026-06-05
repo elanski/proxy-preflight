@@ -1,11 +1,5 @@
-# Proxy preflight — 9 live / 8000 total (xray E2E)
-# Updated: 2026-06-05 16:50 UTC
-hysteria2://github.com/Alvin9999-newpac/fanqiang@62.210.26.173:64772/?insecure=1&sni=bing.com#♾️7@oneclickvpnkeys
-vless://35939cbe-5d57-4413-f4d0-cc115db0e000@a.cflive.top:35535?security=reality&type=tcp&allowInsecure=1&sni=www.speedtest.org&fp=chrome&flow=xtls-rprx-vision&pbk=g1f1wLjim5gOVGnI5LGUV0dL4iFXPoiepOPZfSxJe14#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?type=tcp&security=reality&sni=eh.vk.com&fp=chrome&flow=xtls-rprx-vision&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sid=8248954896#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?encryption=none&flow=xtls-rprx-vision&type=raw&headerType=none&security=reality&fp=chrome&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sni=eh.vk.com&sid=8248954896#
-vless://d78c12c4-6927-40b8-8550-ed9be00334da@nether2cxc.ignorelist.com:443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=MNfRDUdBmptd-zKqgIljosss5-oNO44Lt68hgVwa_Qo&security=reality&sid=22f2d3f943dfcb40&sni=nether2cxc.ignorelist.com&type=tcp#oneclickvpnkeys-2354
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sid=8248954896&sni=eh.vk.com&spx=%2Fo7Aaf6fjwgbitolAe#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?security=reality&encryption=none&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&host=@ProxyVPN11&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=eh.vk.com&sid=8248954896#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&security=reality&sid=8248954896&sni=eh.vk.com&type=raw#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?security=reality&type=raw&sni=eh.vk.com&fp=chrome&flow=xtls-rprx-vision&sid=8248954896&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&encryption=none#
+# Proxy preflight — 3 live / 8000 total (xray E2E)
+# Updated: 2026-06-05 19:21 UTC
+vless://9c63bf8b-1c25-4b7e-9393-71aa99cad29d@88.218.120.60:8443?security=reality&encryption=none&pbk=1A4AgKQiz38mT1r1H0su7aAXBB7KnKOFzsQ3AdACVDs&headerType=none&fp=chrome&spx=/&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=un6-21.userapi.com&sid=612d8fa72c#
+vless://9c63bf8b-1c25-4b7e-9393-71aa99cad29d@88.218.120.60:8443?security=reality&encryption=none&pbk=1A4AgKQiz38mT1r1H0su7aAXBB7KnKOFzsQ3AdACVDs&headerType=none&fp=chrome&spx=%2F&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=un6-21.userapi.com&sid=612d8fa72c#
+vless://703fe724-d2b9-40f9-934f-3089403a109d@79.141.164.40:28167?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=reality&encryption=none&pbk=edl7x700EJzY6NIN1pZXo-QiyRAScQCW5UO-0ZQXpA0&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=ya.ru&sid=aabbccdd&dns=https://rustdns.devefun.org/dns-query&direct=https://rustdns.devefun.org/dns-query#
