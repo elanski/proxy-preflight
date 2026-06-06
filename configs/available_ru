@@ -1,4 +1,3 @@
-# Proxy preflight — 2 live / 8000 total (xray E2E)
-# Updated: 2026-06-06 14:20 UTC
-hysteria2://1c65bee4-bc54-364c-8988-6a5912fda891@s869.okgfwbackxyz.xyz:443?sni=u723829us869.okgfwbackxyz.xyz#%F0%9F%87%BA%F0%9F%87%B8%20United%20States%2C%20Arlington%20Heights%20%7C%20%5BBL%5D
-vless://e5bff3ef-4637-4a4a-ae8f-4355fc5969dd@51.250.18.25:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=qq&sni=ads.x5.ru&pbk=oqRus6Z_Q1jqJaTEPu7ENbRL0-XKOw54K0jwCCGLtEk&sid=5d8e1a9c4f72b3#%F0%9F%87%B8%F0%9F%87%AA%20Sweden%20%E2%80%94%20%23301
+# Proxy preflight — 1 live / 8000 total (xray E2E)
+# Updated: 2026-06-06 15:52 UTC
+hy2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#🇭🇰 HK
