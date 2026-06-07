@@ -1,8 +1,7 @@
-# Proxy preflight — 6 live / 8000 total (xray E2E)
-# Updated: 2026-06-07 19:58 UTC
-hysteria2://github.com/Alvin9999-newpac/fanqiang@62.210.29.98:64772?insecure=1&sni=bing.com#%F0%9F%87%AB%F0%9F%87%B7FR_2%7C1.0MB/s
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?security=reality&type=tcp&sni=eh.vk.com&fp=chrome&flow=xtls-rprx-vision&sid=8248954896&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&encryption=none#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=eh.vk.com&security=reality&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sid=8248954896#
-vless://0752b610-6fd0-4382-a40c-39d59b416a1e@sp2.gsupport.support:443?type=tcp&headerType=none&security=reality&encryption=none&sni=video.intfreed.ru&fp=safari&pbk=JxwG7rAbNCd_C82p9K69AZDWh51fri2nm3wLHHrfyiw&sid=7755e972daf8eec8&flow=xtls-rprx-vision#%F0%9F%87%AA%F0%9F%87%B8%20%20Spain%20%20%5B02%5D%20%20MIFA
-vless://74efe911-4e11-44ac-b9a8-c8b4caf42ea7@185.177.239.95:14793?security=reality&type=tcp&sni=www.sony.com&fp=chrome&flow=xtls-rprx-vision&sid=26adc84e61c1&pbk=LL5elMmIL4PZMio6uuBGuZoToOURQdGqnaL8-aIyFAw&encryption=none#
+# Proxy preflight — 5 live / 8000 total (xray E2E)
+# Updated: 2026-06-07 21:48 UTC
+hysteria2://f7cb07a0-e6f9-4d22-a60e-c61854450c89@sg2.yuntong.click:443?security=tls&obfs=salamander&obfs-password=eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=&insecure=0&sni=sg2.yuntong.click#@Kia_Net (465.2)
+hy2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#🇭🇰 HK
+vless://fdadca9a-ca00-4c6a-9110-1a7ad5b1b7ea@access.technocoms.com:8443?security=reality&encryption=none&pbk=uyjvrW-M2iVHCxS22JfglPGqBOiLezYEmKNkupilqmo&headerType=none&fp=chrome&spx=/&type=tcp&flow=xtls-rprx-vision&sni=www.speedtest.net&sid=73#✔︎𝐜𝐡𝐚𝐧𝐧𝐞𝐥➪@ConfigV2rayForFree
+vless://980231fb-4372-5c81-b696-20aa34d33af0@swe-8t.freeonline.pro:443?security=reality&encryption=none&pbk=978-Yxgtd3AWTVfiXEQqCstdwrT1qgsgleGPIRGQDl8&headerType=&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.microsoft.com&sid=bdac121c7debdaba#
+vless://59341a57-7f08-4776-9f94-e4aab1461432@51.250.66.119:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=firefox&sni=smartcaptcha.yandexcloud.net&pbk=qcIX4MLWztJdONWaGzZBXZwXV2Yfv3EO6h8-Vkdx1wU&sid=63c6cfc2ec6358dd&spx=%2F#%F0%9F%87%B3%F0%9F%87%B1%20The%20Netherlands%20%E2%80%94%20%23226
