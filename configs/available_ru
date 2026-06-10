@@ -1,13 +1,8 @@
-# Proxy preflight — 11 live / 8000 total (xray E2E)
-# Updated: 2026-06-10 18:17 UTC
-hysteria2://升级订阅解锁全部节点@starlink-mx.mfa.cat:443/?insecure=1&sni=www.cloudflare.com#🇨🇦61985 | ⚡️Telegram = t.me/SOSkeyNET
-hysteria2://sI0wl1bvYlSXu2RsMSAtAIMM@starlink-jp5.mfa.cat:20443/?insecure=1&sni=www.cloudflare.com#🇯🇵JP-🚀@VPNine1
-hysteria2://sI0wl1bvYlSXu2RsMSAtAIMM@starlink-jp4.mfa.cat:20443/?insecure=1&sni=www.cloudflare.com#🇯🇵JP-🚀@VPNine1
-hysteria2://sI0wl1bvYlSXu2RsMSAtAIMM@starlink-us2.mfa.cat:443/?insecure=1&sni=www.cloudflare.com#🇺🇸US-🚀@VPNine1
-hysteria2://sI0wl1bvYlSXu2RsMSAtAIMM@starlink-us4.mfa.cat:443/?insecure=1&sni=www.cloudflare.com#🇺🇸US-🚀@VPNine1
-hysteria2://升级订阅解锁全部节点@starlink-br.mfa.cat:30000/?insecure=1&sni=www.cloudflare.com#🇧🇷61990 | ⚡️Telegram = t.me/SOSkeyNET
-hysteria2://f7cb07a0-e6f9-4d22-a60e-c61854450c89@sg2.yuntong.click:443?security=tls&obfs=salamander&obfs-password=eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=&insecure=0&sni=sg2.yuntong.click#@vmessorg
-hysteria2://f7cb07a0-e6f9-4d22-a60e-c61854450c89@sg2.yuntong.click:443?insecure=0&sni=sg2.yuntong.click&obfs=salamander&obfs-password=eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo=#%E2%9C%85%20%20%40vistav2ray%20%20%F0%9F%91%88%F0%9F%91%88%DA%A9%D8%A7%D9%86%D8%A7%D9%84%20%D9%85%D8%A7%20%E2%9C%85
-hysteria2://sI0wl1bvYlSXu2RsMSAtAIMM@starlink-kr1.mfa.cat:443?insecure=1&sni=www.cloudflare.com#%F0%9F%87%B0%F0%9F%87%B7KR-%F0%9F%9A%80%40VPNine1
-vless://35762c02-ff2b-4526-b41b-e96e5d99528b@transparency.cloud-fr.appcore.org:34754?&security=reality&flow=xtls-rprx-vision&pbk=eMijZKuJlNEciXbhyzdbewk-ot_JLMZVaA42bxKFcBM&sid=c9eb0359fac0c345&fp=firefox&sni=yahoo.com&type=tcp&headerType=none&host=yahoo.com&path=%2F#
-vless://85c42ce4-7789-49cb-9012-9d6d6ba16581@bypass.tralalero.site:8443?encryption=none&flow=xtls-rprx-vision&type=raw&headerType=none&security=reality&fp=chrome&pbk=_CjW0Khlrr5z5oc9Oy6-w2ZEanz-zMBktVn5EOX9oTM&sni=storage.yandex.net&sid=6419bed7fd0a2cff#
+# Proxy preflight — 6 live / 8000 total (xray E2E)
+# Updated: 2026-06-10 21:10 UTC
+hysteria2://%E5%8D%87%E7%BA%A7%E8%AE%A2%E9%98%85%E8%A7%A3%E9%94%81%E5%85%A8%E9%83%A8%E8%8A%82%E7%82%B9@starlink-mx.mfa.cat:443?insecure=1&sni=www.cloudflare.com#%F0%9F%87%A8%F0%9F%87%A6CA-%F0%9F%9A%80%40VPNine1%20%232
+hysteria2://%E5%8D%87%E7%BA%A7%E8%AE%A2%E9%98%85%E8%A7%A3%E9%94%81%E5%85%A8%E9%83%A8%E8%8A%82%E7%82%B9@starlink-ca.mfa.cat:443?insecure=1&sni=www.cloudflare.com#%F0%9F%87%A8%F0%9F%87%A6CA-%F0%9F%9A%80%40VPNine1%20%231
+hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?insecure=0&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3#%E2%9A%AB%2012%20%E2%80%A2%20%40spotfyhits%20%E2%9D%A4
+hysteria2://sI0wl1bvYlSXu2RsMSAtAIMM@starlink-us6.mfa.cat:443?insecure=1&sni=www.cloudflare.com#%F0%9F%87%BA%F0%9F%87%B8US-%F0%9F%9A%80%40VPNine1%20%234
+hysteria2://sI0wl1bvYlSXu2RsMSAtAIMM@starlink-jp3.mfa.cat:20443?insecure=1&sni=www.cloudflare.com#%F0%9F%87%AF%F0%9F%87%B5JP-%F0%9F%9A%80%40VPNine1%20%232
+vless://33bd7d64-2b03-4b19-82e5-9610afde3c3d@ru.tgru.in:443?security=reality&encryption=none&pbk=5HItszJ7XSKexeNn6F9BSdJLXTfSiCDwUSqLi1Hxd2Q&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=tgru.in&sid=cd85b2abe0feed49#@V2VODKA_A🇷🇺
