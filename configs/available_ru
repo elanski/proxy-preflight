@@ -1,9 +1,4 @@
-# Proxy preflight — 7 live / 8000 total (xray E2E)
-# Updated: 2026-06-13 18:55 UTC
+# Proxy preflight — 2 live / 8000 total (xray E2E)
+# Updated: 2026-06-13 20:49 UTC
 hy2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#🇭🇰 HK
-vless://512f01f4-d8fc-4a78-96a0-5d9ebebe35b9@de-dp-01.com:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=storage.yandex.net&fp=chrome&pbk=ISa-DZOI4LRRb9DHMFYm5oFqBXDjYzz0hVWUfWvzLmo&sid=5be97fb85093a3a9&flow=xtls-rprx-vision#
-vless://35762c02-ff2b-4526-b41b-e96e5d99528b@transparency.cloud-fr.appcore.org:34754?encryption=none&flow=xtls-rprx-vision&security=reality&sni=yahoo.com&fp=firefox&pbk=eMijZKuJlNEciXbhyzdbewk-ot_JLMZVaA42bxKFcBM&sid=c9eb0359fac0c345&type=tcp&headerType=none#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sid=8248954896&sni=eh.vk.com&spx=/o7Aaf6fjwgbitolAe#
-vless://980231fb-4372-5c81-b696-20aa34d33af0@swe-8t.freeonline.pro:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=978-Yxgtd3AWTVfiXEQqCstdwrT1qgsgleGPIRGQDl8&security=reality&sid=bdac121c7debdaba&sni=www.microsoft.com&type=tcp#
-vless://2e5af30a-19dd-49ce-9740-3c0ac2ed8349@fr-gt-01.com:8443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA&security=reality&sid=f34818a561dfd1fe&sni=storage.yandex.net&type=tcp#
-vless://f6431ff1-dec0-4a6c-be4a-ce917913b589@bc-fr-th.ray-balance.space:10443?encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none&pbk=WeShDM0MdunM6N8btrY8tXlL0GT1Ah-0jcplNQf9FEo&security=reality&sni=www.cloudflare.com&type=raw#
+vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?security=reality&encryption=none&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=eh.vk.com&sid=8248954896#
