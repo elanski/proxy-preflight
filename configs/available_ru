@@ -1,4 +1,9 @@
-# Proxy preflight — 2 live / 8000 total (xray E2E)
-# Updated: 2026-06-19 06:39 UTC
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=eh.vk.com&security=reality&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sid=8248954896#
-vless://870d3183-17a1-4a87-9021-e12e3ac2939f@tr.go-vpn.club:443?encryption=none&type=tcp&security=reality&headerType=none&sni=gateway.icloud.com&fp=chrome&insecure=1&allowInsecure=1&pbk=L0acYoTxKR5ix7LXAmP10cy06n2JjgkXTojGjtWAqww&sid=ed7b9bdfedb9b8e5&flow=xtls-rprx-vision#
+# Proxy preflight — 7 live / 8000 total (xray E2E)
+# Updated: 2026-06-19 11:52 UTC
+hysteria2://43bcba7d-cd22-379c-a7da-2e8eafecbc78@s554.okgfw.top:443?sni=u711540us554.okgfw.top&alpn=h3&mport=30000-32000&hopinterval=30s#%F0%9F%87%BA%F0%9F%87%B8%20United%20States%2C%20Staten%20Island%20%7C%20%F0%9F%8C%90%20%7C%20%5BBL%5D
+hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B0%20HK
+vless://a5ea9247-79f3-4655-aece-3fb51e1e669e@rezerv1.yunus.guru:443?encryption=none&type=tcp&security=reality&headerType=none&sni=rezerv1.yunus.guru&fp=firefox&insecure=1&allowInsecure=1&pbk=-X9CZv5MYKivpxPVP1vdgFKf2AJWmZ0Pju-j8LFmlh4&sid=6c88854e73e86773&flow=xtls-rprx-vision#Ettehadvpn%20%7C%209
+vless://d78c12c4-6927-40b8-8550-ed9be00334da@shveccxc1.twilightparadox.com:443?security=reality&encryption=none&pbk=wPBLToF6GA4jIb7C7yu0UMlCXlxTV9UlEh1R-EdCzRU&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=shveccxc1.twilightparadox.com&sid=2e5b7512fc1d69be#
+vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?security=reality&encryption=none&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=eh.vk.com&sid=8248954896#
+vless://0b342486-d7c8-46fd-893a-5901225089d4@grinoree.ru:8443?&security=reality&flow=xtls-rprx-vision&pbk=7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg&sid=2715592069f36fe7&fp=chrome&sni=storage.yandex.net&type=tcp&headerType=none&host=grinoree.ru&path=%2F#
+vless://74efe911-4e11-44ac-b9a8-c8b4caf42ea7@185.177.239.95:14793?flow=xtls-rprx-vision&security=reality&allowInsecure=0&encryption=none&type=tcp&sni=www.sony.com&sid=26adc84e61c1&pbk=LL5elMmIL4PZMio6uuBGuZoToOURQdGqnaL8-aIyFAw&headerType=none#
