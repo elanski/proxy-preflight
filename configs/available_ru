@@ -1,5 +1,3 @@
-# Proxy preflight — 3 live / 8000 total (xray E2E)
-# Updated: 2026-06-21 06:25 UTC
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B0%20HK
-vless://74efe911-4e11-44ac-b9a8-c8b4caf42ea7@185.177.239.95:14793?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=LL5elMmIL4PZMio6uuBGuZoToOURQdGqnaL8-aIyFAw&sid=26adc84e61c1&sni=www.sony.com#
-vless://ae852d97-85f5-45cf-82a4-254eba345480@cdn.cdnjst.org:443?security=reality&encryption=none&pbk=djH9iD2QV748ocK-wPH7HvDd03lu88zHhS4G-61w6Dc&host=@v2rayNplus-@v2rayNplus-@v2rayNplus&headerType=none&fp=chrome&spx=/&type=tcp&flow=xtls-rprx-vision&sni=cdn.cdnjst.org&sid=a120#https:%2F%2Ft.me%2FForceRunVPN-%F0%9F%87%A6%F0%9F%87%B1-Tirana-8600ms-H2nexus%20LTD
+# Proxy preflight — 1 live / 8000 total (xray E2E)
+# Updated: 2026-06-21 10:14 UTC
+vless://039a1658-e86e-475f-a3a4-67cc249acada@185.242.87.36:443?flow=xtls-rprx-vision&fp=firefox&pbk=U-pXTk6CWSWf1EParYP_drrus_87u-XwOiCmB-MnAGE&security=reality&sid=2eaa0970f2fb0c4b&sni=fr1.panel11.ru&type=tcp#
