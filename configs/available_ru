@@ -1,3 +1,4 @@
-# Proxy preflight — 1 live / 8000 total (xray E2E)
-# Updated: 2026-06-21 19:01 UTC
-vless://35939cbe-5d57-4413-f4d0-cc115db0e000@a.cflive.top:35535?security=reality&type=tcp&sni=www.speedtest.org&fp=chrome&flow=xtls-rprx-vision&pbk=g1f1wLjim5gOVGnI5LGUV0dL4iFXPoiepOPZfSxJe14#
+# Proxy preflight — 2 live / 8000 total (xray E2E)
+# Updated: 2026-06-21 20:57 UTC
+hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B0%20HK
+vless://bcdb08d0-d6ea-4841-83bc-dee61353926d@fi.janusgate.org:443?type=tcp&headerType=none&security=reality&encryption=none&sni=fi.janusgate.org&fp=chrome&pbk=nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg&sid=d7b0dab7f95c437d&flow=xtls-rprx-vision#%F0%9F%87%AB%F0%9F%87%AE%20%20Finland%20%20%5B05%5D%20%20MIFA
