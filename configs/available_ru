@@ -1,6 +1,3 @@
-# Proxy preflight — 4 live / 8000 total (xray E2E)
-# Updated: 2026-06-21 17:04 UTC
-hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?insecure=0&sni=hy2.aspidnet.xyz&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3#%40meliproxyy%20%231
-vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@se.faygo.bot:443?security=reality&encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&headerType=none&fp=chrome&allowinsecure=1&type=tcp&flow=xtls-rprx-vision&sni=enterprisekitten.com&sid=6ba85179e30d4fc2#
-vless://821100fa-b819-4614-83ee-996c4cb142cb@secure.netraidly.ru:40443?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=deepl.com&fp=qq&pbk=_fG0m51dASh_sWJMJYtX4tqhaG-h-J8H-r-q2iyOwBg&sid=3597&spx=%2F#
-vless://dbfa97b8-f4fb-4687-96dc-a5a2aebfae11@est01.port-server.online:443?security=reality&encryption=none&pbk=aNbj5QBUxwKIRnh9Z_0ZA-FmDELZKLb1YMUpId3OCU8&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=est01.port-server.online&sid=9902cda1645757ea#
+# Proxy preflight — 1 live / 8000 total (xray E2E)
+# Updated: 2026-06-21 19:01 UTC
+vless://35939cbe-5d57-4413-f4d0-cc115db0e000@a.cflive.top:35535?security=reality&type=tcp&sni=www.speedtest.org&fp=chrome&flow=xtls-rprx-vision&pbk=g1f1wLjim5gOVGnI5LGUV0dL4iFXPoiepOPZfSxJe14#
