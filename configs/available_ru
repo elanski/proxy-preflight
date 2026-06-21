@@ -1,13 +1,5 @@
-# Proxy preflight — 11 live / 8000 total (xray E2E)
-# Updated: 2026-06-20 22:46 UTC
-hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?insecure=0&sni=hy2.aspidnet.xyz&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3#%40meliproxyy
-hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?sni=hy2.aspidnet.xyz&insecure=0&allowInsecure=0&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3#@meliproxyy
+# Proxy preflight — 3 live / 8000 total (xray E2E)
+# Updated: 2026-06-21 06:25 UTC
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B0%20HK
-vless://dfc0cb9d-f005-41b0-848c-7703bd39d0de@it.s3-cloud.xyz:443?security=reality&encryption=none&pbk=zPi2L9vrl2hkaCTT3lZTzBna-qz6JrteRjDz1i-DsxY&headerType=&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=it.s3-cloud.xyz&sid=7a3f9e2b1c8d4f6a#
-vless://dfc0cb9d-f005-41b0-848c-7703bd39d0de@it.s3-cloud.xyz:443?encryption=none&flow=xtls-rprx-vision&security=reality&fp=edge&pbk=zPi2L9vrl2hkaCTT3lZTzBna-qz6JrteRjDz1i-DsxY&sid=7a3f9e2b1c8d4f6a&type=tcp&headerType=none#
-vless://0e49e208-e09e-49bc-afee-2907e5419107@gb1.anpmech.com:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=hWw_QLJsQmDlX_9AsTb29wy6RhJ-lHtjHseiZlthXhU&security=reality&sid=9550667e9597f1e5&sni=gb1.anpmech.com&type=tcp#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?encryption=none&flow=xtls-rprx-vision&type=raw&headerType=none&security=reality&fp=chrome&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sni=eh.vk.com&sid=8248954896#
-vless://31fb98b7-e7a1-4b56-8c6a-3f060f06393c@freetg.strettenvpn.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&security=reality&sid=8248954896&sni=eh.vk.com&type=raw#
-vless://039a1658-e86e-475f-a3a4-67cc249acada@185.242.87.36:443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=U-pXTk6CWSWf1EParYP_drrus_87u-XwOiCmB-MnAGE&security=reality&sid=2eaa0970f2fb0c4b&sni=fr1.panel11.ru&type=tcp#
-vless://b95dd8e5-2758-408f-be99-9362eecee609@pl.fantoff.online:443?security=reality&encryption=none&pbk=BoWKSM1aSfcTRgKX_kZYPlauG0jLIqku3zPBAiHpUgs&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=yahoo.com&sid=5ea7e22e889dabc5#V2ray_official-2752
-vless://356ccb34-22cc-4446-a137-072bc60d65ca@bypass.fr-gt-01.com:8443?security=reality&encryption=none&pbk=1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA&headerType=&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=f34818a561dfd1fe#
+vless://74efe911-4e11-44ac-b9a8-c8b4caf42ea7@185.177.239.95:14793?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=LL5elMmIL4PZMio6uuBGuZoToOURQdGqnaL8-aIyFAw&sid=26adc84e61c1&sni=www.sony.com#
+vless://ae852d97-85f5-45cf-82a4-254eba345480@cdn.cdnjst.org:443?security=reality&encryption=none&pbk=djH9iD2QV748ocK-wPH7HvDd03lu88zHhS4G-61w6Dc&host=@v2rayNplus-@v2rayNplus-@v2rayNplus&headerType=none&fp=chrome&spx=/&type=tcp&flow=xtls-rprx-vision&sni=cdn.cdnjst.org&sid=a120#https:%2F%2Ft.me%2FForceRunVPN-%F0%9F%87%A6%F0%9F%87%B1-Tirana-8600ms-H2nexus%20LTD
