@@ -1,3 +1,5 @@
-# Proxy preflight — 1 live / 8000 total (xray E2E)
-# Updated: 2026-06-23 16:13 UTC
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B0%20HK
+# Proxy preflight — 3 live / 8000 total (xray E2E)
+# Updated: 2026-06-23 18:24 UTC
+hy2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#🇭🇰 HK
+vless://74efe911-4e11-44ac-b9a8-c8b4caf42ea7@185.177.239.95:14793?type=tcp&security=reality&encryption=none&pbk=LL5elMmIL4PZMio6uuBGuZoToOURQdGqnaL8-aIyFAw&fp=chrome&sni=www.sony.com&sid=26adc84e61c1&flow=xtls-rprx-vision#
+vless://599907db-9e9e-4c50-b9f1-d1b42cdec21f@185.229.9.78:6443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=firefox&sni=ads.x5.ru&pbk=QJ147H5yfcsJqQt_hYKgYjWjaViC0fQUCBCji3VFAm4&sid=ad7dab462a323b#🇷🇺 227 - RU - VLESS/REALITY/PBK/SID/VISION/UTLS - 6443
