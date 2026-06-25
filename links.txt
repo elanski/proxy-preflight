@@ -1,6 +1,22 @@
 # proxy-preflight sources
 # Non-MTProto sources for xray E2E check
 
+# === FSOCIETY ===
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/CapVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/HiroVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/LagomVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/LumarVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/MarshallVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/OilVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/PingVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/70d240883a803a4088a359b8e988d30587383e1b/VsemVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/f4191245a00b64511f72f48f84437f6a2e9759c0/CosmosVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/f4191245a00b64511f72f48f84437f6a2e9759c0/MegaVVPN_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/f4191245a00b64511f72f48f84437f6a2e9759c0/Secret_Telegram_RE_s_B.txt
+https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/f4191245a00b64511f72f48f84437f6a2e9759c0/TumanVPN_Telegram_RE_s_B.txt
+
+
+
 # === glob ===
 https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/ss.txt
 https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/main/configs/Vless.txt
