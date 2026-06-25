@@ -1,9 +1,10 @@
-# Proxy preflight — 7 live / 8000 total (xray E2E)
-# Updated: 2026-06-25 16:02 UTC
-hysteria2://github.com/Alvin9999-newpac/fanqiang@hy2.313186.xyz:18066?insecure=0&sni=hy2.313186.xyz#%F0%9F%87%AB%F0%9F%87%B7FR_1%7C1.1MB/s
-vless://dfc0cb9d-f005-41b0-848c-7703bd39d0de@it.s3-cloud.xyz:443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=reality&type=tcp&sni=&fp=edge&flow=xtls-rprx-vision&sid=7a3f9e2b1c8d4f6a&pbk=zPi2L9vrl2hkaCTT3lZTzBna-qz6JrteRjDz1i-DsxY&encryption=none#
-vless://d78c12c4-6927-40b8-8550-ed9be00334da@shveccxc1.twilightparadox.com:443?type=tcp&security=reality&sni=shveccxc1.twilightparadox.com&flow=xtls-rprx-vision&pbk=wPBLToF6GA4jIb7C7yu0UMlCXlxTV9UlEh1R-EdCzRU&sid=2e5b7512fc1d69be#
-vless://7c0f30a2-a7c1-43b1-bc51-20f07036a76e@ams-01.gni-daed.ru:443?security=reality&encryption=none&pbk=L78hKnIWL5jdxw3R2NcY725t8QMqAfX8rGdYI46cFgs&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=ams-01.gni-daed.ru&sid=a8399289e18af5f4#
-vless://360c46b7-afe1-4e86-bfe1-ba09b5fcd8a6@grinoree.ru:8443?security=reality&type=tcp&sni=storage.yandex.net&fp=firefox&flow=xtls-rprx-vision&sid=2715592069f36fe7&pbk=7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg&encryption=none#
-vless://52590634-cfce-4db7-abcc-d075175a3088@titandarkness.mooo.com:443?type=tcp&headerType=none&security=reality&encryption=none&sni=sub.titandarkness.mooo.com&fp=qq&pbk=jtxkrvhIrWCfupN-Lm0F_4fjTkJkM-uA0WE2FbrGqlY&sid=f3e8720225ef541e&spx=%2FZ09qrMWlOgA66mB&flow=xtls-rprx-vision#
-vless://52faee73-e0fe-4661-992d-67259257170f@uk-gthost-01.com:8443?flow=xtls-rprx-vision&fp=chrome&headertype=&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&security=reality&sid=ea10cd5686751ec5&sni=storage.yandex.net&type=tcp#
+# Proxy preflight — 8 live / 8000 total (xray E2E)
+# Updated: 2026-06-25 18:36 UTC
+hysteria2://00dcd873-9211-4d61-ad35-87999906e5c8@fta.fontanvpn.com:443?__rand=025d5f55&insecure=0&sni=fta.fontanvpn.com&nonce=dPzla-4Q#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20Helsinki%20%7C%20%5BBL%5D
+hysteria2://00dcd873-9211-4d61-ad35-87999906e5c8@fta.fontanvpn.com:443?encryption=none&headerType=none&__rand=025d5f55&sni=fta.fontanvpn.com&insecure=0&__rand=94cf702c#%F0%9F%87%AB%F0%9F%87%AE%20Finland%2C%20Helsinki%20%7C%20%5BBL%5D
+vless://35939cbe-5d57-4413-f4d0-cc115db0e000@a.cflive.top:35535?security=reality&type=tcp&allowInsecure=1&sni=www.speedtest.org&fp=chrome&flow=xtls-rprx-vision&pbk=g1f1wLjim5gOVGnI5LGUV0dL4iFXPoiepOPZfSxJe14#
+vless://52faee73-e0fe-4661-992d-67259257170f@uk-gthost-01.com:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=storage.yandex.net&fp=firefox&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&sid=ea10cd5686751ec5&flow=xtls-rprx-vision#
+vless://52faee73-e0fe-4661-992d-67259257170f@bypass.uk-gthost-01.com:8443?security=reality&encryption=none&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=ea10cd5686751ec5#
+vless://52faee73-e0fe-4661-992d-67259257170f@uk-gthost-01.com:8443?security=reality&encryption=none&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&headerType=&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=ea10cd5686751ec5#
+vless://52faee73-e0fe-4661-992d-67259257170f@uk-gthost-01.com:8443?security=reality&encryption=none&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=ea10cd5686751ec5#
+vless://ef930ef9-8dc2-0001-88f1-59dae14ccd28@pro-ru-bridge.emrata.top:443?type=tcp&security=reality&pbk=F8tqvcuJUSVbxv_i9ZsVOef3EPwULzzDqgvmj3vWNlA&fp=firefox&sni=pro-ru-bridge.emrata.top&flow=xtls-rprx-vision#%F0%9F%87%B7%F0%9F%87%BA+%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F
