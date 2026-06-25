@@ -1,11 +1,6 @@
-# Proxy preflight — 9 live / 8000 total (xray E2E)
-# Updated: 2026-06-25 09:58 UTC
-hysteria2://github.com/Alvin9999-newpac/fanqiang@hy2.313186.xyz:18066?insecure=0&sni=hy2.313186.xyz#%F0%9F%87%AB%F0%9F%87%B7FR_1%7C1.1MB/s
-hysteria2://00dcd873-9211-4d61-ad35-87999906e5c8@fta.fontanvpn.com:443?sni=fta.fontanvpn.com#🇫🇮 1 - FI - Hysteria2/QUIC - 443
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
-vless://7c0f30a2-a7c1-43b1-bc51-20f07036a76e@ams-01.gni-daed.ru:443?security=reality&encryption=none&pbk=L78hKnIWL5jdxw3R2NcY725t8QMqAfX8rGdYI46cFgs&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=ams-01.gni-daed.ru&sid=a8399289e18af5f4#
-vless://2e146372-aafa-42e6-aaa6-b2a7185225ce@fast.gazladder.work:443?security=reality&encryption=none&pbk=j97RCvxVfMu5XWcXuAc4s8TnBTdl8PQrNFrZDQpAkng&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=fast.gazladder.work&sid=b415b8d7a6106ace#
-vless://dfc0cb9d-f005-41b0-848c-7703bd39d0de@it.s3-cloud.xyz:443?security=reality&type=tcp&packetEncoding=none&allowInsecure=1&sni=it.s3-cloud.xyz&fp=edge&flow=xtls-rprx-vision&sid=7a3f9e2b1c8d4f6a&pbk=zPi2L9vrl2hkaCTT3lZTzBna-qz6JrteRjDz1i-DsxY#
-vless://3559f1f7-7d70-46c9-82db-d2b46269300b@s2.dipvpn.ru:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=1BdgrQ_esOEya01sDCBYK4MGpJgaUhssHQG-aWJkyFQ&security=reality&sni=dipvpn.ru&type=tcp#
-vless://3559f1f7-7d70-46c9-82db-d2b46269300b@s2.dipvpn.ru:443?encryption=none&type=tcp&security=reality&headerType=none&sni=dipvpn.ru&fp=chrome&insecure=1&allowInsecure=1&pbk=1BdgrQ_esOEya01sDCBYK4MGpJgaUhssHQG-aWJkyFQ&flow=xtls-rprx-vision#
-vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@lv.faygo.bot:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=enterprisekitten.com&fp=qq&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=6ba85179e30d4fc2&type=tcp&headerType=none#
+# Proxy preflight — 4 live / 8000 total (xray E2E)
+# Updated: 2026-06-25 11:02 UTC
+hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?sni=hy2.aspidnet.xyz&insecure=0&allowInsecure=0&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3#🇳🇱 12 - NL - Hysteria2/QUIC/OBFS - 443
+vless://ac2b2b02-1add-4f1e-9d66-24b6937426a6@fl.convert-flow.net:443?security=reality&sni=fl.convert-flow.net&sid=00a61d55a07de885&pbk=5iF0c8rLWJeGPr9UpBxuSaQOzbxE8XbrQFHy5UMQc1w&fp=firefox&encryption=none&type=tcp&flow=xtls-rprx-vision&freeinternet=kizyak_vpn1782347656520&seq=you_are_beautiful7611#%5B345ms%20%D0%A4%D0%B8%D0%BD%D0%BB%D1%8F%D0%BD%D0%B4%D0%B8%D1%8F%20FI%20%F0%9F%87%AB%F0%9F%87%AE%20@vlesstrojan%5D
+vless://a5ea9247-79f3-4655-aece-3fb51e1e669e@rezerv20.yunus.guru:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=rezerv20.yunus.guru&fp=firefox&pbk=GF61aR_em1Xb3bNpwaO86PMEsAi4tuNfinnTDnrC4CE&sid=664d93f83ca49830&type=tcp&headerType=none#%5BOpenRay%5D%20%F0%9F%87%B3%F0%9F%87%B1%20NL-8676
+vless://3559f1f7-7d70-46c9-82db-d2b46269300b@s2.dipvpn.ru:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=dipvpn.ru&fp=chrome&pbk=1BdgrQ_esOEya01sDCBYK4MGpJgaUhssHQG-aWJkyFQ&type=tcp&headerType=none#
