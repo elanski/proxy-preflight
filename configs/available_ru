@@ -1,7 +1,7 @@
 # Proxy preflight — 5 live / 8000 total (xray E2E)
-# Updated: 2026-06-27 22:41 UTC
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B0%20HK
-vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@ru.faygo.bot:443?security=reality&type=tcp&headerType=&path=&host=&sni=enterprisekitten.com&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=6ba85179e30d4fc2&flow=xtls-rprx-vision#
-vless://17550015-678f-43ad-b0d2-65c0a829bedb@ee.cloudload.org:443?security=reality&sni=ee.cloudload.org&fp=qq&pbk=-g4of4WXB_tZXwESYpRXmCh310I_ikI8tVcHgBsIDR8&sid=a1ab5a56bc42a1&flow=xtls-rprx-vision&type=tcp&encryption=none#
-vless://4fdec620-73bb-40a7-a8d5-2570a59f1832@bypass.ch-gt-01.com:8443?security=reality&encryption=none&pbk=8qHRGcCezzSu4S-Cz9l19BNRLWm4MkaSwZV3dNrLEwc&headerType=&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=d515d6cfdfe60b02#
-vless://4fdec620-73bb-40a7-a8d5-2570a59f1832@bypass.ch-gt-01.com:8443?security=reality&encryption=none&pbk=8qHRGcCezzSu4S-Cz9l19BNRLWm4MkaSwZV3dNrLEwc&headerType=&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=d515d6cfdfe60b02#
+# Updated: 2026-06-28 05:54 UTC
+hy2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#🇭🇰 HK
+vless://60300afa-3366-4ae3-959a-7b50438acebb@us.wequ.ickly.co.uk:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=us.wequ.ickly.co.uk&fp=edge&pbk=jwuASfyOO9LfLGk-_QIXynIR88ObUyREysdA476L5ho&sid=0bd1ecc1&type=tcp&headerType=none#
+vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@ru.faygo.bot:443?encryption=none&type=tcp&security=reality&headerType=none&sni=enterprisekitten.com&fp=chrome&insecure=1&allowInsecure=1&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=6ba85179e30d4fc2&flow=xtls-rprx-vision#
+vless://60300afa-3366-4ae3-959a-7b50438acebb@tr.wequ.host:8443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=tr.wequ.host&fp=edge&pbk=DownfgLex8sSPYGdWi5GqdwYdwbwitHZ4C0hjql8GAc&sid=0adbeb6a&type=tcp&headerType=none#
+vless://4fdec620-73bb-40a7-a8d5-2570a59f1832@bypass.ch-gt-01.com:8443?type=tcp&security=reality&sni=storage.yandex.net&fp=chrome&flow=xtls-rprx-vision&pbk=8qHRGcCezzSu4S-Cz9l19BNRLWm4MkaSwZV3dNrLEwc&sid=d515d6cfdfe60b02#
