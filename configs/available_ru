@@ -1,5 +1,6 @@
-# Proxy preflight — 3 live / 8000 total (xray E2E)
-# Updated: 2026-06-29 21:54 UTC
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%87%AD%F0%9F%87%B0%20HK
+# Proxy preflight — 4 live / 8000 total (xray E2E)
+# Updated: 2026-06-29 23:41 UTC
+hysteria2://f7cb07a0-e6f9-4d22-a60e-c61854450c89@vn2.yuntong.click:443?obfs=salamander&obfs-password=eNM%2FNfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo%3D&sni=vn2.yuntong.click#%F0%9F%87%BB%F0%9F%87%B3_VN_%E8%B6%8A%E5%8D%97
+vless://360c46b7-afe1-4e86-bfe1-ba09b5fcd8a6@grinoree.ru:8443?security=reality&flow=xtls-rprx-vision&pbk=7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg&sid=2715592069f36fe7&fp=chrome&sni=storage.yandex.net&type=tcp&headerType=none&host=grinoree.ru&path=%2F#
 vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@ru.faygo.bot:443?security=reality&type=tcp&headerType=&path=&host=&sni=enterprisekitten.com&fp=qq&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=6ba85179e30d4fc2&flow=xtls-rprx-vision#
-vless://3fa92976-551b-4805-b59e-e4f09db85e71@t-r.lorqina.ir:2082?security=reality&encryption=none&pbk=qfi1IF21_4YMTUOdvhWNnh4oREPEfrEwe2SmEuw-6Sk&headerType=none&fp=chrome&spx=%2F209SOW4lDAVtrdJ&type=tcp&flow=xtls-rprx-vision&sni=www.yahoo.com&sid=8d779a91b4d669f6#
+vless://52faee73-e0fe-4661-992d-67259257170f@uk-gthost-01.com:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=storage.yandex.net&security=reality&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&sid=ea10cd5686751ec5#
