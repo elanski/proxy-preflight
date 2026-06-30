@@ -1,3 +1,7 @@
-# Proxy preflight — 1 live / 8000 total (xray E2E)
-# Updated: 2026-06-30 19:19 UTC
+# Proxy preflight — 5 live / 8000 total (xray E2E)
+# Updated: 2026-06-30 21:18 UTC
 hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14006/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=apple.com&fp=chrome&security=reality&pbk=XPLe-686APp5RHaiFHZDTJsf1kMo-aMZuKjKeHmdyEM&sid=ff5ebee2264c#
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14010?security=reality&encryption=none&pbk=PT1gw9B5majPBH2_qST-vymli9f6RlTmvGS2gPtdhF8&headerType=none&fp=edge&type=tcp&flow=xtls-rprx-vision&sni=apple.com&sid=1ebaa8ea57a71ffc#
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14010?security=reality&type=tcp&packetEncoding=xudp&sni=apple.com&fp=edge&flow=xtls-rprx-vision&sid=1ebaa8ea57a71ffc&pbk=PT1gw9B5majPBH2_qST-vymli9f6RlTmvGS2gPtdhF8#
+vless://daff1228-8d1a-4812-a57a-09604faa5e0c@gt-ch-02.live:8443?encryption=none&flow=xtls-rprx-vision&type=raw&headerType=none&security=reality&pbk=IdqrygjwHBEMCOamBl7a504TVk6uMAtTRj0xLWcFcxY&sni=storage.yandex.net&sid=cf9d145ad8f1ea55#
