@@ -1,2 +1,10 @@
-# Proxy preflight — 0 live / 8000 total (xray E2E)
-# Updated: 2026-06-30 15:12 UTC
+# Proxy preflight — 8 live / 8000 total (xray E2E)
+# Updated: 2026-06-30 17:26 UTC
+vless://0e49e208-e09e-49bc-afee-2907e5419107@usa.ldtp.com:443?security=reality&encryption=none&pbk=N--0r-eUKZ-23lmSHvsC4ywFbsAWRahFtxv_N02AgFY&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=usa.ldtp.com&sid=df2becfa7b040c78#
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14003?security=reality&encryption=none&pbk=bHHdXJs2NGgY4tDUBwmoLBaKM7y_5sd49geQcdbihz0&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=apple.com&sid=80963776#
+vless://356ccb34-22cc-4446-a137-072bc60d65ca@bypass.fr-gt-01.com:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=storage.yandex.net&security=reality&pbk=1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA&sid=f34818a561dfd1fe#
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14008?security=reality&type=tcp&sni=apple.com&fp=firefox&flow=xtls-rprx-vision&sid=8e5d94464f&pbk=WQP0QFc9RlOg7TDAI2i_VNQEtFwB_5kE5AKykeIipm0#
+vless://baeb9020-8fcd-0018-b95d-f76507816e6d@pl-root.sworkingvpn.com:443?security=reality&encryption=none&pbk=AhLy7ha7FF2EQfu-3SxOFKUwExyHActYPHtyv82KNCI&headerType=none&fp=firefox&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=pl-root.sworkingvpn.com&sid=15bcc0a77c3cacdf#%5BOpenRay%5D%20%F0%9F%87%B5%F0%9F%87%B1%20PL-1448
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14010?security=reality&encryption=none&pbk=PT1gw9B5majPBH2_qST-vymli9f6RlTmvGS2gPtdhF8&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=apple.com&sid=1ebaa8ea57a71ffc#
+vless://360c46b7-afe1-4e86-bfe1-ba09b5fcd8a6@grinoree.ru:8443?security=reality&flow=xtls-rprx-vision&pbk=7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg&sid=2715592069f36fe7&fp=chrome&sni=storage.yandex.net&type=tcp&headerType=none&host=grinoree.ru&path=/#
+vless://52faee73-e0fe-4661-992d-67259257170f@uk-gthost-01.com:8443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=storage.yandex.net&fp=chrome&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&sid=ea10cd5686751ec5&type=tcp&headerType=none#
