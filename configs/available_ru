@@ -1,11 +1,6 @@
-# Proxy preflight — 9 live / 8000 total (xray E2E)
-# Updated: 2026-06-30 22:58 UTC
-vless://40de6299-d792-4868-8a82-411ead0aa943@nl.go-vpn.club:443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=L0acYoTxKR5ix7LXAmP10cy06n2JjgkXTojGjtWAqww&security=reality&sid=ed7b9bdfedb9b8e5&sni=gateway.icloud.com&type=tcp#
-vless://a8d37bf8-ff5b-4de8-8796-2de9c4072b41@jp2.nekohub.xyz:443?type=tcp&encryption=none&host=&path=&headerType=none&quicSecurity=none&serviceName=&security=reality&flow=xtls-rprx-vision&fp=chrome&insecure=0&sni=v1-dy.ixigua.com&pbk=WQYF7MvnwLNs5YP8mEspVFCrCdtvsbDJKI18-2feIG4&sid=0decaa06#%F0%9F%87%AF%F0%9F%87%B5%20Japan%2C%20Shibuya%20City%20%7C%20%5BBL%5D
-vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14009/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=apple.com&fp=safari&security=reality&pbk=CAFHM6x5kO2ofkpEDelcOJlZ4i6Kw4ZlDNIfdV6ptUw&sid=6a1a47#
-vless://356ccb34-22cc-4446-a137-072bc60d65ca@bypass.fr-gt-01.com:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=storage.yandex.net&fp=chrome&security=reality&pbk=1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA&sid=f34818a561dfd1fe#
-vless://baeb9020-8fcd-444c-b95d-f76507816e6d@nl-root.sworkingvpn.com:443?security=reality&encryption=none&echfq=none&pbk=AhLy7ha7FF2EQfu-3SxOFKUwExyHActYPHtyv82KNCI&headerType=none&fp=firefox&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=nl-root.sworkingvpn.com&sid=15bcc0a77c3cacdf#%20By%20EbraSha%20%F0%9F%8C%91
-vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14004?encryption=none&flow=xtls-rprx-vision&security=reality&sni=apple.com&fp=chrome&pbk=zSt5a1vs3C3oxm3fSUB_egA98IO3XZr7JGzE6OdMTz8&sid=22c485f4000241&type=tcp&headerType=none#
-vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@ru.faygo.bot:443?encryption=none&flow=xtls-rprx-vision&type=tcp&headerType=none&security=reality&fp=qq&sni=enterprisekitten.com&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=6ba85179e30d4fc2#
-vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@fi.faygo.bot:443?type=tcp&sid=6ba85179e30d4fc2&encryption=none&sni=enterprisekitten.com&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&fp=qq&headerType=none&security=reality&flow=xtls-rprx-vision#
-vless://360c46b7-afe1-4e86-bfe1-ba09b5fcd8a6@grinoree.ru:8443?security=reality&flow=xtls-rprx-vision&pbk=7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg&sid=2715592069f36fe7&fp=chrome&sni=storage.yandex.net&type=tcp&headerType=none&host=grinoree.ru&path=%2F#
+# Proxy preflight — 4 live / 8000 total (xray E2E)
+# Updated: 2026-07-01 06:10 UTC
+vless://be4494a3-9544-4eb6-b166-5a733706d505@ru-1.videoproeditor.com:443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk&security=reality&sid=6d6f13013d3e1d0c&sni=ru-1.videoproeditor.com&type=tcp#%E8%8D%B7%E5%85%B0_062601359
+vless://51171159-d453-4d05-bbae-287207db33dd@88.216.193.154:443?flow=xtls-rprx-vision&fp=firefox&pbk=JxwG7rAbNCd_C82p9K69AZDWh51fri2nm3wLHHrfyiw&security=reality&sid=7755e972daf8eec8&sni=video.intfreed.ru&type=tcp#
+vless://356ccb34-22cc-4446-a137-072bc60d65ca@bypass.fr-gt-01.com:8443?security=reality&encryption=none&pbk=1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=f34818a561dfd1fe#
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14006?security=reality&type=tcp&packetEncoding=xudp&sni=apple.com&fp=chrome&flow=xtls-rprx-vision&sid=ff5ebee2264c&pbk=XPLe-686APp5RHaiFHZDTJsf1kMo-aMZuKjKeHmdyEM#
