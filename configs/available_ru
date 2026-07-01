@@ -1,6 +1,8 @@
-# Proxy preflight — 4 live / 8000 total (xray E2E)
-# Updated: 2026-07-01 06:10 UTC
+# Proxy preflight — 6 live / 8000 total (xray E2E)
+# Updated: 2026-07-01 10:32 UTC
 vless://be4494a3-9544-4eb6-b166-5a733706d505@ru-1.videoproeditor.com:443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk&security=reality&sid=6d6f13013d3e1d0c&sni=ru-1.videoproeditor.com&type=tcp#%E8%8D%B7%E5%85%B0_062601359
-vless://51171159-d453-4d05-bbae-287207db33dd@88.216.193.154:443?flow=xtls-rprx-vision&fp=firefox&pbk=JxwG7rAbNCd_C82p9K69AZDWh51fri2nm3wLHHrfyiw&security=reality&sid=7755e972daf8eec8&sni=video.intfreed.ru&type=tcp#
-vless://356ccb34-22cc-4446-a137-072bc60d65ca@bypass.fr-gt-01.com:8443?security=reality&encryption=none&pbk=1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=f34818a561dfd1fe#
-vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14006?security=reality&type=tcp&packetEncoding=xudp&sni=apple.com&fp=chrome&flow=xtls-rprx-vision&sid=ff5ebee2264c&pbk=XPLe-686APp5RHaiFHZDTJsf1kMo-aMZuKjKeHmdyEM#
+vless://52faee73-e0fe-4661-992d-67259257170f@uk-gthost-01.com:8443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&encryption=none&flow=xtls-rprx-vision&fp=&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&security=reality&sid=ea10cd5686751ec5&sni=storage.yandex.net&type=tcp#
+vless://52faee73-e0fe-4661-992d-67259257170f@bypass.uk-gthost-01.com:8443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=storage.yandex.net&fp=chrome&pbk=dY9SNEllJMW63xo-JdXufhmjAxB_4uFw_QMjgufjiD8&sid=ea10cd5686751ec5&type=tcp&headerType=none#
+vless://3e06720a-86f0-49b9-8f00-062681e3b385@vip.bcjdvip.com:14003?security=reality&encryption=none&pbk=bHHdXJs2NGgY4tDUBwmoLBaKM7y_5sd49geQcdbihz0&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=apple.com&sid=80963776#
+vless://4fdec620-73bb-40a7-a8d5-2570a59f1832@bypass.ch-gt-01.com:8443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=reality&encryption=none&pbk=8qHRGcCezzSu4S-Cz9l19BNRLWm4MkaSwZV3dNrLEwc&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=storage.yandex.net&sid=d515d6cfdfe60b02#
+vless://3d6518df-cab2-4840-83fa-a0d0759d1309@kzt-t14.plugvpn.ru:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=kzt-t14.plugvpn.ru&fp=chrome&pbk=Y6bmuGtVRQXa89gLGIXxOtl1pudIe3LCE6neY6kG_V4&sid=91fce232563631ab&type=tcp&headerType=none#
