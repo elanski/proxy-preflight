@@ -1,4 +1,6 @@
-# Proxy preflight — 2 live / 8000 total (xray E2E)
-# Updated: 2026-07-05 16:39 UTC
-hysteria2://00dcd873-9211-4d61-ad35-87999906e5c8@fta.fontanvpn.com:443?sni=fta.fontanvpn.com#🇫🇮 2 - FI - Hysteria2/QUIC - 443
-hy2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#🇭🇰 HK
+# Proxy preflight — 4 live / 8000 total (xray E2E)
+# Updated: 2026-07-05 18:39 UTC
+hysteria2://00dcd873-9211-4d61-ad35-87999906e5c8@185.75.135.220:443?sni=fta.fontanvpn.com#🇫🇮 1 - FI - Hysteria2/QUIC - 443
+vless://1bd98268-1a22-4cf9-804d-b8a7650b1304@us1.panel11.ru:443?type=tcp&headerType=none&security=reality&encryption=none&sni=us1.panel11.ru&fp=firefox&pbk=MFuAxjdSnjCk_8Vi_-KGyWryFfSmm902nVhACDSIzBw&sid=d9d688fc488ae13b&flow=xtls-rprx-vision#
+vless://0047a8bc-0025-4d45-899b-c75c669f3ede@cherry-nll-01.live:8443/?type=raw&encryption=none&flow=xtls-rprx-vision&sni=storage.yandex.net&security=reality&pbk=LT_0j3zQkaqgtJHvyaG24xz0IfmXUswVCTeC75Qsgjo&sid=6f15101ff2cc4887#
+vless://356ccb34-22cc-4446-a137-072bc60d65ca@bypass.fr-gt-01.com:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=storage.yandex.net&fp=firefox&pbk=1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA&sid=f34818a561dfd1fe&flow=xtls-rprx-vision#
