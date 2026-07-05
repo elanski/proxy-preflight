@@ -1,6 +1,7 @@
-# Proxy preflight — 4 live / 8000 total (xray E2E)
-# Updated: 2026-07-05 20:41 UTC
-hysteria2://a305ac08-d136-11ee-b6db-f23c91cfbbc9@ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com:443/?insecure=1&sni=ffc60249-t53wg0-t92wi1-1qkeg.hk2.hyhuawei.com#%F0%9F%A5%9081@oneclickvpnkeys`
-vless://f17a6493-07c9-452e-aa5d-5e823cb5d5fe@pl.monkeyvillage.pro:443?security=reality&encryption=none&pbk=Q7-sRiaAcmlJ_iwqiA46kDKso_r2kJ7X1mrVjL2illo&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=pl.monkeyvillage.pro&sid=bc0c778f819a3a1e#
-vless://8ca5cbd3-ec16-4728-bedc-2bc0d82f0922@fi.faygo.bot:443?type=tcp&sid=6ba85179e30d4fc2&encryption=none&sni=enterprisekitten.com&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&fp=chrome&headerType=none&security=reality&flow=xtls-rprx-vision#
-vless://f646f45d-7b20-43a4-ad11-6c6fd6a28e09@ge3.voidshield.site:443?type=tcp&security=reality&flow=xtls-rprx-vision&encryption=none&sni=ge3.voidshield.site&pbk=V28fN5S91Q9kqKyu9DrLkoNcSkWy4S0HXKzJX-r_HxU&fp=firefox#
+# Proxy preflight — 5 live / 8000 total (xray E2E)
+# Updated: 2026-07-05 22:36 UTC
+vless://5bb4eea6-7786-44c9-aafa-bd0113c1b800@telegram.private-networks-zk.com:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50&type=tcp&headerType=none#
+vless://d93ff2aa-13f3-41a2-a1fe-df561c51cd99@84.201.153.33:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=ads.x5.ru&pbk=v6rib0-2FxBd1MnBxdylbIRIhvXywSj56QEtCkaEuBo&sid=27e53bbcab7593d7&spx=%2F#%F0%9F%87%A9%F0%9F%87%AA%20Germany%20%E2%80%94%20%23153
+vless://a2415a12-3f92-4636-9823-9828d3ceb818@185.245.40.251:443?security=reality&encryption=none&pbk=YnBpu8Ul3-HHnTEq4YGz6i9uZVQE6a-fW1LcSs55sDg&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=sun6-20.userapi.com&sid=1cc0b0#
+vless://a2415a12-3f92-4636-9823-9828d3ceb818@185.245.40.251:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=sun6-20.userapi.com&fp=chrome&pbk=YnBpu8Ul3-HHnTEq4YGz6i9uZVQE6a-fW1LcSs55sDg&sid=1cc0b0&type=tcp&headerType=none#
+vless://05a01432-0302-439f-a88d-8442cd27b7d5@gt-ch-01.live:8443?type=tcp&security=reality&fp=firefox&sni=storage.yandex.net&flow=xtls-rprx-vision&pbk=8qHRGcCezzSu4S-Cz9l19BNRLWm4MkaSwZV3dNrLEwc&sid=445ab326fc7c90ac#
