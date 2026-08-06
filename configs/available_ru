@@ -1,27 +1,22 @@
-# Proxy preflight — 25 live / 8000 total (xray E2E)
-# Updated: 2026-08-06 04:45 UTC
-hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?insecure=0&sni=hy2.aspidnet.xyz&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3#%40meliproxyy%20%232
-hysteria2://1hOIVDVBG2hdKtJwOV2aUEFTDaFArCSH9-HrcOnps8yqQZeq@prodfr.h2corp.org:443?sni=prodfr.h2corp.org#🇩🇪 3 - DE - Hysteria2/QUIC - 443
-hysteria2://4z2oldt85p494bgb@assets.gateway-stream.com:52025?sni=assets.gateway-stream.com&obfs=salamander&obfs-password=iknjsvsjagi449mm#%F0%9F%87%AA%F0%9F%87%AA%E7%88%B1%E6%B2%99%E5%B0%BC%E4%BA%9A
-hysteria2://0puq3lmwv7qtp76t@assets.gateway-stream.com:52034/?insecure=1&sni=assets.gateway-stream.com#🇫🇮FI Dìa—35
-hysteria2://4z2oldt85p494bgb@assets.gateway-stream.com:52060?insecure=0&sni=assets.gateway-stream.com&obfs=salamander&obfs-password=l960g2kn19nphlra#%E2%99%BE%EF%B8%8FJoin-%3E%F0%9F%86%94%EF%B8%8F%40ATLAS_V2VPN%F0%9F%86%93%EF%B8%8F%F0%9F%9B%9C%F0%9F%94%B7%EF%B8%8F491...
-hysteria2://ik0zt621uw9iqvsi@assets.gateway-stream.com:52006?security=tls&obfs=salamander&obfs-password=s3dhdo4iiqy08m1a&insecure=0&sni=assets.gateway-stream.com#برای اتصال دائمی جوین شو🍘 TelegramID ⌲Express_freevpn 🪩
-hysteria2://71cada65-d23e-418c-88e4-a06188d14689@it-one.quiet-rogue.site:443?sni=it-one.quiet-rogue.site#%F0%9F%92%AB75%40oneclickvpnkeys
+# Proxy preflight — 20 live / 8000 total (xray E2E)
+# Updated: 2026-08-06 08:05 UTC
+hysteria2://76713d07-5a6b-49c2-abd8-bc450a2fa7fc@usa1.spectrumproxy.shop:443?sni=usa1.spectrumproxy.shop#🏳️ 11 - XX - Hysteria2/QUIC - 443
+hysteria2://76713d07-5a6b-49c2-abd8-bc450a2fa7fc@usa1.spectrumproxy.shop:443/?sni=usa1.spectrumproxy.shop#5💫@oneclickvpnkeys
+hysteria2://qIg7TMxfJvx6t27er0c9P0osebAAPu2PYlB_aoWelV5kVVQ2@fr2.h2corp.org:443#2654 | 🌐 Unknown | HYSTERIA2 | TG: @YoutubeUnBlockRu
+hysteria2://ik0zt621uw9iqvsi@assets.gateway-stream.com:52000?obfs=salamander&obfs-password=gu74jg3ym0e21zco&sni=assets.gateway-stream.com#🇫🇮 41 - FI - Hysteria2/QUIC/OBFS - 52000
+hysteria2://ik0zt621uw9iqvsi@assets.gateway-stream.com:52023?insecure=0&sni=assets.gateway-stream.com&obfs=salamander&obfs-password=detgimgm8qh8i2g2#%D8%A8%D8%B1%D8%A7%DB%8C%20%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%20%D8%AF%D8%A7%D8%A6%D9%85%DB%8C%20%D8%AC%D9%88%DB%8C%D9%86%20%D8%B4%D9%88%F0%9F%8D%98%20Tele...%20%234
+hysteria2://elknam6l7izf3z71@assets.gateway-stream.com:52021?insecure=0&sni=assets.gateway-stream.com&obfs=salamander&obfs-password=mtg2vchyir6la3et#%40prrofile_purple%20%20%E2%99%A5%EF%B8%8F%F0%9F%91%88%20%D8%AA%D9%84%DA%AF%D8%B1%D8%A7%D9%85
+hysteria2://ik0zt621uw9iqvsi@assets.gateway-stream.com:52000?security=tls&obfs=salamander&obfs-password=gu74jg3ym0e21zco&insecure=0&sni=assets.gateway-stream.com#برای اتصال دائمی جوین شو🍘 TelegramID ⌲Express_freevpn 🪩
+hysteria2://p7Q76LzlnS4hIzr1W3staBOnUe_WwSkR@hy2.aspidnet.xyz:443?sni=hy2.aspidnet.xyz&obfs=salamander&obfs-password=rG07s3COMIEvdnQipRyWzx_H_2xygNC3#0946 | 🌐 Unknown | HYSTERIA2 | TG: @YoutubeUnBlockRu
+hysteria2://uj7XGZGUqRlmdpk6rysyZMN333RWsxTFj0hBIMaFV-NUCd5r@ro.h2corp.org:443?insecure=1#🏳️ 63 - XX - Hysteria2/QUIC - 443
+hy2://71cada65-d23e-418c-88e4-a06188d14689@it-one.quiet-rogue.site:443/?sni=it-one.quiet-rogue.site#意大利
 hy2://71cada65-d23e-418c-88e4-a06188d14689@de-two.quiet-rogue.site:443/?sni=de-two.quiet-rogue.site#德国
-hysteria2://71cada65-d23e-418c-88e4-a06188d14689@de-two.quiet-rogue.site:443#%F0%9F%87%A9%F0%9F%87%AA%20Germany%2C%20Frankfurt%20am%20Main%20%7C%20%5BBL%5D
+hysteria2://67a1454f-5a95-4e30-9723-1ffcbe7e97f9@taga4.api3-max.ru:443?sni=taga4.api3-max.ru#%F0%9F%87%B9%F0%9F%87%B7%E5%9C%9F%E8%80%B3%E5%85%B6%20%232
 hysteria2://71cada65-d23e-418c-88e4-a06188d14689@it-one.quiet-rogue.site:443/?sni=it-one.quiet-rogue.site#💫75@oneclickvpnkeys
-hysteria2://71cada65-d23e-418c-88e4-a06188d14689@fi-one.quiet-rogue.site:443?security=tls#1887 | 🌐 Unknown | HYSTERIA2 | TG: @YoutubeUnBlockRu
-hysteria2://uj7XGZGUqRlmdpk6rysyZMN333RWsxTFj0hBIMaFV-NUCd5r@ro.h2corp.org:443?insecure=1#🇺🇸 62 - US - Hysteria2/QUIC - 443
-hysteria2://uj7XGZGUqRlmdpk6rysyZMN333RWsxTFj0hBIMaFV-NUCd5r@ro.h2corp.org:443/?sni=ro.h2corp.org#🇷🇴RO Dìa—08
-vless://b98d4c6e-6770-4a31-8256-a4750cdea0e7@t17.qifei.app:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo&sid=1a&sni=www.amazon.com#3271 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://b98d4c6e-6770-4a31-8256-a4750cdea0e7@t17.qifei.app:443?security=reality&type=tcp&sni=www.amazon.com&flow=xtls-rprx-vision&sid=1a&pbk=0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo&encryption=none&fp=ios#%5BOpenRay%5D%20%F0%9F%87%BA%F0%9F%87%B8%20US-23646
-vless://564082ff-cf3c-48db-9e10-8ad2312847b4@node20.mxvpn.dev:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw&sid=bbc68cec8bb8d2e3&sni=node20.mxvpn.dev#5243 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://69a74770-7152-4a27-bef0-2615ca16e1b1@images.netraidly.ru:40443?&security=reality&flow=xtls-rprx-vision&pbk=D0AQp0cWaQR55Q-zPwp6__AxN9CoT9neZj0UzlNcLCk&sid=bd72&fp=qq&sni=deepl.com&type=tcp&headerType=none&host=deepl.com&path=%2F#
-vless://711c018e-2692-4aa8-93f3-544d83fcd16c@jdwacdi.cvewfjg.shop:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=HyVSZ2OyySwXT-xRhTAqoiuYflIaj_b0Jxm7S1Iq9hs&sid=7a76f3c4b9dd&sni=www.cloudflare.com#6475 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://4480161e-2c59-4d37-8736-675c9af32bf1@netraidly.ru:40443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&pbk=fWzCKXwvMXaacsl1DdFb1vKQ9l9cTK1G7udqmaYHL0Y&sid=01d1bf2d4755d40c&sni=deepl.com#5208 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://eadcacfa-ef1a-4901-a28b-8815fa1962a5@ruded3.onlinestreamself.com:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=qq&pbk=6ycuxfrEPsqE9eXZ5_Osbnx4g6hXWmkc8pFuAJkJ4jY&sni=apple.com#3617 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://7c74b0e4-f132-5583-4692-622a7d6b71a4@88.218.44.4:993?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=EG3y7UktGRlzSZZ2oXT_YaO2gVP4ca3Xe6AQ0u9A5DQ&sni=download.nvidia.com&path=/#1432 | 🇺🇸 USA | VLESS | 📺 YT | TG: @YoutubeUnBlockRu
-vless://711c018e-2692-4aa8-93f3-544d83fcd16c@jdwadgw.cvewfjg.shop:443?security=reality&type=tcp&packetEncoding=none&allowInsecure=1&sni=www.cloudflare.com&fp=chrome&flow=xtls-rprx-vision&sid=7a76f3c4b9dd&pbk=HyVSZ2OyySwXT-xRhTAqoiuYflIaj_b0Jxm7S1Iq9hs#
-vless://69a74770-7152-4a27-bef0-2615ca16e1b1@nl4.levikogjgfdd.ir:40443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=reality&encryption=none&pbk=D0AQp0cWaQR55Q-zPwp6__AxN9CoT9neZj0UzlNcLCk&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=deepl.com&sid=bd72#
-vless://435d616b-f0e6-489d-a70d-bdde70750b43@ruded3.onlinestreamself.com:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=safari&pbk=6ycuxfrEPsqE9eXZ5_Osbnx4g6hXWmkc8pFuAJkJ4jY&sni=apple.com#2084 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
-vless://7c74b0e4-f132-5583-4692-622a7d6b71a4@88.218.44.4:993?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&pbk=Rt2wltCWOxIroFggNWMudZDBJXls8DsF4icaWqxKDk8&sni=dl.google.com#3363 | 🇺🇸 USA | VLESS | 📺 YT | TG: @YoutubeUnBlockRu
+hysteria2://67a1454f-5a95-4e30-9723-1ffcbe7e97f9@taga10.api3-max.ru:443?#%E5%9C%9F%E8%80%B3%E5%85%B6
+vless://711c018e-2692-4aa8-93f3-544d83fcd16c@jdvymxi.cvewfjg.shop:443?security=reality&type=raw&packetEncoding=xudp&sni=www.cloudflare.com&fp=chrome&flow=xtls-rprx-vision&sid=7a76f3c4b9dd&pbk=HyVSZ2OyySwXT-xRhTAqoiuYflIaj_b0Jxm7S1Iq9hs#%E7%BE%8E%E5%9B%BD+V2CROSS.COM
+vless://711c018e-2692-4aa8-93f3-544d83fcd16c@jdwacdi.cvewfjg.shop:443?security=reality&type=tcp&packetEncoding=xudp&sni=www.cloudflare.com&fp=chrome&flow=xtls-rprx-vision&sid=7a76f3c4b9dd&pbk=HyVSZ2OyySwXT-xRhTAqoiuYflIaj_b0Jxm7S1Iq9hs#%F0%9F%87%A6%F0%9F%87%B9AT_2%7C210KB%2Fs%2001
+vless://ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2@as.tunnelx.space:443?&security=reality&flow=xtls-rprx-vision&pbk=UO3EObgU3xUrhIGEE0gfCn5ZOz8YxNcwwW6ZaYzD3SA&sid=4e9b0c2d1a3f5768&fp=firefox&sni=as.tunnelx.space&type=tcp&headerType=none&host=as.tunnelx.space&path=%2F#%5BOpenRay%5D%20%F0%9F%87%A6%F0%9F%87%B9%20AT-361
+vless://aa8b4a23-655f-480c-aef6-27b0c45e7877@178.248.236.155:14443?encryption=none&flow=xtls-rprx-vision&fp=qq&pbk=szC_0ZhoT_nwOrJcYXRrMw3EGJkiOAYCU-6atQo6mXQ&security=reality&sid=0dacf3306f&sni=rutube.ru&type=raw#%F0%9F%87%B8%F0%9F%87%AA%20Sweden%20%E2%80%94%20%23333
+vless://66b63d3a-54ac-41f1-91f7-e74b171f3029@fl3.waspnest.space:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=fl3.waspnest.space&fp=qq&pbk=guJkFJanzPgJRd__HcpMC4rZW6LNbobsUmEIIYHE6yI&sid=757cf45f2a32834a&type=tcp&headerType=none#
+vless://711c018e-2692-4aa8-93f3-544d83fcd16c@jdwadgw.cvewfjg.shop:443?&security=reality&flow=xtls-rprx-vision&pbk=HyVSZ2OyySwXT-xRhTAqoiuYflIaj_b0Jxm7S1Iq9hs&sid=7a76f3c4b9dd&fp=chrome&sni=www.cloudflare.com&type=tcp&headerType=none&host=jdwadgw.cvewfjg.shop&path=%2F#
