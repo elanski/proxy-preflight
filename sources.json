@@ -81,5 +81,23 @@
     "https://raw.githubusercontent.com/soroushmirzaei/telegram-proxies-collector/main/proxies/en/mtproto",
     "https://raw.githubusercontent.com/mheidari98/.proxy/main/mtproto",
     "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/MTProto-list.txt"
+  ],
+  "rev_engineer": [
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/84e0487b6f2c325ddf33f6127ea1c708/raw/",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/81fc656cd0a8298a5aad99c7cfadcd97/raw/",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/548278d35b76d1ca7bd09667afc1033a/raw/BatyaVPN_Telegram_RE_s_B.json",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/CosmosVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/MegaVVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/Secret_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/TumanVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/CapVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/HiroVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/LagomVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/LumarVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/MarshallVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/OilVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/OkoVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/PingVPN_Telegram_RE_s_B.txt",
+    "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/VsemVPN_Telegram_RE_s_B.txt"
   ]
 }
