@@ -1,0 +1,40 @@
+# Working proxies - verified 2026-10-09T09:39:43.511Z
+# 36 ready-to-import configs, measured through the gateway egress lanes.
+# All nodes come from public free subscription lists (22 sources, anonymous 200).
+# Import: v2rayN / Happ / Nekoray -> import file or paste. Tag = lane, exit IP, latency.
+#ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@193.29.139.198:8080?#lane1-ss-exit193.29.139.198-382ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.204:8080?#lane1-ss-exit193.29.139.171-329ms
+ss://YWVzLTI1Ni1nY206a0tFZDByQnJkNTZGdXJqeg@2.58.81.221:80?#lane1-ss-exit2.58.81.221-435ms
+vless://d6752c6b-80ae-4a91-b446-bb330f7f8177@94.156.79.93:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=_0fpFqEEuCso3B8K7AAcMjctwG_xfCxO2PdKzGd_-hg&sid=88a13cf2655c&sni=www.foxsports.com#lane2-vless-exit94.156.79.93-427ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.213:8080?#lane2-ss-exit193.29.139.203-745ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.199:8080?#lane2-ss-exit193.29.139.184-444ms
+vless://2b5798ed-8acc-57fa-ad1a-e378ab143a43@45.32.152.194:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=4O9OGLb8X8wUSx1mWlSG67kRZk7Jey4-MVyt8tzaNFk&sid=17d65a607618697d&sni=www.vimeo.com#lane3-vless-exit45.32.152.194-447ms
+vless://adc11f30-e4cb-4985-bf5e-f9ded69c019f@2.59.253.251:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI&sid=db04ce8bdb8900f1&sni=nvidia.com&mode=multi&servername=nvidia.com#lane3-vless-exit2.59.253.251-746ms
+vless://186a7d6f-e360-4c5f-bafb-a816f79e231b@83.217.195.128:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=RlmSSm1cMoLgu1Cc5zW_g42oMy-r1HHtxNwnw-kbQSY&sid=a912f2bba75c4ffd&sni=nl7.ngenix-cdn-cache.site#lane3-vless-exit83.217.195.128-446ms
+ss://YWVzLTI1Ni1jZmI6YW1hem9uc2tyMDU@18.184.136.175:443#lane4-ss-exit18.184.136.175-456ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.42:8080?#lane4-ss-exit193.29.139.193-746ms
+vless://4d017db2-7655-4276-9557-e2ec25b04ee7@107.181.151.39:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=J-dv-HrWfQ_IOoyutv0Kg-rO8QwoRwc02dS1dS_tblk&sid=ee1716767f9b&sni=www.tradingview.com#lane4-vless-exit107.181.151.39-452ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.159:443?#lane5-ss-exit193.29.139.166-466ms
+vless://6f756511-7fc3-41ba-874b-8cdc8e1b225f@193.202.113.5:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=65d6SIYIqiX-SN4vx_BnNiQJ8Lnr0HAgUKoT7WgWRgI&sni=edge-uk2.mystatic-cdn.ru#lane5-vless-exit161.104.105.34-746ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.218:8080?#lane5-ss-exit193.29.139.132-463ms
+ss://YWVzLTI1Ni1nY206TFhjaExzSXd0Q2VVQVVndQ@149.102.149.207:80?#lane6-ss-exit149.102.149.207-532ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.34:8080?#lane6-ss-exit193.29.139.199-753ms
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@158.173.20.208:443?#lane6-ss-exit158.173.20.208-464ms
+vless://a889fba5-5472-4022-a6b4-9710157fda2f@138.124.73.88:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=SpDERK2bCJgRdaDP3cSsQDfOCghD94d0-zjuKIHYQy0&sid=a2aa&sni=github.com#lane7-vless-exit138.124.73.88-577ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.174:443?#lane7-ss-exit193.29.139.135-763ms
+vless://267b3a79-81f2-42ac-a409-c23b05b6329d@185.170.211.187:443?type=grpc&security=reality&fp=firefox&pbk=eztZ1H-OkkHao6d4FhX8Q728qN1UIeFcYH2jObRq1gc&sid=fbe9c012125d90d2&sni=nl2.bbobr.win&serviceName=api.v2.nl2e63a0c5#lane7-vless-exit185.170.211.188-465ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.162:443?#lane8-ss-exit193.29.139.221-248ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@193.29.139.202:8080?#lane8-ss-exit193.29.139.202-365ms
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M@141.98.101.181:443?#lane8-ss-exit141.98.101.181-474ms
+vless://2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd@13.143.166.245:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=safari&pbk=FuKGULeQ9xZMJN8hWz6J_49tDJKT9HA-nsAXOOVRmyM&sid=ff867ed245c73f43&sni=cdn.jsdelivr.net&host=cdn.jsdelivr.net#lane9-vless-exit13.143.166.245-676ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.36:8080?#lane9-ss-exit193.29.139.137-370ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.170:443?#lane9-ss-exit193.29.139.172-474ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.28:8080?#lane10-ss-exit193.29.139.248-690ms
+vless://adc11f30-e4cb-4985-bf5e-f9ded69c019f@31.77.114.114:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI&sid=db04ce8bdb8900f1&sni=api.vk.me#lane10-vless-exit31.77.114.114-809ms
+vless://df53b6c2-8005-475c-9eb9-74e1be785dc8@2.27.35.55:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=RTG-xTU5UuKTRrkk8_COe04GiUWrqrSdt9mqSak_XEc&sid=e696e744&sni=addons.mozilla.org#lane10-vless-exit2.27.69.128-877ms
+vless://e60a2499-c5bf-4ad6-86b0-8af0bd3c0bbf@2.27.39.233:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=5tMM2VdgddmxOKhdNa3b7i_aXno1g-_61SzkppS2UXQ&sid=f3c023cc&sni=addons.mozilla.org#lane11-vless-exit2.27.71.53-700ms
+vless://4bde8d55-d91c-45e9-9b36-e6448a194527@188.114.97.6:443?type=ws&security=tls&fp=chrome&sni=dfsuporte.garena.com.ex33r.eu.cc&host=dfsuporte.garena.com.ex33r.eu.cc#lane11-vless-exit104.28.164.71-426ms
+vless://84ed0e09-6803-4ef9-a977-74b657d971e5@31.70.111.146:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=ZNmuzIn-zyJi2C0sWRpL9fsMYCgYauXpJElXTqY_LEE&sid=d7de3a6ff4018957&sni=www.apple.com&packetEncoding=none#lane11-vless-exit31.70.111.146-487ms
+vless://3c48b5f5-7766-4896-874e-b3ba1860e83a@195.154.118.134:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=random&pbk=YhT24GkuI1r7Fwo8pxIYH3CmTtbRlYs5X7fWtYp3vTY&sid=05f4f85fdc6c1379&sni=w-mebel.pro#lane12-vless-exit195.154.118.134-719ms
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@82.38.31.66:8080?#lane12-ss-exit193.29.139.164-428ms
+vless://501a2da5-cb22-4a3f-915e-e3b821d1d62d@87.199.205.28:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=W-9zyiOq287RtXVTZlTFbSDJ0Mx8joyBLJoA7ZE7eBw&sid=ef1d3554c652a436&sni=vkvd754.okcdn.ru#lane12-vless-exit87.199.205.28-487ms
