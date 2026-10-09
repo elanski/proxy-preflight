@@ -1,0 +1,68 @@
+# Verified exits - WorkBuddy gateway egress core
+#
+# Measured on the gateway itself: each lane is a SOCKS port fed by
+# sing-box, and the exit IP below is what the internet saw when the
+# request left through it. Nothing here is a credential - host, protocol,
+# exit IP and latency only. The node configs come from public
+# subscription lists, so anyone wanting to use one can fetch the same
+# source and match it by host.
+#
+# Generated 2026-10-09 09:29 UTC
+#
+# lane:port<TAB>proto<TAB>node-host<TAB>exit-ip<TAB>latency-ms
+#
+7931	ss	82.38.31.42	193.29.139.193	446
+7931	vless	2.59.253.251	2.59.253.251	768
+7931	ss	193.29.139.168	193.29.139.168	462
+7932	vless	94.156.79.93	94.156.79.93	532
+7932	ss	82.38.31.9	193.29.139.210	370
+7932	vless	31.77.114.114	31.77.114.114	464
+7933	ss	82.38.31.18	193.29.139.131	569
+7933	ss	82.38.31.180	193.29.139.147	373
+7933	ss	193.29.139.188	193.29.139.188	465
+7934	ss	149.102.149.207	149.102.149.207	626
+7934	ss	82.38.31.203	193.29.139.171	376
+7934	ss	82.38.31.174	193.29.139.135	469
+7935	vless	195.154.118.134	195.154.118.134	627
+7935	ss	82.38.31.28	193.29.139.248	394
+7935	vless	45.32.152.194	45.32.152.194	470
+7936	vless	2.27.35.74	2.27.69.157	636
+7936	vless	45.158.185.172	194.88.150.245	411
+7936	ss	82.38.31.213	193.29.139.203	879
+7937	ss	82.38.31.182	193.29.139.251	658
+7937	ss	18.184.136.175	18.184.136.175	432
+7937	vless	104.21.63.28	104.28.162.47	880
+7938	vless	13.143.166.245	13.143.166.245	723
+7938	trojan	104.18.9.83	51.159.178.70	440
+7938	vless	2.27.39.233	2.27.71.53	482
+7939	ss	82.38.31.34	193.29.139.199	741
+7939	vless	193.202.113.5	161.104.105.34	842
+7939	vless	144.31.62.242	144.31.63.91	887
+7940	vless	188.114.97.6	104.28.155.199	345
+7940	ss	193.29.139.198	193.29.139.198	443
+7940	vless	104.25.5.52	?	490
+7941	vless	172.64.152.52	104.28.163.90	748
+7941	ss	82.38.31.159	193.29.139.166	446
+7941	vless	2.27.35.55	2.27.69.128	492
+7942	vless	138.124.73.88	138.124.73.88	354
+7942	ss	82.38.31.149	193.29.139.195	846
+7942	ss	82.38.31.47	193.29.139.219	492
+
+# lane summary, measured live at generation time
+#   127.0.0.1:7931  131 ms
+#   127.0.0.1:7932  1331 ms
+#   127.0.0.1:7933  493 ms
+#   127.0.0.1:7934  279 ms
+#   127.0.0.1:7935  175 ms
+#   127.0.0.1:7936  207 ms
+#   127.0.0.1:7937  132 ms
+#   127.0.0.1:7938  332 ms
+#   127.0.0.1:7939  130 ms
+#   127.0.0.1:7940  127 ms
+#   127.0.0.1:7941  351 ms
+#   127.0.0.1:7942  125 ms
+# lanes answering: 12 of 12
+#
+# NOTE: these are loopback ports on the gateway host, not public
+# proxies. To use them from elsewhere, take the node host and the
+# matching public subscription, or point a client at the gateway.
