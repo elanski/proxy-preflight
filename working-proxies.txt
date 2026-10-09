@@ -2,7 +2,8 @@
 # 36 ready-to-import configs, measured through the gateway egress lanes.
 # All nodes come from public free subscription lists (22 sources, anonymous 200).
 # Import: v2rayN / Happ / Nekoray -> import file or paste. Tag = lane, exit IP, latency.
-#ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@193.29.139.198:8080?#lane1-ss-exit193.29.139.198-382ms
+#
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@193.29.139.198:8080?#lane1-ss-exit193.29.139.198-382ms
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.204:8080?#lane1-ss-exit193.29.139.171-329ms
 ss://YWVzLTI1Ni1nY206a0tFZDByQnJkNTZGdXJqeg@2.58.81.221:80?#lane1-ss-exit2.58.81.221-435ms
 vless://d6752c6b-80ae-4a91-b446-bb330f7f8177@94.156.79.93:443?type=raw&security=reality&flow=xtls-rprx-vision&fp=firefox&pbk=_0fpFqEEuCso3B8K7AAcMjctwG_xfCxO2PdKzGd_-hg&sid=88a13cf2655c&sni=www.foxsports.com#lane2-vless-exit94.156.79.93-427ms
