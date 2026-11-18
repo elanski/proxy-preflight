@@ -19,6 +19,7 @@ import os
 import re
 import shutil
 import socket
+import statistics
 import subprocess
 import tempfile
 import time
@@ -37,6 +38,8 @@ class CheckResult:
     latency_ms: float = 0.0
     error: str = ""
     engine: str = ""
+    rounds_ok: int = 0          # сколько раундов из NO_ROUNDS прошли
+    success_rate: float = 0.0   # доля успешных (раунды × цели)
 
 
 def resolve_binaries(singbox: str = "", xray: str = "") -> tuple[str, str]:
@@ -203,6 +206,9 @@ def check_node(
     startup_wait: float = 0.7,
     timeout: float = 6.0,
     local_ip: str = "",
+    rounds: int = 2,
+    round_gap: float = 0.5,
+    latency_samples: int = 1,
 ) -> CheckResult:
     """Поднимает ядро, проверяет HTTPS-трафик и замеряет exit_ip."""
     use_xray = _needs_xray(outbound)
@@ -237,44 +243,79 @@ def check_node(
             else:
                 return CheckResult(False, error="core did not open socks port", engine=engine)
 
-            # 1) exit_ip — обязателен. Echo-сервисы часто блокируются апстримом,
-            # поэтому пробуем несколько и не требуем HTTP 2xx (тело важнее кода).
-            t0 = time.monotonic()
-            exit_ip = ""
-            for url in ip_urls:
-                try:
-                    er = _curl(socks_port, url, timeout, fail=False, capture=True)
-                    found = _first_ip(er.stdout.strip() + " " + (er.stderr or ""))
-                    if found:
-                        exit_ip = found
-                        break
-                except subprocess.TimeoutExpired:
+            # Проверяем узел в НЕСКОЛЬКО раундов через один поднятый инстанс
+            # (практика Au1rxx/free-vpn-subscriptions, kutovoys/xray-checker):
+            #   * exit_ip измеряем каждый раунд — он обязан быть стабильным;
+            #   * latency — медиана по успешным замерам, а не первая цифра;
+            #   * узел жив, если прошли оба раунда и success_rate >= порога.
+            round_results: list[dict] = []
+            all_exits: set[str] = set()
+            for _round in range(rounds):
+                # exit_ip: echo-сервисы часто блокируются, пробуем несколько.
+                exit_ip = ""
+                for url in ip_urls:
+                    try:
+                        er = _curl(socks_port, url, timeout, fail=False, capture=True)
+                        found = _first_ip(er.stdout.strip() + " " + (er.stderr or ""))
+                        if found:
+                            exit_ip = found
+                            break
+                    except subprocess.TimeoutExpired:
+                        continue
+                if not exit_ip:
+                    round_results.append({"ok": False, "ip": "", "lat": 0.0})
                     continue
-            if not exit_ip:
-                return CheckResult(False, error="exit ip not measured", engine=engine)
-            if local_ip and exit_ip == local_ip:
-                return CheckResult(False, exit_ip=exit_ip,
-                                   error="exit equals local ip (proxy not applied)", engine=engine)
+                if local_ip and exit_ip == local_ip:
+                    round_results.append({"ok": False, "ip": exit_ip, "lat": 0.0})
+                    continue
+                all_exits.add(exit_ip)
 
-            # 2) Общая доступность: пробуем несколько целей (широкий контроль).
-            latency = 0.0
-            for url in probe_urls:
-                try:
-                    r = _curl(socks_port, url, timeout, capture=True)
-                except subprocess.TimeoutExpired:
-                    continue
-                if r.returncode != 0:
-                    continue
-                try:
-                    status = int(r.stdout.strip().rsplit("\n", 1)[-1].strip())
-                except ValueError:
-                    continue
-                if 200 <= status < 400:
-                    latency = (time.monotonic() - t0) * 1000.0 if t0 else 0.0
-                    break
-            if not latency:
-                return CheckResult(False, exit_ip=exit_ip, error="no probe target reachable", engine=engine)
-            return CheckResult(True, exit_ip=exit_ip, latency_ms=round(latency, 1), engine=engine)
+                # Проверка доступности + измерение latency (несколько замеров → медиана).
+                lats: list[float] = []
+                for _ in range(latency_samples):
+                    for url in probe_urls:
+                        try:
+                            t0 = time.monotonic()
+                            r = _curl(socks_port, url, timeout, capture=True)
+                        except subprocess.TimeoutExpired:
+                            continue
+                        if r.returncode != 0:
+                            continue
+                        try:
+                            status = int(r.stdout.strip().rsplit("\n", 1)[-1].strip())
+                        except ValueError:
+                            continue
+                        if 200 <= status < 400:
+                            lats.append((time.monotonic() - t0) * 1000.0)
+                            break
+                round_ok = bool(lats)
+                round_results.append({"ok": round_ok, "ip": exit_ip,
+                                      "lat": statistics.median(lats) if lats else 0.0})
+
+                if _round + 1 < rounds:
+                    time.sleep(round_gap)
+
+            passed = [r for r in round_results if r["ok"]]
+            attempts = rounds * max(1, len(probe_urls) * latency_samples)
+            successes = sum(1 for r in round_results if r["ok"]) * max(1, len(probe_urls))
+            success_rate = successes / attempts if attempts else 0.0
+            if not passed:
+                last_ip = next((r["ip"] for r in reversed(round_results) if r["ip"]), "")
+                return CheckResult(False, exit_ip=last_ip, error="all rounds failed",
+                                   engine=engine, rounds_ok=0, success_rate=0.0)
+            # Требовать прохождения ВСЕХ раундов (фильтр «мигающих» узлов).
+            if len(passed) < rounds:
+                return CheckResult(False, exit_ip=passed[-1]["ip"],
+                                   error=f"unstable: {len(passed)}/{rounds} rounds",
+                                   engine=engine, rounds_ok=len(passed), success_rate=success_rate)
+            # exit_ip обязан быть одинаковым во всех раундах (rotating — не годен).
+            if len(all_exits) > 1:
+                return CheckResult(False, exit_ip="/".join(sorted(all_exits)),
+                                   error=f"exit ip changed across rounds: {sorted(all_exits)}",
+                                   engine=engine, rounds_ok=rounds, success_rate=success_rate)
+            median_latency = statistics.median([r["lat"] for r in passed if r["lat"]])
+            return CheckResult(True, exit_ip=passed[0]["ip"], latency_ms=round(median_latency, 1),
+                               engine=engine, rounds_ok=rounds, success_rate=round(success_rate, 2))
         finally:
             if proc.poll() is None:
                 proc.terminate()

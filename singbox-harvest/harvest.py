@@ -7,7 +7,8 @@
   2. Скачивает каждый URL (GitHub raw, gist, plain, base64, clash yaml),
      декодирует, извлекает URI прокси (vless/vmess/trojan/ss/hy2), дедуплирует.
   3. Для каждого узла поднимает РЕАЛЬНОЕ sing-box ядро на отдельном SOCKS-порту
-     и проверяет: трафик идёт иexit_ip измерен. Без exit_ip узел мёртв.
+     и проверяет: трафик идёт и exit_ip измерен. Несколько раундов отсекают
+     «мигающие» узлы; задержка — медиана; дубли по exit_ip убираются.
   4. Гео exit_ip (ip-api.com) решает категорию RU / other. Имя/флаг — только
      подсказка приоритета, не доказательство.
   5. Пишет списки и отчёт.
@@ -35,6 +36,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import core  # noqa: E402
+import fastcheck  # noqa: E402
 import freshness  # noqa: E402
 import geoip  # noqa: E402
 import parsers  # noqa: E402
@@ -64,46 +66,69 @@ def fetch_url(url: str, timeout: float = 12.0) -> bytes:
 def collect(categories: dict[str, list[str]], timeout: float,
             max_sources: int = 0, per_category: int = 0,
             gate: "freshness.FreshnessGate | None" = None) -> list[parsers.ParsedNode]:
-    """Скачивает источники и возвращает дедуплированные узлы с категорией."""
-    nodes: list[parsers.ParsedNode] = []
-    seen: set[str] = set()
-    stats: dict[str, dict[str, int]] = {}
+    """Скачивает источники ПАРАЛЛЕЛЬНО и возвращает дедуплированные узлы.
+
+    Последовательная загрузка 200+ источников упиралась в таймаут CI
+    (один висящий URL = 12с × 200). Топ-проекты грузят источники пулом.
+    """
+    # 1) собрать задания (отсеяв застаревшие)
+    jobs: list[tuple[str, str]] = []
     stale: list[str] = []
     for category, urls in categories.items():
         if per_category:
             urls = list(urls)[:per_category]
         if max_sources:
             urls = list(urls)[:max_sources]
-        sources_ok = sources_bad = 0
         for url in urls:
-            # Автономный отсев застаревших источников (по дате коммита файла).
             if gate is not None:
                 skip, age, reason = gate.check(url)
                 if skip:
                     stale.append(f"{url[:60]} ({reason})")
                     continue
+            jobs.append((category, url))
+
+    # 2) параллельно скачать и распарсить
+    def fetch_one(job: tuple[str, str]) -> tuple[str, str, list[str]]:
+        category, url = job
+        try:
+            content = fetch_url(url, timeout)
+            text = parsers.decode_subscription(content)
+            return category, url, parsers.find_uris(text)
+        except Exception as e:
+            print(f"[warn] fetch {url[:70]}: {type(e).__name__}", file=sys.stderr)
+            return category, url, []
+
+    fetched: list[tuple[str, str, list[str]]] = []
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        for fut in as_completed([pool.submit(fetch_one, j) for j in jobs]):
             try:
-                content = fetch_url(url, timeout)
-                text = parsers.decode_subscription(content)
-                uris = parsers.find_uris(text)
-                sources_ok += 1
-            except Exception as e:
-                sources_bad += 1
-                print(f"[warn] fetch {url[:70]}: {type(e).__name__}", file=sys.stderr)
+                fetched.append(fut.result())
+            except Exception:
+                pass
+
+    # 3) дедуп в детерминированном порядке (RU-источники первыми)
+    nodes: list[parsers.ParsedNode] = []
+    seen: set[str] = set()
+    stats: dict[str, dict[str, int]] = {}
+    for category, url in jobs:
+        stats.setdefault(category, {"sources_ok": 0, "sources_bad": 0})
+    for category, url, uris in fetched:
+        if uris:
+            stats[category]["sources_ok"] += 1
+        else:
+            stats[category]["sources_bad"] += 1
+        for uri in uris:
+            base = uri.split("#", 1)[0]
+            if base in seen:
                 continue
-            for uri in uris:
-                base = uri.split("#", 1)[0]
-                if base in seen:
-                    continue
-                try:
-                    node = parsers.parse_uri(uri, category=category, source=url)
-                except Exception:
-                    continue
-                if node is None:
-                    continue
-                seen.add(base)
-                nodes.append(node)
-        stats[category] = {"sources_ok": sources_ok, "sources_bad": sources_bad}
+            try:
+                node = parsers.parse_uri(uri, category=category, source=url)
+            except Exception:
+                continue
+            if node is None:
+                continue
+            seen.add(base)
+            nodes.append(node)
     print(f"[harvest] sources: {stats}; parsed unique nodes: {len(nodes)}", file=sys.stderr)
     if stale:
         print(f"[harvest] stale sources skipped: {len(stale)}", file=sys.stderr)
@@ -132,6 +157,30 @@ def node_key(node: parsers.ParsedNode) -> str:
     return f"{o.get('type')}:{o.get('server')}:{o.get('server_port')}:{o.get('uuid') or o.get('password','')}"
 
 
+def verify_batch_fast(nodes: list[parsers.ParsedNode], binary: str, args) -> list[dict]:
+    """Быстрая проверка пачки через xray-knife (один процесс на все узлы)."""
+    results = fastcheck.check_batch(
+        [n.uri for n in nodes], binary=binary,
+        workers=args.workers, timeout_ms=int(args.timeout * 1000),
+        delay_ms=int(args.timeout * 1000), test_url=args.probe_urls[0],
+        prescan=args.prescan, retries=args.retries,
+    )
+    out: list[dict] = []
+    for n, r in zip(nodes, results):
+        # xray-knife уже выдал exit_ip и страну; перепроверять страну не нужно
+        out.append({
+            "uri": n.uri, "source": n.source, "source_category": n.category,
+            "name": n.name, "proto": n.outbound.get("type", ""),
+            "server": n.outbound.get("server", ""),
+            "port": n.outbound.get("server_port", 0),
+            "ok": r.ok, "exit_ip": r.exit_ip, "latency_ms": r.latency_ms,
+            "country": r.country, "country_code": (r.country or "").upper()[:2],
+            "rounds_ok": r.success, "success_rate": (r.success / r.total) if r.total else 0.0,
+            "error": r.error, "engine": "xray-knife",
+        })
+    return out
+
+
 def verify_one(node: parsers.ParsedNode, singbox: str, xray: str, base_port: int, idx: int,
                local: str, args: argparse.Namespace, port_lock) -> dict:
     """Проверяет один узел: поднимает ядро, меряет выход, rho."""
@@ -142,6 +191,7 @@ def verify_one(node: parsers.ParsedNode, singbox: str, xray: str, base_port: int
             node.outbound, singbox=singbox, xray=xray, socks_port=port,
             ip_urls=tuple(args.ip_urls), probe_urls=tuple(args.probe_urls),
             timeout=args.timeout, local_ip=local,
+            rounds=args.rounds, round_gap=args.round_gap, latency_samples=args.latency_samples,
         )
     except Exception as e:
         result = core.CheckResult(False, error=f"{type(e).__name__}: {e}", engine="unknown")
@@ -175,6 +225,18 @@ def verify_one(node: parsers.ParsedNode, singbox: str, xray: str, base_port: int
 def write_outputs(records: list[dict], out_dir: Path, top: int) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     live = [r for r in records if r["ok"]]
+    # Дедуп по exit_ip (практика sub2singbox): один выход — одна запись.
+    # Иначе один канал выдаётся несколько раз под разными конфигами.
+    seen_exit: set[str] = set()
+    deduped: list[dict] = []
+    for r in sorted(live, key=lambda x: x["latency_ms"]):
+        ip = r.get("exit_ip") or ""
+        if ip and ip in seen_exit:
+            continue
+        if ip:
+            seen_exit.add(ip)
+        deduped.append(r)
+    live = deduped
     ru = [r for r in live if geoip.is_ru(r.get("country_code", ""))]
     other = [r for r in live if not geoip.is_ru(r.get("country_code", ""))]
     # Пустой прогон НЕ перезаписывает рабочие списки: это «неизвестно», а не «всё мертво».
@@ -199,8 +261,9 @@ def write_outputs(records: list[dict], out_dir: Path, top: int) -> dict:
         "ru": len(ru),
         "other": len(other),
         "files": {"ru": ru_path, "other": other_path, "top": top_path, "all": all_path},
-        "nodes": [{k: r[k] for k in ("uri", "source", "source_category", "proto", "server", "exit_ip",
-                                     "country", "country_code", "latency_ms", "ok", "error")} for r in records],
+        "nodes": [{k: r.get(k) for k in ("uri", "source", "source_category", "proto", "server", "exit_ip",
+                                     "country", "country_code", "latency_ms", "ok", "rounds_ok",
+                                     "success_rate", "error")} for r in records],
     }
     (out_dir / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     return report
@@ -231,6 +294,14 @@ def parse_args(argv=None) -> argparse.Namespace:
                     help="УДАЛЯТЬ источники с устойчиво низкой долей живых узлов")
     ap.add_argument("--per-source", type=int, default=8,
                     help="максимум узлов от одного источника (round-robin, чтобы все источники проверялись)")
+    ap.add_argument("--rounds", type=int, default=2, help="число раундов проверки узла (фильтр мигающих)")
+    ap.add_argument("--round-gap", type=float, default=0.5, help="пауза между раундами, сек")
+    ap.add_argument("--latency-samples", type=int, default=1, help="замеров latency на раунд (медиана)")
+    ap.add_argument("--backend", choices=["fast", "core"], default="fast",
+                    help="fast = xray-knife (быстро, топ-проекты), core = своё ядро на узел")
+    ap.add_argument("--xrayknife", default="", help="путь к xray-knife (по умолчанию авто)")
+    ap.add_argument("--prescan", action="store_true", help="TCP-предфильтр xray-knife")
+    ap.add_argument("--retries", type=int, default=1, help="повторы xray-knife при ошибке")
     ap.add_argument("--stats-file", default=str(HERE / "out" / "source_stats.json"))
     return ap.parse_args(argv)
 
@@ -300,14 +371,24 @@ def main(argv=None) -> int:
     import threading
     port_lock = threading.Lock()
     records: list[dict] = []
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = [pool.submit(verify_one, n, singbox, xray, args.base_port, i, local, args, port_lock)
-                   for i, n in enumerate(nodes)]
-        for fut in as_completed(futures):
-            try:
-                records.append(fut.result())
-            except Exception as e:
-                print(f"[warn] verify: {type(e).__name__}: {e}", file=sys.stderr)
+    xk = fastcheck.resolve_xrayknife(args.xrayknife)
+    if args.backend == "fast" and xk:
+        print(f"[harvest] backend: xray-knife ({xk})", file=sys.stderr)
+        # разбиваем на батчи, чтобы один процесс не съедал весь список
+        for start in range(0, len(nodes), 400):
+            batch = nodes[start:start + 400]
+            records.extend(verify_batch_fast(batch, xk, args))
+    elif args.backend == "fast":
+        print("[harvest] xray-knife не найден — fallback на своё ядро", file=sys.stderr)
+    if args.backend == "core" or (args.backend == "fast" and not xk):
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            futures = [pool.submit(verify_one, n, singbox, xray, args.base_port, i, local, args, port_lock)
+                       for i, n in enumerate(nodes)]
+            for fut in as_completed(futures):
+                try:
+                    records.append(fut.result())
+                except Exception as e:
+                    print(f"[warn] verify: {type(e).__name__}: {e}", file=sys.stderr)
 
     # Накопить статистику и (при --prune-dead) удалить устойчиво мёртвые источники.
     stats = source_stats.update_from_records(stats, records)

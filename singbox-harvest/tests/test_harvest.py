@@ -139,3 +139,29 @@ def test_source_stats_accumulates_and_marks_bad():
 def test_source_is_set_on_parsed_node():
     n = parsers.parse_uri("ss://YWVzLTEyOC1nY206cHc@1.2.3.4:8388#x", source="http://src")
     assert n is not None and n.source == "http://src"
+
+
+def test_fastcheck_module_importable():
+    """xray-knife backend должен импортироваться и находить бинарник."""
+    import fastcheck
+    assert hasattr(fastcheck, "check_batch")
+    assert hasattr(fastcheck, "resolve_xrayknife")
+
+
+def test_dedup_by_exit_ip():
+    """Один выходной IP — одна запись в списке (практика sub2singbox)."""
+    import harvest
+    recs = [
+        {"uri": "a", "ok": True, "exit_ip": "1.1.1.1", "latency_ms": 100, "country_code": "US", "source": "s"},
+        {"uri": "b", "ok": True, "exit_ip": "1.1.1.1", "latency_ms": 80, "country_code": "US", "source": "s"},
+        {"uri": "c", "ok": True, "exit_ip": "2.2.2.2", "latency_ms": 200, "country_code": "RU", "source": "s"},
+        {"uri": "d", "ok": False, "exit_ip": "", "latency_ms": 0, "country_code": "", "source": "s"},
+    ]
+    import tempfile
+    from pathlib import Path
+    with tempfile.TemporaryDirectory() as td:
+        # подменим geoip, чтобы тест не зависел от сети
+        report = harvest.write_outputs(recs, Path(td), 10)
+        assert report["live"] == 2  # два уникальных выхода, не три
+        lines = (Path(td) / "subscriptions_live.txt").read_text().splitlines()
+        assert sorted(lines) == ["b", "c"]  # dup с меньшей latency (80ms) выживает

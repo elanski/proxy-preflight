@@ -24,7 +24,143 @@ categories:
   - https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
   - https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Russia.txt
   - https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/BLACK_VLESS_RUS_mobile.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/BLACK_VLESS_RUS_mobile.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/BLACK_VLESS_RUS_mobile.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_mobile_base64.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/BLACK_VLESS_RUS.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/v2rayN_PC/BLACK_VLESS_RUS_v2rayN.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/BLACK_VLESS_RUS_mobile_v2rayN.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/v2rayN_PC/BLACK_VLESS_RUS_mobile_v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_mobile_base64.txt
+  - https://etoneya.su/1
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS_mobile.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/BLACK_VLESS_RUS.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_base64.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/v2rayN_PC/BLACK_VLESS_RUS_mobile_v2rayN.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_mobile_base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS_mobile.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/v2rayN_PC/BLACK_VLESS_RUS_v2rayN.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/BLACK_VLESS_RUS_v2rayN.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/v2rayN_PC/BLACK_VLESS_RUS_mobile_v2rayN.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_mobile_base64.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/BLACK_VLESS_RUS_mobile_v2rayN.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_VLESS_RUS.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_base64.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_mobile_base64.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_SS%2BAll_RUS.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_SS%2BAll_RUS.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/BLACK_SS%2BAll_RUS.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/Base64/PROXIES_ONLY/BLACK_SS%2BAll_RUS_base64.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/BLACK_SS%2BAll_RUS_base64.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/BLACK_SS%2BAll_RUS.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/Base64/PROXIES_ONLY/BLACK_SS%2BAll_RUS_base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/v2rayN_PC/WHITE-CIDR-RU-all-v2rayN.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/v2rayN_PC/WHITE-SNI-RU-all-v2rayN.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-all-base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-all.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/v2rayN_PC/Vless-Reality-White-Lists-Rus-Mobile-v2rayN.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Vless-Reality-White-Lists-Rus-Mobile.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_SS+All_RUS.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/Base64/PROXIES_ONLY/BLACK_VLESS_RUS_base64.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/Base64/PROXIES_ONLY/BLACK_SS%2BAll_RUS_base64.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/BLACK_VLESS_RUS_v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/BLACK_SS%2BAll_RUS.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/BLACK_VLESS_RUS.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/BLACK_SS%2BAll_RUS_v2rayN.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/v2rayN_PC/BLACK_SS%2BAll_RUS_v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/BLACK_SS%2BAll_RUS_base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/Base64/PROXIES_ONLY/Vless-Reality-White-Lists-Rus-Mobile-base64.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/v2rayN_PC/BLACK_VLESS_RUS_v2rayN.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-all-base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-checked.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/WHITE-CIDR-RU-checked.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/WHITE-CIDR-RU-checked.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/WHITE-CIDR-RU-checked.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/WHITE-CIDR-RU-checked.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-checked-base64.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-checked-base64.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-checked-base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-checked-base64.txt
+  - https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/v2rayN_PC/BLACK_SS%2BAll_RUS_v2rayN.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/v2rayN_PC/BLACK_SS%2BAll_RUS_v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/BLACK_SS%2BAll_RUS_v2rayN.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/WHITE-CIDR-RU-all-v2rayN.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/WHITE-CIDR-RU-all.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/WHITE-CIDR-RU-all.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/Base64/PROXIES_ONLY/Vless-Reality-White-Lists-Rus-Mobile-base64.txt
+  - https://gitverse.ru/api/repos/ru-wbl/wl/raw/branch/master/KvRuVPN%2FKvRuVPN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/WHITE-CIDR-RU-all-v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/WHITE-CIDR-RU-all.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Vless-Reality-White-Lists-Rus-Mobile.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/WHITE-CIDR-RU-all.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-all-base64.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-all-base64.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/v2rayN_PC/WHITE-CIDR-RU-all-v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Vless-Reality-White-Lists-Rus-Mobile.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Vless-Reality-White-Lists-Rus-Mobile.txt
+  - https://bitbucket.org/igareck/vpn-configs-for-russia/raw/main/Export/v2rayN_PC/Vless-Reality-White-Lists-Rus-Mobile-v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/Vless-Reality-White-Lists-Rus-Mobile-base64.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/Base64/PROXIES_ONLY/Vless-Reality-White-Lists-Rus-Mobile-base64.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/v2rayN_PC/Vless-Reality-White-Lists-Rus-Mobile-v2rayN.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/v2rayN_PC/WHITE-CIDR-RU-all-v2rayN.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/Base64/PROXIES_ONLY/WHITE-CIDR-RU-all-base64.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Vless-Reality-White-Lists-Rus-Mobile.txt
+  - https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/Export/Base64/PROXIES_ONLY/Vless-Reality-White-Lists-Rus-Mobile-base64.txt
+  - https://gitea.com/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/Vless-Reality-White-Lists-Rus-Mobile-v2rayN.txt
+  - https://codeberg.org/igareck/vpn-configs-for-russia/raw/branch/main/Export/v2rayN_PC/Vless-Reality-White-Lists-Rus-Mobile-v2rayN.txt
   other:
+  - https://tuftytech.github.io/ShellShift/sub_all.txt
+  - https://trojanvmess.pages.dev/cmcm?b64
+  - https://raw.githack.com/indelingDanil/MyAppVPN-subs/output/vless.txt
+  - https://alireza786786.github.io/Free-V2ray-Configs/servers/vless_servers.txt
+  - https://robin.victoriacross.ir
+  - https://vless.svinakraft.workers.dev/vless.txt
+  - https://free-sub.indevs.in/star
+  - https://sub.azadnetch.workers.dev/AzadNetCH/Clash/main/AzadNet.txt
+  - https://pusheen-feed-gateway.mahankenway.workers.dev/outage.txt
+  - https://alireza786786.github.io/Free-V2ray-Configs/servers/trojan_servers.txt
+  - https://shadowmere.xyz/api/b64sub
+  - https://limilco.github.io/v2r/sub/1.txt
+  - https://alireza786786.github.io/Free-V2ray-Configs/servers/lite.txt
+  - https://limilco.github.io/v2r/sub/5.txt
+  - http://www.xrayvip.com/free.txt
+  - https://www.xrayvip.com/free.txt
+  - https://tt.vg/freev2
+  - https://vless.svinakraft.workers.dev/ss.txt
+  - https://proxypool1999.banyunxiaoxi.icu/clash/proxies
+  - https://vless.svinakraft.workers.dev/Top500.txt
+  - https://vless.svinakraft.workers.dev/fastest.txt
+  - https://leidahub.top/v2ray.txt
+  - https://vless.svinakraft.workers.dev/trojan.txt
+  - https://dfantomasd.github.io/MyVPN-subscription/public/happ.txt
+  - https://dfantomasd.github.io/MyVPN-subscription/public/karing.txt
+  - https://shadowmere.xyz/api/b64sub/
+  - https://pusheen-feed-gateway.mahankenway.workers.dev/resilient.txt
+  - https://pusheen-feed-gateway.mahankenway.workers.dev/balanced.txt
+  - https://vpnkeys.me/api/v1/keys
+  - https://alireza786786.github.io/Free-V2ray-Configs/all_servers.txt
+  - https://rahi-eq3.pages.dev/api/configs?limit=all
+  - https://gcore.jsdelivr.net/gh/zueston/proxy-hub@main/out/base64.txt
+  - https://clashxw.github.io/uploads/2026/11/2-20261115.txt
+  - https://sub.shadowsharing.com/sub
+  - http://weoknow.com/data/dayupdate/1/z1.txt
+  - https://clashxw.github.io/uploads/2026/11/0-20261115.txt
+  - https://raw.githack.com/Maskkost93/kizyak-vpn-4.0/refs/heads/main/kizyakbeta6.txt
+  - https://limilco.github.io/v2r/sub/4.txt
+  - https://limilco.github.io/v2r/sub/3.txt
+  - https://pusheen-feed-gateway.mahankenway.workers.dev/all.txt
+  - https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/84e0487b6f2c325ddf33f6127ea1c708/raw/
+  - https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/81fc656cd0a8298a5aad99c7cfadcd97/raw/
+  - https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/548278d35b76d1ca7bd09667afc1033a/raw/BatyaVPN_Telegram_RE_s_B.json
+  - https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/86fa5f2ad8ff17c182f4009c87c0911b/raw/HiroVPN_Telegram_RE_s_B.txt
+  - https://nowmeow.pw/8ybBd3fdCAQ6Ew5H0d66Y1hMbh63GpKUtEXQClIu/whitelist
+  - https://s3c3.001.gpucloud.ru/wlr/merged.txt
+  - http://livpn.atwebpages.com/sub.php?token=c829c20769d2112b
+  - https://key.vpnstarlink.ru/MB63UT
   - https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/subs/all.txt
   - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/all-base64.txt
   - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/all.txt
@@ -137,7 +273,6 @@ categories:
   - https://raw.githubusercontent.com/Darmioniks/proxy-and-vless-collector/HEAD/vless_filtered.txt
   - https://raw.githubusercontent.com/Alirewa/V2ray-Configs/HEAD/sub1.txt
   - https://raw.githubusercontent.com/Argh94/Proxy-List/HEAD/All_Config.txt
-  - https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/HEAD/data/githubmirror/clean/vless.txt
   - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/ConfigYab_AUTO.txt
   - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/ConfigsHUB.txt
   - https://raw.githubusercontent.com/qopq1366/VlessConfig/HEAD/sub.txt
