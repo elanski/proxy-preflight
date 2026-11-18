@@ -25,6 +25,66 @@ categories:
   - https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Russia.txt
   - https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
   other:
+  - https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/subs/all.txt
+  - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/all-base64.txt
+  - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/all.txt
+  - https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/all.txt
+  - https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/cdn-ws-grpc.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/all.txt
+  - https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/iran-optimized.txt
+  - https://raw.githubusercontent.com/MaxFreudDrethe/VCC/HEAD/configs/all.txt
+  - https://raw.githubusercontent.com/Nexuspt753/GitHub-Sub-Scanner/HEAD/subs/all.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/pages/all-001.txt
+  - https://raw.githubusercontent.com/MaxFreudDrethe/VCC/HEAD/configs/tls.txt
+  - https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/confighub.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/pages/all-002.txt
+  - https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/reality.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/none.txt
+  - https://raw.githubusercontent.com/ali-moghadam/v2ray-sub/HEAD/all_configs.txt
+  - https://raw.githubusercontent.com/ali-moghadam/v2ray-sub/HEAD/failed_configs.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/pages/all-003.txt
+  - https://raw.githubusercontent.com/MaxFreudDrethe/VCC/HEAD/configs/reality.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/reality.txt
+  - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/best-base64.txt
+  - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/best.txt
+  - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/hysteria2-base64.txt
+  - https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/hysteria2.txt
+  - https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/HEAD/data/githubmirror/clean/ss.txt
+  - https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/pattn-special.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/sub/ir-echless.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/sub/ir-actual.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/TheFreeConfigs.txt
+  - https://raw.githubusercontent.com/MaxFreudDrethe/VCC/HEAD/configs/shadowsocks.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/FreakConfig.txt
+  - https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/HEAD/data/githubmirror/clean/trojan.txt
+  - https://raw.githubusercontent.com/luckylukam/tel-fetch1/HEAD/output/configs_untested.txt
+  - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/HEAD/output/all/configs.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/grpc.txt
+  - https://raw.githubusercontent.com/MaxFreudDrethe/VCC/HEAD/configs/grpc.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/meliproxyy.txt
+  - https://raw.githubusercontent.com/miladtahanian/Config-Collector/HEAD/mixed_iran.txt
+  - https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/subs/balanced-500.txt
+  - https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/subs/categories/cdn-ws-grpc-tested-iran.txt
+  - https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/data/discovered_ocr_configs.txt
+  - https://raw.githubusercontent.com/miraali1372/mirsub/HEAD/subscription_b64.txt
+  - https://raw.githubusercontent.com/yuesuizhengrong/proxy-subscriptions/HEAD/subscription.txt
+  - https://raw.githubusercontent.com/iboxz/free-v2ray-collector/HEAD/main/mix.txt
+  - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/HEAD/output/protocols/vless.txt
+  - https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/HEAD/data/githubmirror/clean/hysteria2.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/ss.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/vpnfreev2rayconfig.txt
+  - https://raw.githubusercontent.com/itsyebekhe/PSG/HEAD/config.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/NamiraConfigs.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/v2ray_configs_pool.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/httpupgrade.txt
+  - https://raw.githubusercontent.com/iboxz/free-v2ray-collector/HEAD/main/vless.txt
+  - https://raw.githubusercontent.com/happ-tmn/happ-tmn-subscriptions/HEAD/sub/hysteria2.txt
+  - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/HEAD/output/fast/configs.txt
+  - https://raw.githubusercontent.com/BarqDev1/vless-aggregator/HEAD/all_universal.txt
+  - https://raw.githubusercontent.com/HamoonSoleimani/Pr0xySh4rk/HEAD/Pr0xySh4rk_SubBase64.txt
+  - https://raw.githubusercontent.com/ali-moghadam/v2ray-sub/HEAD/subscription.txt
+  - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/ConfigsHUB2.txt
+  - https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/subs/balanced-500-tested.txt
   - https://raw.githubusercontent.com/myominn062-svg/mk-studio-vpn-service/main/all_configs.txt
   - https://raw.githubusercontent.com/morpheusadam/v2ray-config/main/subs/bundles/all.txt
   - https://raw.githubusercontent.com/MohammadBahemmat/V2ray-Collector/main/all_servers.txt
