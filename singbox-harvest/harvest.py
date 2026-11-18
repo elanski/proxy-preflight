@@ -26,6 +26,7 @@ import os
 import socket
 import sys
 import time
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -37,6 +38,7 @@ import core  # noqa: E402
 import freshness  # noqa: E402
 import geoip  # noqa: E402
 import parsers  # noqa: E402
+import source_stats  # noqa: E402
 
 UA = "Mozilla/5.0 (compatible; singbox-harvest/1.0)"
 
@@ -94,7 +96,7 @@ def collect(categories: dict[str, list[str]], timeout: float,
                 if base in seen:
                     continue
                 try:
-                    node = parsers.parse_uri(uri, category=category)
+                    node = parsers.parse_uri(uri, category=category, source=url)
                 except Exception:
                     continue
                 if node is None:
@@ -149,6 +151,7 @@ def verify_one(node: parsers.ParsedNode, singbox: str, xray: str, base_port: int
 
     record = {
         "uri": node.uri,
+        "source": node.source,
         "source_category": node.category,
         "name": node.name,
         "proto": node.outbound.get("type", ""),
@@ -196,7 +199,7 @@ def write_outputs(records: list[dict], out_dir: Path, top: int) -> dict:
         "ru": len(ru),
         "other": len(other),
         "files": {"ru": ru_path, "other": other_path, "top": top_path, "all": all_path},
-        "nodes": [{k: r[k] for k in ("uri", "source_category", "proto", "server", "exit_ip",
+        "nodes": [{k: r[k] for k in ("uri", "source", "source_category", "proto", "server", "exit_ip",
                                      "country", "country_code", "latency_ms", "ok", "error")} for r in records],
     }
     (out_dir / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -224,6 +227,11 @@ def parse_args(argv=None) -> argparse.Namespace:
     ap.add_argument("--freshness-cache", default=str(HERE / "out" / "freshness.json"))
     ap.add_argument("--prune", action="store_true",
                     help="УДАЛЯТЬ устаревшие/404 источники из sources.yaml навсегда")
+    ap.add_argument("--prune-dead", action="store_true",
+                    help="УДАЛЯТЬ источники с устойчиво низкой долей живых узлов")
+    ap.add_argument("--per-source", type=int, default=8,
+                    help="максимум узлов от одного источника (round-robin, чтобы все источники проверялись)")
+    ap.add_argument("--stats-file", default=str(HERE / "out" / "source_stats.json"))
     return ap.parse_args(argv)
 
 
@@ -239,6 +247,11 @@ def main(argv=None) -> int:
     if args.prune:
         freshness.prune_sources(args.sources, max_age_days=args.max_source_age)
 
+    # Накопленная статистика по источникам: какой источник даёт живые узлы.
+    stats = source_stats.load(args.stats_file)
+    if args.prune_dead:
+        source_stats.prune_dead_sources(args.sources, stats)
+
     categories, hints = load_sources(Path(args.sources))
     gate = freshness.FreshnessGate(
         max_age_days=args.max_source_age,
@@ -247,16 +260,39 @@ def main(argv=None) -> int:
     )
     nodes = collect(categories, timeout=12.0, per_category=args.per_category, gate=gate)
 
-    # Приоритет: RU-источники и узлы с RU-подсказкой в имени идут первыми,
-    # чтобы лимит --max-nodes не съедали глобальные узлы.
-    def priority(n: parsers.ParsedNode) -> int:
+    # Приоритет: RU-источники, затем источники с высокой долей живых.
+    # Мёртвые источники не должны съедать лимит --max-nodes.
+    def alive_rate(src: str) -> float:
+        e = stats.get(src) or stats.get(src.replace("/HEAD/", "/main/")) or {}
+        checked = e.get("checked", 0)
+        return (e.get("alive", 0) / checked) if checked else -1.0
+
+    def priority(n: parsers.ParsedNode) -> tuple[int, float, int]:
         hint = any(h.lower() in n.name.lower() for h in hints)
-        return (0 if n.category == "ru" else 1) + (0 if hint else 1)
+        return ((0 if n.category == "ru" else 1), -alive_rate(n.source), 0 if hint else 1)
 
     nodes.sort(key=priority)
+    # Не давать одному источнику съесть весь лимит: берём по --per-source
+    # от каждого, проходим несколько кругов, пока не наберём max_nodes.
+    if args.per_source and args.max_nodes:
+        by_src: dict[str, list[parsers.ParsedNode]] = defaultdict(list)
+        for n in nodes:
+            by_src[n.source].append(n)
+        picked: list[parsers.ParsedNode] = []
+        for offset in range(0, args.per_source):
+            for src in sorted(by_src):
+                group = by_src[src]
+                if offset < len(group):
+                    picked.append(group[offset])
+                    if args.max_nodes and len(picked) >= args.max_nodes:
+                        break
+            if args.max_nodes and len(picked) >= args.max_nodes:
+                break
+        nodes = picked
     if args.max_nodes:
         nodes = nodes[:args.max_nodes]
-    print(f"[harvest] checking {len(nodes)} nodes with {args.workers} workers", file=sys.stderr)
+    print(f"[harvest] checking {len(nodes)} nodes from "
+          f"{len(set(n.source for n in nodes))} sources with {args.workers} workers", file=sys.stderr)
 
     local = local_ip()
     print(f"[harvest] local ip: {local or 'unknown'}", file=sys.stderr)
@@ -272,6 +308,13 @@ def main(argv=None) -> int:
                 records.append(fut.result())
             except Exception as e:
                 print(f"[warn] verify: {type(e).__name__}: {e}", file=sys.stderr)
+
+    # Накопить статистику и (при --prune-dead) удалить устойчиво мёртвые источники.
+    stats = source_stats.update_from_records(stats, records)
+    Path(args.stats_file).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.stats_file).write_text(json.dumps(stats, indent=2, ensure_ascii=False), encoding="utf-8")
+    if args.prune_dead:
+        source_stats.prune_dead_sources(args.sources, stats)
 
     report = write_outputs(records, Path(args.out_dir), args.top)
     summary = {"generated_utc": report.get("generated_utc", ""),

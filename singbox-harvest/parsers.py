@@ -25,6 +25,7 @@ class ParsedNode:
     outbound: dict[str, Any]
     name: str = ""
     category: str = "other"
+    source: str = ""  # URL подписки, откуда взят узел (для статистики живых/мёртвых)
     tags: list[str] = field(default_factory=list)
 
 
@@ -153,7 +154,7 @@ def _finalize(out: dict[str, Any], q: dict[str, str], name: str) -> dict[str, An
     return out
 
 
-def parse_uri(uri: str, category: str = "other") -> ParsedNode | None:
+def parse_uri(uri: str, category: str = "other", source: str = "") -> ParsedNode | None:
     """Разбирает одиночный URI в ParsedNode или None, если узел не годен."""
     uri = uri.strip()
     try:
@@ -283,4 +284,4 @@ def parse_uri(uri: str, category: str = "other") -> ParsedNode | None:
 
     if out is None:
         return None
-    return ParsedNode(uri=uri, outbound=out, name=name, category=category)
+    return ParsedNode(uri=uri, outbound=out, name=name, category=category, source=source)

@@ -12,6 +12,7 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 import core  # noqa: E402
 import parsers  # noqa: E402
+import source_stats  # noqa: E402
 
 UUID = "b831381d-6324-4d53-ad4f-8cda48b30811"
 
@@ -118,3 +119,23 @@ def test_xray_config_valid_for_reality():
 
 def test_vless_without_username_rejected():
     assert parsers.parse_uri("vless://@1.2.3.4:443?security=tls#x") is None
+
+
+def test_source_stats_accumulates_and_marks_bad():
+    recs = [{"source": "http://good", "ok": True} for _ in range(5)]
+    recs += [{"source": "http://bad", "ok": False} for _ in range(10)]
+    stats = source_stats.update_from_records({}, recs)
+    assert stats["http://good"]["alive"] == 5
+    assert stats["http://bad"]["alive"] == 0
+    # один провальный прогон: fail_runs=1 (порог удаления 2)
+    assert stats["http://bad"]["fail_runs"] == 1
+    assert source_stats.bad_sources(stats) == []
+    # второй такой же прогон: fail_runs=2 → кандидат на удаление
+    stats = source_stats.update_from_records(stats, [{"source": "http://bad", "ok": False} for _ in range(10)])
+    assert stats["http://bad"]["fail_runs"] == 2
+    assert "http://bad" in source_stats.bad_sources(stats)
+
+
+def test_source_is_set_on_parsed_node():
+    n = parsers.parse_uri("ss://YWVzLTEyOC1nY206cHc@1.2.3.4:8388#x", source="http://src")
+    assert n is not None and n.source == "http://src"
