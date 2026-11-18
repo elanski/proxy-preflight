@@ -18,8 +18,6 @@ import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
-from core import CheckResult
-
 XK_BIN = "xray-knife"
 DEFAULT_TEST_URL = "https://www.gstatic.com/generate_204"
 
@@ -99,5 +97,13 @@ def check_batch(uri_lines: list[str], *, binary: str,
                     error="" if status == "passed" else (row.get("reason") or status),
                     success=success, total=total,
                 )
+    missing = sum(1 for u in uri_lines if u.split("#", 1)[0] not in rows)
+    if uri_lines and missing > len(uri_lines) // 2:
+        # xray-knife не справился с батчем (таймаут/краш). Пустой вердикт —
+        # это «неизвестно», а не «все мертвы»: не даём обнулить списки.
+        raise RuntimeError(
+            f"xray-knife вернул отчёт только для {len(rows)}/{len(uri_lines)} "
+            f"узлов — батч недостоверен"
+        )
     return [rows.get(u.split("#", 1)[0], FastResult(False, error="нет в отчёте"))
             for u in uri_lines]

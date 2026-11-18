@@ -18,9 +18,9 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-MIN_CHECKED = 3
-MIN_ALIVE_RATE = 0.05
-FAIL_RUNS = 2
+MIN_CHECKED = 10       # минимум уникальных проверенных узлов, прежде чем судить
+MIN_ALIVE_RATE = 0.03  # меньше 3% живых → провальный прогон
+FAIL_RUNS = 3          # подряд 3 провальных прогона → удалить (не 2)
 
 
 def load(path: str) -> dict:
@@ -83,7 +83,9 @@ def prune_dead_sources(sources_path: str, stats: dict,
         checked = e.get("checked", 0)
         alive = e.get("alive", 0)
         rate = alive / checked if checked else 0.0
-        if e.get("fail_runs", 0) >= fail_runs or (checked >= min_checked * 3 and rate < min_rate / 2):
+        # только устойчиво мёртвые:fail_runs подряд. Отдельного «накопительного»
+        # правила больше нет — оно удаляло живые источники по шумной выборке.
+        if e.get("fail_runs", 0) >= fail_runs:
             to_remove.add(src)
 
     removed = []

@@ -127,12 +127,13 @@ def test_source_stats_accumulates_and_marks_bad():
     stats = source_stats.update_from_records({}, recs)
     assert stats["http://good"]["alive"] == 5
     assert stats["http://bad"]["alive"] == 0
-    # один провальный прогон: fail_runs=1 (порог удаления 2)
+    # один провальный прогон: fail_runs=1 (порог удаления 3)
     assert stats["http://bad"]["fail_runs"] == 1
     assert source_stats.bad_sources(stats) == []
-    # второй такой же прогон: fail_runs=2 → кандидат на удаление
+    # второй и третий провальные прогоны → кандидат на удаление
     stats = source_stats.update_from_records(stats, [{"source": "http://bad", "ok": False} for _ in range(10)])
-    assert stats["http://bad"]["fail_runs"] == 2
+    stats = source_stats.update_from_records(stats, [{"source": "http://bad", "ok": False} for _ in range(10)])
+    assert stats["http://bad"]["fail_runs"] == 3
     assert "http://bad" in source_stats.bad_sources(stats)
 
 
@@ -146,6 +147,43 @@ def test_fastcheck_module_importable():
     import fastcheck
     assert hasattr(fastcheck, "check_batch")
     assert hasattr(fastcheck, "resolve_xrayknife")
+
+
+def test_xrayknife_null_country_not_nu():
+    """Строка 'null' от xray-knife не должна превращаться в код Ниуэ."""
+    import geoip
+    assert geoip.code_from_xrayknife("null") == ""
+    assert geoip.code_from_xrayknife("IT") == "IT"
+    assert geoip.code_from_xrayknife("RU") == "RU"
+    assert geoip.code_from_xrayknife("") == ""
+    assert not geoip.is_ru("NU")
+
+
+def test_repo_cidrlist_used_for_ru():
+    """CIDR-лист из этого же репозитория — запасной RU-сигнал при пустом коде."""
+    import geoip
+    assert len(geoip._load_ru_cidrs()) > 1000
+    assert geoip.is_ru_ip("", "RU")
+    assert not geoip.is_ru_ip("", "US")
+    # код есть и не RU — CIDR не опрашиваем
+    assert not geoip.is_ru_ip("8.8.8.8", "US")
+
+
+def test_unique_records_for_stats_keeps_alive_ratio():
+    """Статистика считается по уникальным выходам, но живые/мёртвые сохраняются."""
+    import harvest
+    recs = [
+        {"uri": "a", "source": "s", "ok": True, "exit_ip": "1.1.1.1"},
+        {"uri": "b", "source": "s", "ok": True, "exit_ip": "1.1.1.1"},  # дубль
+        {"uri": "c", "source": "s", "ok": False, "exit_ip": "2.2.2.2"},
+        {"uri": "d", "source": "s", "ok": False, "exit_ip": ""},
+        {"uri": "d", "source": "s", "ok": False, "exit_ip": ""},  # дубль d
+    ]
+    uniq = harvest.unique_records_for_stats(recs)
+    assert len(uniq) == 3
+    stats = __import__("source_stats").update_from_records({}, uniq)
+    assert stats["s"]["checked"] == 3
+    assert stats["s"]["alive"] == 1
 
 
 def test_dedup_by_exit_ip():

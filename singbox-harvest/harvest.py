@@ -174,8 +174,10 @@ def verify_batch_fast(nodes: list[parsers.ParsedNode], binary: str, args) -> lis
             "server": n.outbound.get("server", ""),
             "port": n.outbound.get("server_port", 0),
             "ok": r.ok, "exit_ip": r.exit_ip, "latency_ms": r.latency_ms,
-            "country": r.country, "country_code": (r.country or "").upper()[:2],
-            "rounds_ok": r.success, "success_rate": (r.success / r.total) if r.total else 0.0,
+            "country": r.country if r.country.lower() not in ("null", "none", "") else "",
+            "country_code": geoip.code_from_xrayknife(r.country),
+            "rounds_ok": r.success if r.total > 1 else (1 if r.ok else 0),
+            "success_rate": (r.success / r.total) if r.total else (1.0 if r.ok else 0.0),
             "error": r.error, "engine": "xray-knife",
         })
     return out
@@ -222,23 +224,41 @@ def verify_one(node: parsers.ParsedNode, singbox: str, xray: str, base_port: int
     return record
 
 
-def write_outputs(records: list[dict], out_dir: Path, top: int) -> dict:
-    out_dir.mkdir(parents=True, exist_ok=True)
-    live = [r for r in records if r["ok"]]
-    # Дедуп по exit_ip (практика sub2singbox): один выход — одна запись.
-    # Иначе один канал выдаётся несколько раз под разными конфигами.
+def unique_records_for_stats(records: list[dict]) -> list[dict]:
+    """Дедуп по exit_ip везде (живые и мёртвые), чтобы один канал
+    с 8 конфигами не голосовал 8 раз за источник."""
+    seen: set[str] = set()
+    out: list[dict] = []
+    for r in records:
+        # живые: по exit_ip; мёртвые (exit неизмерен): по URI без фрагмента
+        key = r.get("exit_ip") or "__uri__:" + (r.get("uri") or "").split("#", 1)[0]
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(r)
+    return out
+
+
+def unique_live_records(records: list[dict]) -> list[dict]:
+    """Живые узлы, дедуплированные по exit_ip (быстрый сначала)."""
     seen_exit: set[str] = set()
     deduped: list[dict] = []
-    for r in sorted(live, key=lambda x: x["latency_ms"]):
+    for r in sorted([x for x in records if x.get("ok")], key=lambda x: x["latency_ms"]):
         ip = r.get("exit_ip") or ""
         if ip and ip in seen_exit:
             continue
         if ip:
             seen_exit.add(ip)
         deduped.append(r)
-    live = deduped
-    ru = [r for r in live if geoip.is_ru(r.get("country_code", ""))]
-    other = [r for r in live if not geoip.is_ru(r.get("country_code", ""))]
+    return deduped
+
+
+def write_outputs(records: list[dict], out_dir: Path, top: int,
+                  meta: dict | None = None) -> dict:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    live = unique_live_records(records)
+    ru = [r for r in live if geoip.is_ru_ip(r.get("exit_ip", ""), r.get("country_code", ""))]
+    other = [r for r in live if not geoip.is_ru_ip(r.get("exit_ip", ""), r.get("country_code", ""))]
     # Пустой прогон НЕ перезаписывает рабочие списки: это «неизвестно», а не «всё мертво».
     if not live:
         print("[harvest] WARNING: нет живых узлов — списки НЕ перезаписаны", file=sys.stderr)
@@ -260,6 +280,8 @@ def write_outputs(records: list[dict], out_dir: Path, top: int) -> dict:
         "live": len(live),
         "ru": len(ru),
         "other": len(other),
+        "geo_unknown": sum(1 for r in live if not r.get("country_code")),
+        **(meta or {}),
         "files": {"ru": ru_path, "other": other_path, "top": top_path, "all": all_path},
         "nodes": [{k: r.get(k) for k in ("uri", "source", "source_category", "proto", "server", "exit_ip",
                                      "country", "country_code", "latency_ms", "ok", "rounds_ok",
@@ -275,6 +297,7 @@ def parse_args(argv=None) -> argparse.Namespace:
     ap.add_argument("--out-dir", default=str(HERE / "out"))
     ap.add_argument("--max-nodes", type=int, default=80, help="максимум узлов к проверке (0 = все)")
     ap.add_argument("--per-category", type=int, default=0, help="лимит источников на категорию (0 = все)")
+    ap.add_argument("--max-sources", type=int, default=0, help="лимит источников всего (0 = все), для быстрой отладки")
     ap.add_argument("--workers", type=int, default=6, help="параллельных инстансов sing-box")
     ap.add_argument("--base-port", type=int, default=24100, help="начало диапазона SOCKS-портов пробника")
     ap.add_argument("--timeout", type=float, default=6.0)
@@ -307,11 +330,16 @@ def parse_args(argv=None) -> argparse.Namespace:
 
 
 def main(argv=None) -> int:
+    t_start = time.monotonic()
     args = parse_args(argv)
     args._reserved = set()
     singbox, xray = core.resolve_binaries(args.singbox, args.xray)
-    if not singbox and not xray:
-        print("[harvest] ни sing-box, ни xray не найдены", file=sys.stderr)
+    xk = fastcheck.resolve_xrayknife(args.xrayknife)
+    if args.backend == "fast" and xk:
+        print(f"[harvest] backend: xray-knife ({xk})", file=sys.stderr)
+    elif not singbox and not xray:
+        # fast без xray-knife всё равно требует своё ядро как fallback
+        print("[harvest] ни xray-knife, ни sing-box/xray не найдены", file=sys.stderr)
         return 2
     print(f"[harvest] sing-box: {singbox or '-'} | xray: {xray or '-'}", file=sys.stderr)
 
@@ -329,7 +357,8 @@ def main(argv=None) -> int:
         cache_path=args.freshness_cache,
         enabled=args.max_source_age > 0,
     )
-    nodes = collect(categories, timeout=12.0, per_category=args.per_category, gate=gate)
+    nodes = collect(categories, timeout=12.0, per_category=args.per_category,
+                    max_sources=args.max_sources, gate=gate)
 
     # Приоритет: RU-источники, затем источники с высокой долей живых.
     # Мёртвые источники не должны съедать лимит --max-nodes.
@@ -371,13 +400,16 @@ def main(argv=None) -> int:
     import threading
     port_lock = threading.Lock()
     records: list[dict] = []
-    xk = fastcheck.resolve_xrayknife(args.xrayknife)
+    # xk уже определён при выборе backend
     if args.backend == "fast" and xk:
         print(f"[harvest] backend: xray-knife ({xk})", file=sys.stderr)
         # разбиваем на батчи, чтобы один процесс не съедал весь список
         for start in range(0, len(nodes), 400):
             batch = nodes[start:start + 400]
-            records.extend(verify_batch_fast(batch, xk, args))
+            try:
+                records.extend(verify_batch_fast(batch, xk, args))
+            except Exception as e:
+                print(f"[warn] fast batch {start} пропущен: {e}", file=sys.stderr)
     elif args.backend == "fast":
         print("[harvest] xray-knife не найден — fallback на своё ядро", file=sys.stderr)
     if args.backend == "core" or (args.backend == "fast" and not xk):
@@ -390,14 +422,19 @@ def main(argv=None) -> int:
                 except Exception as e:
                     print(f"[warn] verify: {type(e).__name__}: {e}", file=sys.stderr)
 
-    # Накопить статистику и (при --prune-dead) удалить устойчиво мёртвые источники.
-    stats = source_stats.update_from_records(stats, records)
+    # Накопить статистику ТОЛЬКО по уникальным exit_ip — иначе один канал,
+    # выданный 8 конфигами, 8 раз «голосует» за источник.
+    stats = source_stats.update_from_records(stats, unique_records_for_stats(records))
     Path(args.stats_file).parent.mkdir(parents=True, exist_ok=True)
     Path(args.stats_file).write_text(json.dumps(stats, indent=2, ensure_ascii=False), encoding="utf-8")
     if args.prune_dead:
         source_stats.prune_dead_sources(args.sources, stats)
 
-    report = write_outputs(records, Path(args.out_dir), args.top)
+    report = write_outputs(records, Path(args.out_dir), args.top, meta={
+        "backend": "xray-knife" if (args.backend == "fast" and xk) else "core",
+        "sources_count": sum(len(v) for v in categories.values()),
+        "duration_sec": round(time.monotonic() - t_start, 1),
+    })
     summary = {"generated_utc": report.get("generated_utc", ""),
                "tested": report["tested"], "live": report["live"],
                "ru": report["ru"], "other": report["other"]}

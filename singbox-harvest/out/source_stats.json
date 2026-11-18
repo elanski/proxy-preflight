@@ -1,8 +1,8 @@
 {
   "https://raw.githubusercontent.com/Alirewa/V2ray-Configs/HEAD/config.txt": {
-    "checked": 13,
+    "checked": 16,
     "alive": 0,
-    "fail_runs": 2,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -13,9 +13,14 @@
         "checked": 5,
         "alive": 0,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 0,
+        "date": "2026-11-18T20:51:13.839475+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-18T20:51:13.839475+00:00"
   },
   "https://raw.githubusercontent.com/MaxFreudDrethe/VCC/HEAD/configs/all.txt": {
     "checked": 13,
@@ -146,7 +151,7 @@
   "https://raw.githubusercontent.com/SoliSpirit/SolVPN/main/all_configs.txt": {
     "checked": 7,
     "alive": 1,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 3,
@@ -270,7 +275,7 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/HEAD/Countries/Russia.txt": {
-    "checked": 7,
+    "checked": 8,
     "alive": 5,
     "fail_runs": 0,
     "history": [
@@ -283,14 +288,19 @@
         "checked": 5,
         "alive": 5,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-18T20:51:13.839475+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-18T20:51:13.839475+00:00"
   },
   "https://raw.githubusercontent.com/aishervin/subfine/HEAD/sub.txt": {
     "checked": 12,
     "alive": 2,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -308,7 +318,7 @@
   "https://raw.githubusercontent.com/MhdiTaheri/V2rayCollector/main/sub/vless": {
     "checked": 13,
     "alive": 1,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -573,7 +583,7 @@
   "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/HEAD/all/configs.txt": {
     "checked": 13,
     "alive": 1,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -717,7 +727,7 @@
   "https://raw.githubusercontent.com/kasesm/Free-Config/main/all_raw.txt": {
     "checked": 12,
     "alive": 1,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -753,7 +763,7 @@
   "https://raw.githubusercontent.com/Surfboardv2ray/TGParse/main/configtg.txt": {
     "checked": 6,
     "alive": 1,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 2,
@@ -1018,7 +1028,7 @@
   "https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/TheFreeConfigs.txt": {
     "checked": 12,
     "alive": 1,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -1319,7 +1329,7 @@
   "https://raw.githubusercontent.com/wuqb2i4f/xray-config-toolkit/main/output/base64/mix-uri": {
     "checked": 12,
     "alive": 2,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -1517,7 +1527,7 @@
   "https://raw.githubusercontent.com/myominn062-svg/mk-studio-vpn-service/main/all_configs.txt": {
     "checked": 12,
     "alive": 2,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -1551,9 +1561,9 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/ninjastrikers/nexus-nodes/HEAD/configs/countries/ru/all.txt": {
-    "checked": 12,
+    "checked": 15,
     "alive": 2,
-    "fail_runs": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -1564,9 +1574,14 @@
         "checked": 4,
         "alive": 0,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 0,
+        "date": "2026-11-18T20:51:13.839475+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-18T20:51:13.839475+00:00"
   },
   "https://raw.githubusercontent.com/qopq1366/VlessConfig/HEAD/sub.txt": {
     "checked": 12,
@@ -1665,17 +1680,22 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://alireza786786.github.io/Free-V2ray-Configs/servers/vless_servers.txt": {
-    "checked": 5,
-    "alive": 0,
-    "fail_runs": 1,
+    "checked": 8,
+    "alive": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 5,
         "alive": 0,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 1,
+        "date": "2026-11-18T20:51:13.839475+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-18T20:51:13.839475+00:00"
   },
   "https://clashxw.github.io/uploads/2026/11/0-20261115.txt": {
     "checked": 5,
@@ -2042,7 +2062,7 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githack.com/indelingDanil/MyAppVPN-subs/output/vless.txt": {
-    "checked": 5,
+    "checked": 8,
     "alive": 4,
     "fail_runs": 0,
     "history": [
@@ -2050,9 +2070,14 @@
         "checked": 5,
         "alive": 4,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 0,
+        "date": "2026-11-18T20:51:13.839475+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-18T20:51:13.839475+00:00"
   },
   "https://raw.githubusercontent.com/Mahdi0024/ProxyCollector/master/sub/proxies.txt": {
     "checked": 5,
@@ -2263,17 +2288,22 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://tuftytech.github.io/ShellShift/sub_all.txt": {
-    "checked": 4,
-    "alive": 1,
+    "checked": 6,
+    "alive": 2,
     "fail_runs": 0,
     "history": [
       {
         "checked": 4,
         "alive": 1,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 1,
+        "date": "2026-11-18T20:51:13.839475+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-18T20:51:13.839475+00:00"
   },
   "https://vless.svinakraft.workers.dev/Top500.txt": {
     "checked": 4,
