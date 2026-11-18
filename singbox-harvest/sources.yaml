@@ -14,6 +14,8 @@ ru_hint_words:
 - vkontakte
 categories:
   ru:
+  - https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/HEAD/Countries/Russia.txt
+  - https://raw.githubusercontent.com/Alirewa/V2ray-Configs/HEAD/config.txt
   - https://raw.githubusercontent.com/ninjastrikers/nexus-nodes/HEAD/configs/countries/ru/all.txt
   - https://raw.githubusercontent.com/ninjastrikers/nexus-nodes/HEAD/configs/countries/ru/light.txt
   - https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/HEAD/data/githubmirror/clean/vless.txt
@@ -23,6 +25,11 @@ categories:
   - https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Russia.txt
   - https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt
   other:
+  - https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/HEAD/all/configs.txt
+  - https://raw.githubusercontent.com/Darmioniks/proxy-and-vless-collector/HEAD/vless.txt
+  - https://raw.githubusercontent.com/Darmioniks/proxy-and-vless-collector/HEAD/vless_filtered.txt
+  - https://raw.githubusercontent.com/Alirewa/V2ray-Configs/HEAD/sub1.txt
+  - https://raw.githubusercontent.com/Argh94/Proxy-List/HEAD/All_Config.txt
   - https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/HEAD/data/githubmirror/clean/vless.txt
   - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/ConfigYab_AUTO.txt
   - https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/ConfigsHUB.txt
