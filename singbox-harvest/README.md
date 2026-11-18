@@ -29,11 +29,20 @@ python singbox-harvest/harvest.py --max-nodes 60 --workers 6 \
     --out-dir singbox-harvest/out
 ```
 
-## GitHub Actions
+## GitHub Actions — полностью автономно
 
-Workflow `.github/workflows/singbox-harvest.yml` запускается каждые 6 часов и
-вручную: ставит sing-box 1.14.2 + Xray, запускает тесты, harvest, коммитит
-списки и отчёт обратно в репозиторий. Списки доступны по прямым ссылкам:
+Workflow `.github/workflows/singbox-harvest.yml` работает **на серверах GitHub**
+без твоего участия:
+
+* запускается каждые 6 часов по `schedule` (+ кнопка `workflow_dispatch`);
+* **сам удаляет** устаревшие (старше 3 дней) и мёртвые (404) источники из
+  `sources.yaml` (`--prune`) — по дате последнего коммита файла и HTTP-коду,
+  без ИИ;
+* коммитит обновлённые `sources.yaml` и списки обратно в репозиторий;
+* нет триггера `push`, поэтому собственный коммит не вызывает бесконечный цикл;
+* если живых узлов нет — списки НЕ перезаписываются.
+
+Списки доступны по прямым ссылкам:
 
 ```
 https://raw.githubusercontent.com/elanski/proxy-preflight/main/singbox-harvest/out/subscriptions_ru.txt

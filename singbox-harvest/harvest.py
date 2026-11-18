@@ -34,6 +34,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 import core  # noqa: E402
+import freshness  # noqa: E402
 import geoip  # noqa: E402
 import parsers  # noqa: E402
 
@@ -59,11 +60,13 @@ def fetch_url(url: str, timeout: float = 12.0) -> bytes:
 
 
 def collect(categories: dict[str, list[str]], timeout: float,
-            max_sources: int = 0, per_category: int = 0) -> list[parsers.ParsedNode]:
+            max_sources: int = 0, per_category: int = 0,
+            gate: "freshness.FreshnessGate | None" = None) -> list[parsers.ParsedNode]:
     """Скачивает источники и возвращает дедуплированные узлы с категорией."""
     nodes: list[parsers.ParsedNode] = []
     seen: set[str] = set()
     stats: dict[str, dict[str, int]] = {}
+    stale: list[str] = []
     for category, urls in categories.items():
         if per_category:
             urls = list(urls)[:per_category]
@@ -71,6 +74,12 @@ def collect(categories: dict[str, list[str]], timeout: float,
             urls = list(urls)[:max_sources]
         sources_ok = sources_bad = 0
         for url in urls:
+            # Автономный отсев застаревших источников (по дате коммита файла).
+            if gate is not None:
+                skip, age, reason = gate.check(url)
+                if skip:
+                    stale.append(f"{url[:60]} ({reason})")
+                    continue
             try:
                 content = fetch_url(url, timeout)
                 text = parsers.decode_subscription(content)
@@ -94,6 +103,12 @@ def collect(categories: dict[str, list[str]], timeout: float,
                 nodes.append(node)
         stats[category] = {"sources_ok": sources_ok, "sources_bad": sources_bad}
     print(f"[harvest] sources: {stats}; parsed unique nodes: {len(nodes)}", file=sys.stderr)
+    if stale:
+        print(f"[harvest] stale sources skipped: {len(stale)}", file=sys.stderr)
+        for s in stale[:10]:
+            print(f"  - {s}", file=sys.stderr)
+    if gate is not None:
+        gate.save()
     return nodes
 
 
@@ -159,6 +174,10 @@ def write_outputs(records: list[dict], out_dir: Path, top: int) -> dict:
     live = [r for r in records if r["ok"]]
     ru = [r for r in live if geoip.is_ru(r.get("country_code", ""))]
     other = [r for r in live if not geoip.is_ru(r.get("country_code", ""))]
+    # Пустой прогон НЕ перезаписывает рабочие списки: это «неизвестно», а не «всё мертво».
+    if not live:
+        print("[harvest] WARNING: нет живых узлов — списки НЕ перезаписаны", file=sys.stderr)
+        return {"tested": len(records), "live": 0, "ru": 0, "other": 0, "skipped_write": True}
 
     def dump(name: str, rows: list[dict]) -> str:
         p = out_dir / name
@@ -200,6 +219,11 @@ def parse_args(argv=None) -> argparse.Namespace:
     ap.add_argument("--top", type=int, default=50)
     ap.add_argument("--singbox", default="", help="путь к бинарнику sing-box (по умолчанию авто)")
     ap.add_argument("--xray", default="", help="путь к бинарнику xray (для reality/xhttp, по умолчанию авто)")
+    ap.add_argument("--max-source-age", type=int, default=3,
+                    help="отсекать источники старше N дней (0 = не отсекать)")
+    ap.add_argument("--freshness-cache", default=str(HERE / "out" / "freshness.json"))
+    ap.add_argument("--prune", action="store_true",
+                    help="УДАЛЯТЬ устаревшие/404 источники из sources.yaml навсегда")
     return ap.parse_args(argv)
 
 
@@ -212,8 +236,16 @@ def main(argv=None) -> int:
         return 2
     print(f"[harvest] sing-box: {singbox or '-'} | xray: {xray or '-'}", file=sys.stderr)
 
+    if args.prune:
+        freshness.prune_sources(args.sources, max_age_days=args.max_source_age)
+
     categories, hints = load_sources(Path(args.sources))
-    nodes = collect(categories, timeout=12.0, per_category=args.per_category)
+    gate = freshness.FreshnessGate(
+        max_age_days=args.max_source_age,
+        cache_path=args.freshness_cache,
+        enabled=args.max_source_age > 0,
+    )
+    nodes = collect(categories, timeout=12.0, per_category=args.per_category, gate=gate)
 
     # Приоритет: RU-источники и узлы с RU-подсказкой в имени идут первыми,
     # чтобы лимит --max-nodes не съедали глобальные узлы.
@@ -242,8 +274,12 @@ def main(argv=None) -> int:
                 print(f"[warn] verify: {type(e).__name__}: {e}", file=sys.stderr)
 
     report = write_outputs(records, Path(args.out_dir), args.top)
-    print(json.dumps({k: report[k] for k in ("generated_utc", "tested", "live", "ru", "other")},
-                     ensure_ascii=False, indent=2))
+    summary = {"generated_utc": report.get("generated_utc", ""),
+               "tested": report["tested"], "live": report["live"],
+               "ru": report["ru"], "other": report["other"]}
+    if report.get("skipped_write"):
+        summary["warning"] = "списки не перезаписаны: живых узлов нет"
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0
 
 
