@@ -1,0 +1,77 @@
+# Источники свежих подписок для sing-box ядра.
+#
+# Категории:
+#   ru    — источники, заявленные как российские (подсказка для приоритета,
+#           НЕ доказательство: страна определяется только по exit_ip).
+#   other — остальные/глобальные источники.
+#   ru_hint_words — слова в имени узла, которые помечают кандидата как
+#           «возможно RU» для приоритетной проверки. Флаг в имени НЕ является
+#           доказательством российского выхода (см. proxy-pool-operations).
+#
+# Источники повторяют проверенную базу репозитория sources.json + несколько
+# дополнительных gist-источников. Мёртвые/404 URL просто пропускаются.
+
+ru_hint_words:
+  - "🇷🇺"
+  - "RU"
+  - "Russia"
+  - "Россия"
+  - "Moscow"
+  - "MSK"
+  - "SPB"
+  - "Petersburg"
+  - "Ozon"
+  - "WB"
+  - "Yandex"
+  - "vk.com"
+  - "vkontakte"
+
+categories:
+  ru:
+    - "https://raw.githubusercontent.com/nikita29a/FreeProxyList/main/mirror/1.txt"
+    - "https://raw.githubusercontent.com/nikita29a/FreeProxyList/main/mirror/23.txt"
+    - "https://raw.githubusercontent.com/AvenCores/goida-vpn-configs/main/githubmirror/1.txt"
+    - "https://raw.githubusercontent.com/AvenCores/goida-vpn-configs/main/githubmirror/21.txt"
+    - "https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt"
+    - "https://raw.githubusercontent.com/EtoNeYaProject/etoneyaproject.github.io/refs/heads/main/vless"
+    - "https://raw.githubusercontent.com/EtoNeYaProject/etoneyaproject.github.io/refs/heads/main/1"
+    - "https://raw.githubusercontent.com/EtoNeYaProject/etoneyaproject.github.io/refs/heads/main/youtube"
+    - "https://raw.githubusercontent.com/nikita29a/FreeProxyList/main/mirror/17.txt"
+    - "https://raw.githubusercontent.com/nikita29a/FreeProxyList/main/mirror/11.txt"
+    - "https://raw.githubusercontent.com/AvenCores/goida-vpn-configs/main/githubmirror/11.txt"
+    - "https://raw.githubusercontent.com/nikita29a/FreeProxyList/main/mirror/6.txt"
+    - "https://raw.githubusercontent.com/10ium/ScrapeAndCategorize/refs/heads/main/output_configs/Russia.txt"
+    - "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt"
+    - "https://raw.githubusercontent.com/Syavar/V2ray-Configs/main/OK_TLS_google.com.txt"
+    - "https://raw.githubusercontent.com/Syavar/V2ray-Configs/main/OK_TLS_vk.com.txt"
+    - "https://raw.githubusercontent.com/Syavar/V2ray-Configs/main/OK_TLS_telegram.org.txt"
+    - "https://raw.githubusercontent.com/Syavar/V2ray-Configs/main/OK_TLS_viber.com.txt"
+    - "https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/main/subscriptions/mix.txt"
+  other:
+    - "https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Splitted-By-Protocol/vless.txt"
+    - "https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Splitted-By-Protocol/vmess.txt"
+    - "https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Splitted-By-Protocol/ss.txt"
+    - "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/filtered/subs/vless.txt"
+    - "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/filtered/subs/vmess.txt"
+    - "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/filtered/subs/ss.txt"
+    - "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/filtered/subs/trojan.txt"
+    - "https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/main/Protocols/vless.txt"
+    - "https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/main/Protocols/vmess.txt"
+    - "https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/main/Protocols/ss.txt"
+    - "https://raw.githubusercontent.com/Kwinshadow/TelegramV2rayCollector/main/sublinks/vless.txt"
+    - "https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/raw/main/configs/proxy_configs.txt"
+    - "https://raw.githubusercontent.com/iboxz/free-v2ray-collector/main/main/mix"
+    - "https://raw.githubusercontent.com/Argh94/V2RayAutoConfig/main/configs/Vless.txt"
+    - "https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/vless.txt"
+    - "https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/vmess.txt"
+    - "https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/trojan.txt"
+    - "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/All_Configs_Sub.txt"
+    - "https://raw.githubusercontent.com/LalatinaHub/Mineral/master/result/nodes"
+    - "https://raw.githubusercontent.com/mfuu/v2ray/master/merge/merge.txt"
+    - "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt"
+    - "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"
+    - "https://raw.githubusercontent.com/sevcator/5ubscrpt10n/main/working/countries/United%20States.txt"
+    - "https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/main/splitted-by-country/United_States.txt"
+    - "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/548278d35b76d1ca7bd09667afc1033a/raw/BatyaVPN_Telegram_RE_s_B.json"
+    - "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/CosmosVPN_Telegram_RE_s_B.txt"
+    - "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/2b6bd8622af25a1da773d549937cf713/raw/MegaVVPN_Telegram_RE_s_B.txt"

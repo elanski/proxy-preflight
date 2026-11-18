@@ -1,0 +1,70 @@
+name: sing-box harvest (RU / other subscriptions)
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"   # каждые 6 часов
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "singbox-harvest/**"
+      - ".github/workflows/singbox-harvest.yml"
+
+concurrency:
+  group: singbox-harvest
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || github.token }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python deps
+        run: pip install -r singbox-harvest/requirements.txt pytest -q
+
+      - name: Install sing-box 1.14.2
+        run: |
+          curl -fsSL https://github.com/SagerNet/sing-box/releases/download/v1.14.2/sing-box-1.14.2-linux-amd64.tar.gz \
+            -o /tmp/sb.tar.gz
+          tar -xzf /tmp/sb.tar.gz -C /tmp
+          sudo install -m 0755 /tmp/sing-box-1.14.2-linux-amd64/sing-box /usr/local/bin/sing-box
+          sing-box version
+
+      - name: Install Xray (for REALITY/XHTTP validation)
+        run: |
+          curl -fsSL https://github.com/XTLS/Xray-core/releases/download/v26.6.27/Xray-linux-64.zip -o /tmp/xray.zip
+          sudo unzip -oq /tmp/xray.zip xray -d /usr/local/bin
+          sudo chmod +x /usr/local/bin/xray
+          xray version | head -2
+
+      - name: Run tests
+        run: python -m pytest singbox-harvest/tests -q
+
+      - name: Harvest and verify subscriptions
+        run: |
+          python singbox-harvest/harvest.py \
+            --max-nodes 120 --workers 8 \
+            --out-dir singbox-harvest/out
+
+      - name: Commit lists
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add singbox-harvest/out
+          git diff --staged --quiet && echo "No changes" && exit 0
+          RU=$(grep -c . singbox-harvest/out/subscriptions_ru.txt 2>/dev/null || echo 0)
+          OTHER=$(grep -c . singbox-harvest/out/subscriptions_other.txt 2>/dev/null || echo 0)
+          git commit -m "chore(singbox-harvest): RU=$RU other=$OTHER live lists"
+          git push || git push --force-with-lease
