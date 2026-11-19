@@ -1,0 +1,11 @@
+services:
+  harvester:
+    build:
+      context: ..
+      dockerfile: singbox-harvest/Dockerfile
+    container_name: proxy-preflight-harvester
+    restart: "no"
+    volumes:
+      - ./out:/app/singbox-harvest/out
+    command: ["--max-nodes", "800", "--backend", "fast", "--prescan",
+              "--out-dir", "singbox-harvest/out"]

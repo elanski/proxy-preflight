@@ -89,7 +89,7 @@ class FreshnessGate:
                 return True, age, f"источник не обновлялся {age} дн."
             return False, age, ""
 
-        age = last_commit_age_days(url)
+        age = url_last_modified_days(url)
         self.cache[url] = {"age": age, "ts": time.time()}
         # None (неизвестно) — НЕ отсекаем: лучше проверить, чем потерять источник
         if age is not None and age > self.max_age:
@@ -103,6 +103,30 @@ class FreshnessGate:
                 self.cache_path.write_text(json.dumps(self.cache, indent=2), encoding="utf-8")
             except Exception:
                 pass
+
+
+def url_last_modified_days(url: str, timeout: float = 8.0) -> int | None:
+    """Возраст не-GitHub источника по HTTP Last-Modified / Age.
+
+    Для raw.githubusercontent используем commits API (точно). Для остальных
+    хостингов сервер часто отдаёт Last-Modified — используем его как сигнал.
+    None = неизвестно (не отсекать).
+    """
+    if parse_github_path(url):
+        return last_commit_age_days(url, timeout)
+    try:
+        req = Request(url, headers={"User-Agent": "singbox-harvest"}, method="HEAD")
+        with urlopen(req, timeout=timeout) as r:
+            lm = r.headers.get("Last-Modified")
+        if not lm:
+            return None
+        from email.utils import parsedate_to_datetime
+        dt = parsedate_to_datetime(lm)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return max(0, (datetime.now(timezone.utc) - dt).days)
+    except Exception:
+        return None
 
 
 def url_is_dead(url: str, timeout: float = 10.0) -> bool:

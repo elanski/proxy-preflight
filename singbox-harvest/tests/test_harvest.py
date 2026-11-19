@@ -169,6 +169,21 @@ def test_repo_cidrlist_used_for_ru():
     assert not geoip.is_ru_ip("8.8.8.8", "US")
 
 
+def test_last_modified_for_non_github(monkeypatch):
+    """Не-GitHub источник проверяется по HTTP Last-Modified."""
+    import freshness
+    from email.utils import format_datetime
+    from datetime import datetime, timezone, timedelta
+    class FakeResp:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        headers = {"Last-Modified": format_datetime(
+            datetime.now(timezone.utc) - timedelta(days=2))}
+    monkeypatch.setattr(freshness, "parse_github_path", lambda u: None)
+    monkeypatch.setattr(freshness, "urlopen", lambda *a, **k: FakeResp())
+    assert freshness.url_last_modified_days("https://example.com/sub.txt") == 2
+
+
 def test_unique_records_for_stats_keeps_alive_ratio():
     """Статистика считается по уникальным выходам, но живые/мёртвые сохраняются."""
     import harvest

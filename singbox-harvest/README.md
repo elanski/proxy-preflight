@@ -46,6 +46,16 @@ Workflow `.github/workflows/singbox-harvest.yml` работает **на сер�
 * нет триггера `push`, поэтому собственный коммит не вызывает бесконечный цикл;
 * если живых узлов нет — списки НЕ перезаписываются.
 
+## Docker (локально)
+
+```bash
+cd singbox-harvest
+docker compose up --build
+```
+
+Контейнер содержит зафиксированный xray-knife v11.5.1 и Python-deps,
+списки пишутся в `singbox-harvest/out` через volume.
+
 ## Аудит (ноябрь 2026) — исправленные дефекты
 
 1. `country='null'` от xray-knife превращалось в код `NU` (Ниуэ) — добавлен
