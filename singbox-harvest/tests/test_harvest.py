@@ -169,6 +169,31 @@ def test_repo_cidrlist_used_for_ru():
     assert not geoip.is_ru_ip("8.8.8.8", "US")
 
 
+def test_parser_gap_not_removed():
+    """Источник с битыми парсами — не "мёртвый", а parser-gap: не удаляем."""
+    import source_stats
+    recs = [{"source": "s", "ok": False, "error": "parse protocol: invalid characters"} for _ in range(6)]
+    st = source_stats.update_from_records({}, recs)
+    assert st["s"]["parser_gap"] is True
+    assert st["s"]["fail_runs"] == 0
+    assert source_stats.bad_sources(st) == []
+    # обратная совместимость: старая запись без parse_errors не роняет
+    old = {"s": {"checked": 5, "alive": 0, "fail_runs": 1, "history": [], "updated": ""}}
+    st2 = source_stats.update_from_records(old, recs)
+    assert st2["s"]["parse_errors"] == 6
+
+
+def test_atomic_write_no_tmp_left():
+    """Атомарная запись не оставляет .tmp."""
+    import tempfile
+    import source_stats
+    with tempfile.TemporaryDirectory() as td:
+        p = f"{td}/x.json"
+        source_stats.atomic_write_text(p, "{}")
+        import os
+        assert os.path.exists(p) and not os.path.exists(p + ".tmp")
+
+
 def test_last_modified_for_non_github(monkeypatch):
     """Не-GitHub источник проверяется по HTTP Last-Modified."""
     import freshness

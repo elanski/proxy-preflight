@@ -23,6 +23,16 @@ MIN_ALIVE_RATE = 0.03  # меньше 3% живых → провальный п�
 FAIL_RUNS = 3          # подряд 3 провальных прогона → удалить (не 2)
 
 
+def atomic_write_text(path: str | Path, content: str) -> None:
+    """Атомарная запись: tmp + replace, чтобы прерванный запуск не оставил
+    обрезанный JSON/CSV (практика rtwo2/FastNodes track_source_health.py)."""
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tmp = p.with_name(p.name + ".tmp")
+    tmp.write_text(content, encoding="utf-8")
+    tmp.replace(p)
+
+
 def load(path: str) -> dict:
     p = Path(path)
     if p.exists():
@@ -35,7 +45,7 @@ def load(path: str) -> dict:
 
 def update_from_records(stats: dict, records: list[dict]) -> dict:
     """Добавить результаты текущего прогона к накопленной статистике."""
-    per = defaultdict(lambda: {"checked": 0, "alive": 0})
+    per = defaultdict(lambda: {"checked": 0, "alive": 0, "parse_errors": 0})
     for r in records:
         src = r.get("source") or ""
         if not src:
@@ -43,23 +53,36 @@ def update_from_records(stats: dict, records: list[dict]) -> dict:
         per[src]["checked"] += 1
         if r.get("ok"):
             per[src]["alive"] += 1
+        err = (r.get("error") or "")
+        if "parse" in err.lower() or "invalid" in err.lower() or "невалид" in err.lower():
+            per[src]["parse_errors"] += 1
 
     now = datetime.now(timezone.utc).isoformat()
     for src, v in per.items():
-        entry = stats.setdefault(src, {"checked": 0, "alive": 0, "fail_runs": 0,
+        entry = stats.setdefault(src, {"checked": 0, "alive": 0, "parse_errors": 0,
+                                       "fail_runs": 0,
                                        "history": [], "updated": now})
         entry["checked"] += v["checked"]
         entry["alive"] += v["alive"]
+        entry["parse_errors"] = entry.get("parse_errors", 0) + v["parse_errors"]
+        entry.setdefault("fail_runs", 0)
         entry["updated"] = now
         rate = v["alive"] / v["checked"] if v["checked"] else 0.0
+        # parser-gap: источник парсится, но большинство узлов битые parses —
+        # не удаляем его как "мёртвый", это проблема парсера.
+        parse_gap = v["checked"] >= 3 and v["parse_errors"] >= v["checked"] * 0.5
         entry["history"].append({"checked": v["checked"], "alive": v["alive"], "date": now})
         entry["history"] = entry["history"][-10:]
 
-        # провальный прогон: достаточно данных И живых меньше порога
-        if v["checked"] >= MIN_CHECKED and rate < MIN_ALIVE_RATE:
-            entry["fail_runs"] += 1
+        if parse_gap:
+            entry["fail_runs"] = 0          # не наказываем за parser-gap
+            entry["parser_gap"] = True
         else:
-            entry["fail_runs"] = 0
+            entry["parser_gap"] = False
+            if v["checked"] >= MIN_CHECKED and rate < MIN_ALIVE_RATE:
+                entry["fail_runs"] += 1
+            else:
+                entry["fail_runs"] = 0
     return stats
 
 
@@ -85,7 +108,7 @@ def prune_dead_sources(sources_path: str, stats: dict,
         rate = alive / checked if checked else 0.0
         # только устойчиво мёртвые:fail_runs подряд. Отдельного «накопительного»
         # правила больше нет — оно удаляло живые источники по шумной выборке.
-        if e.get("fail_runs", 0) >= fail_runs:
+        if not e.get("parser_gap") and e.get("fail_runs", 0) >= fail_runs:
             to_remove.add(src)
 
     removed = []
@@ -107,6 +130,6 @@ def prune_dead_sources(sources_path: str, stats: dict,
             good.append(u)
         cats[category] = good
     data["categories"] = cats
-    path.write_text(yaml.safe_dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    atomic_write_text(path, yaml.safe_dump(data, allow_unicode=True, sort_keys=False))
     print(f"[source-stats] удалено {len(removed)} неэффективных источников", file=sys.stderr)
     return removed, stats

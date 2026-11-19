@@ -56,6 +56,23 @@ docker compose up --build
 Контейнер содержит зафиксированный xray-knife v11.5.1 и Python-deps,
 списки пишутся в `singbox-harvest/out` через volume.
 
+## Источники: 829 (98 RU + 731 other)
+
+Подписки собраны из каталогов `mehdirzfx/v2ray-sub`, `morpheusadam/subs/all.txt`,
+DK2 и прямого поиска по GitHub. Крупнейшие свежие (обновляются ежедневно):
+`pie-with-jam/5ubscrpt10n-Reborn` (360k URI), `rtwo2/FastNodes`,
+`Delta-Kronecker/V2ray-Config`, `mani-moh/navaroute`, `happ-tmn`,
+`0xRadikal/Free-v2ray-Configs`, `nikita29a/FreeProxyList`.
+
+## Перенесённое из похожих проектов
+
+* **rtwo2/FastNodes** (`track_source_health.py`): атомарная запись JSON/CSV
+  (tmp + replace), классификация `parser-gap` — источник с битыми парсами
+  не удаляется как «мёртвый», а помечается.
+* **xray-knife** (`--check-preset`, `--max-passed`, `--prescan`) — удобная
+  multi-endpoint проверка и быстрый TCP-предфильтр.
+* **Au1rxx / 0xRadikal** — CSV с exit_ip/страной/задержкой, дедуп по exit_ip.
+
 ## Аудит (ноябрь 2026) — исправленные дефекты
 
 1. `country='null'` от xray-knife превращалось в код `NU` (Ниуэ) — добавлен

@@ -287,7 +287,7 @@ def write_outputs(records: list[dict], out_dir: Path, top: int,
                                      "country", "country_code", "latency_ms", "ok", "rounds_ok",
                                      "success_rate", "error")} for r in records],
     }
-    (out_dir / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    source_stats.atomic_write_text(out_dir / "report.json", json.dumps(report, ensure_ascii=False, indent=2))
     return report
 
 
@@ -425,8 +425,7 @@ def main(argv=None) -> int:
     # Накопить статистику ТОЛЬКО по уникальным exit_ip — иначе один канал,
     # выданный 8 конфигами, 8 раз «голосует» за источник.
     stats = source_stats.update_from_records(stats, unique_records_for_stats(records))
-    Path(args.stats_file).parent.mkdir(parents=True, exist_ok=True)
-    Path(args.stats_file).write_text(json.dumps(stats, indent=2, ensure_ascii=False), encoding="utf-8")
+    source_stats.atomic_write_text(args.stats_file, json.dumps(stats, indent=2, ensure_ascii=False))
     if args.prune_dead:
         source_stats.prune_dead_sources(args.sources, stats)
 
