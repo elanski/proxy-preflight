@@ -1,0 +1,88 @@
+name: HTTP/SOCKS scrape & check (proxy-scraper-checker)
+
+on:
+  schedule:
+    - cron: "42 */6 * * *"   # каждые 6 часов, в :42, в стороне от xray-прогонов (:30 / :17)
+  workflow_dispatch:
+
+# Не трогаем серийную группу xray-прогонов — это независимый конвейер.
+concurrency:
+  group: proxy-preflight-http-socks
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  BIN_DIR: proxy-scraper-checker
+  CONFIG: proxy-scraper-checker/config.toml
+  OUT_DIR: proxy-scraper-checker/out
+  RESULT: http_socks_verified.txt
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || github.token }}
+          fetch-depth: 0
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo artifacts
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ${{ env.BIN_DIR }}
+
+      - name: Build proxy-scraper-checker
+        working-directory: ${{ env.BIN_DIR }}
+        run: cargo build --release --locked
+
+      - name: Show resolved FD limit
+        run: ulimit -n
+
+      - name: Scrape and check HTTP/SOCKS proxies
+        working-directory: ${{ env.BIN_DIR }}
+        env:
+          PROXY_SCRAPER_CHECKER_CONFIG: ${{ github.workspace }}/proxy-scraper-checker/config.toml
+          NO_COLOR: "1"
+        run: |
+          # Бинарник намеренно НЕ затирает прошлые файлы, если не нашёл ни одного
+          # рабочего прокси. Удаляем старый вывод сами, чтобы ноль результатов не превратился
+          # в коммит с устаревшим списком.
+          rm -rf "$OUT_DIR"
+          mkdir -p "$OUT_DIR"
+          ./target/release/proxy-scraper-checker
+          echo "--- scraper summary above ---"
+
+      - name: Publish verified list
+        run: |
+          set -e
+          SRC="$OUT_DIR/proxies/all.txt"
+          # all.txt содержит префикс протокола: http:// / socks4:// / socks5://
+          # host:port и user:pass@host:port — готово к загрузке.
+          {
+            echo "# HTTP/SOCKS proxies — real response through HTTPS check_url"
+            echo "# Source: monosans/proxy-scraper-checker (vendored in proxy-scraper-checker/)"
+            echo "# Updated: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo "# Count: $(grep -c . "$SRC" 2>/dev/null || echo 0)"
+            echo "#"
+            if [ -s "$SRC" ]; then cat "$SRC"; fi
+          } > "$RESULT"
+          echo "Verified proxies: $(grep -cv '^#' "$RESULT" || echo 0)"
+          head -n 8 "$RESULT"
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$RESULT"
+          git diff --staged --quiet && echo "No changes" && exit 0
+          COUNT=$(grep -cv '^#' "$RESULT" || echo 0)
+          git commit -m "chore(http-socks): $COUNT verified proxies [proxy-scraper-checker]"
+          git push || git push --force-with-lease

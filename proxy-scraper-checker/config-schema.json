@@ -1,0 +1,120 @@
+{
+  "$id": "https://github.com/monosans/proxy-scraper-checker/blob/main/config-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "proxy-scraper-checker config",
+  "type": "object",
+  "$defs": {
+    "protocol_config": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "urls": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "type": "string" },
+              {
+                "type": "object",
+                "properties": {
+                  "url": { "type": "string" },
+                  "basic_auth": {
+                    "type": "object",
+                    "properties": {
+                      "username": { "type": "string" },
+                      "password": { "type": "string" }
+                    },
+                    "required": ["username"],
+                    "additionalProperties": false
+                  },
+                  "headers": {
+                    "type": "object",
+                    "patternProperties": { ".*": { "type": "string" } },
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["url"],
+                "additionalProperties": false,
+                "x-tombi-array-values-order-by": "url"
+              }
+            ]
+          },
+          "x-tombi-array-values-order": "ascending"
+        }
+      },
+      "required": ["enabled", "urls"],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "debug": { "type": "boolean" },
+    "output": {
+      "type": "object",
+      "properties": {
+        "path": { "type": "string" },
+        "sort_by_speed": { "type": "boolean" },
+        "txt": {
+          "type": "object",
+          "properties": { "enabled": { "type": "boolean" } },
+          "required": ["enabled"],
+          "additionalProperties": false
+        },
+        "json": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "include_asn": { "type": "boolean" },
+            "include_geolocation": { "type": "boolean" }
+          },
+          "required": ["enabled", "include_asn", "include_geolocation"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["path", "sort_by_speed", "txt", "json"],
+      "additionalProperties": false
+    },
+    "checking": {
+      "type": "object",
+      "properties": {
+        "check_url": { "type": "string" },
+        "max_concurrent_checks": { "type": "integer", "minimum": 1 },
+        "timeout": { "type": "number", "exclusiveMinimum": 0 },
+        "connect_timeout": { "type": "number", "exclusiveMinimum": 0 },
+        "user_agent": { "type": "string" }
+      },
+      "required": [
+        "check_url",
+        "max_concurrent_checks",
+        "timeout",
+        "connect_timeout",
+        "user_agent"
+      ],
+      "additionalProperties": false
+    },
+    "scraping": {
+      "type": "object",
+      "properties": {
+        "max_proxies_per_source": { "type": "integer", "minimum": 0 },
+        "timeout": { "type": "number", "exclusiveMinimum": 0 },
+        "connect_timeout": { "type": "number", "exclusiveMinimum": 0 },
+        "proxy": { "type": "string" },
+        "user_agent": { "type": "string" },
+        "http": { "$ref": "#/$defs/protocol_config" },
+        "socks4": { "$ref": "#/$defs/protocol_config" },
+        "socks5": { "$ref": "#/$defs/protocol_config" }
+      },
+      "required": [
+        "max_proxies_per_source",
+        "timeout",
+        "connect_timeout",
+        "proxy",
+        "user_agent",
+        "http",
+        "socks4",
+        "socks5"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": ["debug", "output", "checking", "scraping"],
+  "additionalProperties": false
+}
