@@ -77,10 +77,9 @@
     "https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/main/splitted-by-country/United_States.txt"
   ],
   "mtproto": [
-    "https://raw.githubusercontent.com/soroushmirzaei/telegram-proxies-collector/main/proxies/fa/mtproto",
-    "https://raw.githubusercontent.com/soroushmirzaei/telegram-proxies-collector/main/proxies/en/mtproto",
-    "https://raw.githubusercontent.com/mheidari98/.proxy/main/mtproto",
-    "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/MTProto-list.txt"
+    "https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/main/proxy_all_mtproto.txt",
+    "https://raw.githubusercontent.com/Grim1313/mtproto-for-telegram/master/all_proxies.txt",
+    "https://raw.githubusercontent.com/dubblebyte/free-mtproto-proxies/main/all_proxies.txt"
   ],
   "rev_engineer": [
     "https://gist.githubusercontent.com/Darlene-Alderson-FSOCIETY/84e0487b6f2c325ddf33f6127ea1c708/raw/",

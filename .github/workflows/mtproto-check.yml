@@ -55,30 +55,7 @@ jobs:
         run: pip install -r requirements.txt -q
 
       - name: Collect MTProto proxies from sources.json
-        run: |
-          python3 -c "
-import json, urllib.request, os
-with open('sources.json') as f:
-    sources = json.load(f)
-urls = sources.get('mtproto', [])
-proxies = []
-for url in urls:
-    try:
-        with urllib.request.urlopen(url, timeout=15) as r:
-            content = r.read().decode('utf-8', errors='replace')
-        MTPROTO_SCHEMES = ('tg://proxy', 'tg://socks', 'https://t.me/proxy', 'https://t.me/socks', 'http://t.me/proxy', 'http://t.me/socks')
-        for line in content.splitlines():
-            line = line.strip()
-            if any(line.lower().startswith(s) for s in MTPROTO_SCHEMES):
-                proxies.append(line)
-    except Exception as e:
-        print('WARN ' + url + ': ' + str(e))
-os.makedirs('configs', exist_ok=True)
-with open('configs/mtproto_input.txt', 'w') as f:
-    f.write('
-'.join(set(proxies)))
-print('MTProto proxies collected: ' + str(len(set(proxies))))
-"
+        run: python3 scripts/collect_mtproto_sources.py
 
       - name: Check MTProto proxies
         run: |
@@ -89,10 +66,10 @@ print('MTProto proxies collected: ' + str(len(set(proxies))))
           TOTAL=$(wc -l < configs/mtproto_input.txt)
           echo "Checking $TOTAL MTProto proxies..."
           python3 -m lib.mtproto_checker configs/mtproto_input.txt \
-            --output configs/mtproto \
-            --top ${{ env.MTPROTO_TOP_N }} \
+            --top-n ${{ env.MTPROTO_TOP_N }} \
             --attempts ${{ env.MTPROTO_ATTEMPTS }} \
             --min-success-rate ${{ env.MTPROTO_MIN_SUCCESS_RATE }} \
+            --timeout ${{ env.CONNECT_TIMEOUT }} \
             --workers ${{ env.MAX_WORKERS }} || echo "MTProto checker finished"
 
       - name: Make top100

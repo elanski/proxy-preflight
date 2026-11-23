@@ -39,12 +39,7 @@ jobs:
           echo "Downloading xray ${{ steps.xray_version.outputs.version }}..."
           XRAY_URL=$(curl -s -H "Authorization: token ${{ github.token }}" \
             https://api.github.com/repos/XTLS/Xray-core/releases/latest \
-            | python3 -c "
-import sys,json
-assets = json.load(sys.stdin)['assets']
-url = [a['browser_download_url'] for a in assets if a['name'] == 'Xray-linux-64.zip']
-print(url[0] if url else '')
-")
+            | python3 -c "import sys,json; a=json.load(sys.stdin)['assets']; print(next((x['browser_download_url'] for x in a if x['name']=='Xray-linux-64.zip'), ''))")
           mkdir -p xray_dist
           curl -sL "$XRAY_URL" -o xray.zip
           unzip -q xray.zip xray -d xray_dist/
