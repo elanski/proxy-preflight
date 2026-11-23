@@ -109,4 +109,4 @@ print('MTProto proxies collected: ' + str(len(set(proxies))))
           git diff --staged --quiet && echo "No changes" && exit 0
           MT=$(wc -l < configs/mtproto 2>/dev/null || echo 0)
           git commit -m "chore: ${MT} live MTProto proxies"
-          git push --force-with-lease || git push --force
+          git push || { git pull --rebase --autostash -q origin main && git push; }

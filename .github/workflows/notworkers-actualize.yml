@@ -169,4 +169,4 @@ jobs:
           git diff --staged --quiet && echo "No changes" && exit 0
           ALIVE=$(wc -l < configs/notworkers_alive 2>/dev/null || echo 0)
           git commit -m "chore: actualize notworkers (${ALIVE} recovered) [notworkers-actualize]"
-          git push --force-with-lease || git push --force
+          git push || { git pull --rebase --autostash -q origin main && git push; }

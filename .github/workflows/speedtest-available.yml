@@ -149,4 +149,4 @@ print(url[0] if url else '')
           git diff --staged --quiet && echo "No changes" && exit 0
           ST=$(wc -l < configs/available_st 2>/dev/null || echo 0)
           git commit -m "chore: speedtest ${ST} proxies"
-          git push --force-with-lease || git push --force
+          git push || { git pull --rebase --autostash -q origin main && git push; }

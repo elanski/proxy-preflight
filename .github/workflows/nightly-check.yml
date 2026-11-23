@@ -489,4 +489,4 @@ jobs:
           git diff --staged --quiet && echo "No changes" && exit 0
           LIVE=$(wc -l < configs/available 2>/dev/null || echo 0)
           git commit -m "chore: ${LIVE} live proxies [nightly-check E2E]"
-          git push --force-with-lease || git push --force
+          git push || { git pull --rebase --autostash -q origin main && git push; }
