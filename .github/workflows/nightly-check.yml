@@ -117,7 +117,7 @@ jobs:
           ")
           mkdir -p xray_dist
           curl -sL "$XRAY_URL" -o xray.zip
-          unzip -q xray.zip xray -d xray_dist/
+          unzip -oq xray.zip xray -d xray_dist/
           chmod +x xray_dist/xray
 
       - name: Verify xray
