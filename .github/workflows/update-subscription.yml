@@ -9,6 +9,9 @@ concurrency:
   group: proxy-preflight-sub
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -20,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ github.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5

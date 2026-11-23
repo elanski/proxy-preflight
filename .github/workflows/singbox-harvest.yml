@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT || github.token }}
+          token: ${{ github.token }}
           fetch-depth: 0
 
       - uses: actions/setup-python@v5
@@ -64,7 +64,7 @@ jobs:
 
       - name: Harvest and verify subscriptions
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT || github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           python singbox-harvest/harvest.py \
             --max-nodes 800 --workers 30 --per-source 4 \

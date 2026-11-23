@@ -37,6 +37,9 @@ concurrency:
   group: proxy-preflight-serial
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   speedtest:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
@@ -48,7 +51,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ github.token }}
           fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -65,7 +68,7 @@ jobs:
       - name: Get latest xray version
         id: xray_version
         run: |
-          VER=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+          VER=$(curl -s -H "Authorization: token ${{ github.token }}" \
             https://api.github.com/repos/XTLS/Xray-core/releases/latest \
             | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'])")
           echo "version=$VER" >> $GITHUB_OUTPUT
@@ -78,7 +81,7 @@ jobs:
       - name: Install xray (if not cached)
         if: steps.cache_xray.outputs.cache-hit != 'true'
         run: |
-          XRAY_URL=$(curl -s -H "Authorization: token ${{ secrets.GH_PAT }}" \
+          XRAY_URL=$(curl -s -H "Authorization: token ${{ github.token }}" \
             https://api.github.com/repos/XTLS/Xray-core/releases/latest \
             | python3 -c "
 import sys,json

@@ -21,6 +21,9 @@ concurrency:
   group: proxy-preflight-serial
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   mtproto-check:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
@@ -33,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ github.token }}
           fetch-depth: 0
 
       - name: Set up Python
