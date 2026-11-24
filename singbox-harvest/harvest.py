@@ -24,12 +24,14 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import socket
 import sys
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 
 HERE = Path(__file__).resolve().parent
@@ -43,29 +45,86 @@ import parsers  # noqa: E402
 import source_stats  # noqa: E402
 
 UA = "Mozilla/5.0 (compatible; singbox-harvest/1.0)"
+ENV_RE = re.compile(r"\$\{([A-Za-z_][A-Za-z0-9_]*)\}")
 
 
-def load_sources(path: Path) -> tuple[dict[str, list[str]], list[str]]:
+def expand_env(value: str) -> str:
+    """${VAR} -> значение из окружения; незаполненный плейсхолдер -> пусто.
+
+    Так токен личной подписки не попадает в публичный sources.yaml: в файле
+    лежит только имя переменной, значение приходит из окружения (локально —
+    export, в CI — secrets).
+    """
+    return ENV_RE.sub(lambda m: os.environ.get(m.group(1), ""), str(value))
+
+
+def load_sources(path: Path, extra_path: Path | None = None
+                 ) -> tuple[dict[str, list[str]], list[str], dict[str, dict[str, str]]]:
+    """sources.yaml (+ личный sources.local.yaml) → категории, подсказки, заголовки.
+
+    ``source_headers``: ключ — хост или префикс URL, значение — заголовки
+    запроса. Нужно подпискам, которые отдают данные только «своему» клиенту:
+    Remnawave без ``x-hwid`` возвращает заглушку «Скачивайте Happ».
+    """
     try:
         import yaml  # type: ignore
     except ImportError:
         print("[harvest] PyYAML не найден: pip install pyyaml", file=sys.stderr)
         raise
-    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    cats = data.get("categories") or {}
-    hints = data.get("ru_hint_words") or []
-    return {k: list(v) for k, v in cats.items()}, [str(h) for h in hints]
+    files = [Path(path)]
+    if extra_path and Path(extra_path).exists():
+        files.append(Path(extra_path))
+    cats: dict[str, list[str]] = {}
+    hints: list[str] = []
+    headers: dict[str, dict[str, str]] = {}
+    for file in files:
+        data = yaml.safe_load(file.read_text(encoding="utf-8")) or {}
+        for cat, urls in (data.get("categories") or {}).items():
+            cats.setdefault(str(cat), []).extend(str(u) for u in (urls or []))
+        hints.extend(str(h) for h in (data.get("ru_hint_words") or []))
+        for host, hdrs in (data.get("source_headers") or {}).items():
+            expanded = {str(k): expand_env(v) for k, v in (hdrs or {}).items()}
+            headers[str(host)] = {k: v for k, v in expanded.items() if v}
+    # плейсхолдер без значения (нет переменной окружения) — источник пропускаем
+    cleaned: dict[str, list[str]] = {}
+    for cat, urls in cats.items():
+        keep: list[str] = []
+        for url in urls:
+            resolved = expand_env(url)
+            if resolved:
+                keep.append(resolved)
+            elif "${" in url:
+                print(f"[harvest] skip source (env не задан): {url}", file=sys.stderr)
+        cleaned[cat] = keep
+    return cleaned, hints, headers
 
 
-def fetch_url(url: str, timeout: float = 12.0) -> bytes:
-    req = Request(url, headers={"User-Agent": UA})
+def headers_for(url: str, headers: dict[str, dict[str, str]] | None) -> dict[str, str]:
+    """Заголовки для конкретного источника: по префиксу URL или по хосту."""
+    if not headers:
+        return {}
+    host = (urlsplit(url).hostname or "").lower()
+    merged: dict[str, str] = {}
+    for key, hdrs in headers.items():
+        key_l = key.lower()
+        if url.startswith(key) or (host and (host == key_l or host.endswith("." + key_l))):
+            merged.update(hdrs)
+    return merged
+
+
+def fetch_url(url: str, timeout: float = 12.0, headers: dict[str, str] | None = None) -> bytes:
+    req_headers = {"User-Agent": UA}
+    if headers:
+        req_headers.update(headers)
+    req = Request(url, headers=req_headers)
     with urlopen(req, timeout=timeout) as r:
         return r.read(8_000_000)
 
 
 def collect(categories: dict[str, list[str]], timeout: float,
             max_sources: int = 0, per_category: int = 0,
-            gate: "freshness.FreshnessGate | None" = None) -> list[parsers.ParsedNode]:
+            gate: "freshness.FreshnessGate | None" = None,
+            headers: dict[str, dict[str, str]] | None = None) -> list[parsers.ParsedNode]:
     """Скачивает источники ПАРАЛЛЕЛЬНО и возвращает дедуплированные узлы.
 
     Последовательная загрузка 200+ источников упиралась в таймаут CI
@@ -91,9 +150,8 @@ def collect(categories: dict[str, list[str]], timeout: float,
     def fetch_one(job: tuple[str, str]) -> tuple[str, str, list[str]]:
         category, url = job
         try:
-            content = fetch_url(url, timeout)
-            text = parsers.decode_subscription(content)
-            return category, url, parsers.find_uris(text)
+            content = fetch_url(url, timeout, headers_for(url, headers))
+            return category, url, parsers.extract_uris(content)
         except Exception as e:
             print(f"[warn] fetch {url[:70]}: {type(e).__name__}", file=sys.stderr)
             return category, url, []
@@ -294,6 +352,9 @@ def write_outputs(records: list[dict], out_dir: Path, top: int,
 def parse_args(argv=None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(description=" sing-box harvester: RU / other subscription lists")
     ap.add_argument("--sources", default=str(HERE / "sources.yaml"))
+    ap.add_argument("--sources-extra", default=str(HERE / "sources.local.yaml"),
+                    help="личные источники (в .gitignore); формат как у sources.yaml: "
+                         "categories + source_headers, значения могут быть ${ENV_VAR}")
     ap.add_argument("--out-dir", default=str(HERE / "out"))
     ap.add_argument("--max-nodes", type=int, default=80, help="максимум узлов к проверке (0 = все)")
     ap.add_argument("--per-category", type=int, default=0, help="лимит источников на категорию (0 = все)")
@@ -351,14 +412,19 @@ def main(argv=None) -> int:
     if args.prune_dead:
         source_stats.prune_dead_sources(args.sources, stats)
 
-    categories, hints = load_sources(Path(args.sources))
+    categories, hints, source_headers = load_sources(
+        Path(args.sources),
+        Path(args.sources_extra) if args.sources_extra else None,
+    )
+    if source_headers:
+        print(f"[harvest] источникам с заголовками: {len(source_headers)}", file=sys.stderr)
     gate = freshness.FreshnessGate(
         max_age_days=args.max_source_age,
         cache_path=args.freshness_cache,
         enabled=args.max_source_age > 0,
     )
     nodes = collect(categories, timeout=12.0, per_category=args.per_category,
-                    max_sources=args.max_sources, gate=gate)
+                    max_sources=args.max_sources, gate=gate, headers=source_headers)
 
     # Приоритет: RU-источники, затем источники с высокой долей живых.
     # Мёртвые источники не должны съедать лимит --max-nodes.
