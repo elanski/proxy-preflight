@@ -62,6 +62,17 @@ jobs:
       - name: Run tests
         run: python -m pytest singbox-harvest/tests -q
 
+      - name: Restore private sources (optional)
+        env:
+          HARVEST_SOURCES_LOCAL: ${{ secrets.HARVEST_SOURCES_LOCAL }}
+        run: |
+          if [ -n "$HARVEST_SOURCES_LOCAL" ]; then
+            printf '%s\n' "$HARVEST_SOURCES_LOCAL" > singbox-harvest/sources.local.yaml
+            echo "sources.local.yaml: восстановлен из секрета"
+          else
+            echo "секрет HARVEST_SOURCES_LOCAL не задан — только публичные источники"
+          fi
+
       - name: Harvest and verify subscriptions
         env:
           GITHUB_TOKEN: ${{ github.token }}

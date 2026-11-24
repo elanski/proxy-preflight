@@ -12,7 +12,7 @@ import json
 import re
 from dataclasses import dataclass, field
 from typing import Any
-from urllib.parse import parse_qsl, unquote, urlsplit
+from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
 
 SCHEMES = ("vless://", "vmess://", "trojan://", "ss://", "ssr://", "hysteria2://", "hy2://")
 URI_RE = re.compile(r"(?:vless|vmess|trojan|ss|ssr|hysteria2|hy2)://[^\s\"'<>\[\]()]+", re.I)
@@ -32,6 +32,164 @@ class ParsedNode:
 def find_uris(text: str) -> list[str]:
     """Достаёт все URI прокси из произвольного текста (список/подписка)."""
     return [m.group(0).rstrip(".,;|)") for m in URI_RE.finditer(text)]
+
+
+# --- Xray/v2rayN JSON-подписки (мультиконфиг Happ, Remnawave) ---------------
+# Часть панелей отдаёт не список URI, а массив Xray-конфигов: в каждом
+# "remarks" = название группы и "outbounds" = узлы. Без этого разбора такие
+# подписки выглядят пустыми (find_uris не находит ни одной ссылки).
+
+_DEAD_PROTOCOLS = ("freedom", "blackhole", "direct", "block", "dns",
+                   "selector", "urltest", "loadbalance")
+
+
+def _xray_stream(ss: dict[str, Any]) -> dict[str, str]:
+    """streamSettings Xray -> параметры URI (те же имена, что в ссылках)."""
+    net = (ss.get("network") or "tcp").lower()
+    q: dict[str, str] = {}
+    if net in ("raw", "tcp"):
+        q["type"] = "tcp"
+        header = (ss.get("tcpSettings") or {}).get("header") or {}
+        if (header.get("type") or "").lower() == "http":
+            q["type"] = "http"
+            req = header.get("request") or {}
+            path = req.get("path")
+            if path:
+                q["path"] = ",".join(path) if isinstance(path, list) else str(path)
+            host = (req.get("headers") or {}).get("Host")
+            if host:
+                q["host"] = ",".join(host) if isinstance(host, list) else str(host)
+    elif net == "ws":
+        ws = ss.get("wsSettings") or {}
+        q["type"] = "ws"
+        q["path"] = ws.get("path") or "/"
+        host = (ws.get("headers") or {}).get("Host")
+        if host:
+            q["host"] = str(host)
+    elif net in ("grpc", "gun"):
+        g = ss.get("grpcSettings") or {}
+        q["type"] = "grpc"
+        q["serviceName"] = str(g.get("serviceName") or "")
+        if g.get("multiMode"):
+            q["mode"] = "multi"
+    elif net == "xhttp":
+        x = ss.get("xhttpSettings") or {}
+        q["type"] = "xhttp"
+        q["path"] = str(x.get("path") or "/")
+        if x.get("host"):
+            q["host"] = str(x["host"])
+        if x.get("mode"):
+            q["mode"] = str(x["mode"])
+    elif net == "httpupgrade":
+        h = ss.get("httpupgradeSettings") or {}
+        q["type"] = "httpupgrade"
+        q["path"] = str(h.get("path") or "/")
+        if h.get("host"):
+            q["host"] = str(h["host"])
+    else:
+        q["type"] = net
+    security = (ss.get("security") or "none").lower()
+    if security == "reality":
+        rs = ss.get("realitySettings") or {}
+        q["security"] = "reality"
+        for src, dst in (("serverName", "sni"), ("fingerprint", "fp"),
+                         ("publicKey", "pbk"), ("shortId", "sid"), ("spiderX", "spx")):
+            if rs.get(src):
+                q[dst] = str(rs[src])
+    elif security == "tls":
+        ts = ss.get("tlsSettings") or {}
+        q["security"] = "tls"
+        if ts.get("serverName"):
+            q["sni"] = str(ts["serverName"])
+        if ts.get("fingerprint"):
+            q["fp"] = str(ts["fingerprint"])
+        if ts.get("alpn"):
+            q["alpn"] = ",".join(str(a) for a in ts["alpn"])
+    else:
+        q["security"] = "none"
+    return q
+
+
+def xray_outbound_uri(ob: dict[str, Any]) -> str | None:
+    """Один outbound Xray -> URI прокси (None, если узел не поддержан)."""
+    proto = str(ob.get("protocol") or ob.get("type") or "").lower()
+    if not proto or proto in _DEAD_PROTOCOLS:
+        return None
+    st = ob.get("settings") or {}
+    ss = ob.get("streamSettings") or {}
+    tag = str(ob.get("tag") or "")
+    frag = "#" + quote(tag, safe="") if tag else ""
+    if proto == "vless":
+        v = (st.get("vnext") or [{}])[0] or {}
+        u = (v.get("users") or [{}])[0] or {}
+        uid = str(u.get("id") or "")
+        addr = v.get("address")
+        if not (addr and UUID_RE.match(uid)):
+            return None
+        q = {"encryption": str(u.get("encryption") or "none")}
+        if u.get("flow"):
+            q["flow"] = str(u["flow"])
+        q.update(_xray_stream(ss))
+        return f"vless://{uid}@{addr}:{v.get('port') or 443}?{urlencode(q)}{frag}"
+    if proto == "trojan":
+        s = (st.get("servers") or [{}])[0] or {}
+        addr, pw = s.get("address"), s.get("password")
+        if not (addr and pw):
+            return None
+        q = _xray_stream(ss)
+        if q.get("security") == "none":
+            q["security"] = "tls"  # trojan без TLS нерабочий
+        return f"trojan://{quote(str(pw), safe='')}@{addr}:{s.get('port') or 443}?{urlencode(q)}{frag}"
+    if proto in ("hysteria", "hysteria2"):
+        hs = ss.get("hysteriaSettings") or {}
+        addr = st.get("address")
+        auth = hs.get("auth") or st.get("auth") or ""
+        if not (addr and auth):
+            return None
+        ts = ss.get("tlsSettings") or {}
+        q = {"sni": str(ts.get("serverName") or addr), "insecure": "1"}
+        alpn = ts.get("alpn") or ["h3"]
+        q["alpn"] = ",".join(str(a) for a in alpn)
+        return f"hysteria2://{quote(str(auth), safe='')}@{addr}:{st.get('port') or 443}/?{urlencode(q)}{frag}"
+    if proto == "shadowsocks":
+        s = (st.get("servers") or [{}])[0] or {}
+        addr, method, pw = s.get("address"), s.get("method"), s.get("password")
+        if not (addr and method and pw):
+            return None
+        userinfo = base64.urlsafe_b64encode(f"{method}:{pw}".encode()).decode().rstrip("=")
+        return f"ss://{userinfo}@{addr}:{s.get('port') or 443}{frag}"
+    return None
+
+
+def xray_json_uris(text: str) -> list[str]:
+    """Xray-JSON (один конфиг или массив конфигов) -> список URI узлов."""
+    stripped = text.strip()
+    if not stripped or stripped[0] not in "[{":
+        return []
+    try:
+        data = json.loads(stripped)
+    except json.JSONDecodeError:
+        return []
+    configs = data if isinstance(data, list) else [data]
+    uris: list[str] = []
+    for cfg in configs:
+        if not isinstance(cfg, dict):
+            continue
+        for ob in cfg.get("outbounds") or []:
+            if isinstance(ob, dict):
+                uri = xray_outbound_uri(ob)
+                if uri:
+                    uris.append(uri)
+    return uris
+
+
+def extract_uris(content: bytes) -> list[str]:
+    """Универсальный разбор подписки: URI-список, base64 или Xray-JSON."""
+    text = decode_subscription(content)
+    uris = find_uris(text)
+    if uris:
+        return uris
+    return xray_json_uris(text)
 
 
 def decode_subscription(content: bytes) -> str:
@@ -187,8 +345,10 @@ def parse_uri(uri: str, category: str = "other", source: str = "") -> ParsedNode
         if tls:
             out["tls"] = tls
         flow = (q.get("flow") or "").lower()
-        if flow == "xtls-rprx-vision" and tls and "reality" not in tls:
-            # VISION требует TCP transport; с ws/grpc несовместим.
+        if flow == "xtls-rprx-vision" and tls:
+            # VISION живёт только на TCP-транспорте, но с Reality он работает
+            # штатно (самая частая современная связка) — flow сохраняем и там,
+            # иначе сервер с flow=xtls-rprx-vision не пустит клиента.
             if (q.get("type") or "tcp").lower() in ("tcp", "raw", ""):
                 out["flow"] = flow
         out = _finalize(out, q, name)

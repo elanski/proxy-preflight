@@ -243,3 +243,122 @@ def test_dedup_by_exit_ip():
         assert report["live"] == 2  # два уникальных выхода, не три
         lines = (Path(td) / "subscriptions_live.txt").read_text().splitlines()
         assert sorted(lines) == ["b", "c"]  # dup с меньшей latency (80ms) выживает
+
+
+# --- Xray-JSON подписки (Remnawave/Happ мультиконфиг) и source_headers ------
+
+XRAY_MULTI = [
+    {
+        "remarks": "⚡ Авто-балансер 1/2",
+        "outbounds": [
+            {
+                "tag": "srv1",
+                "protocol": "vless",
+                "settings": {"vnext": [{"address": "1.2.3.4", "port": 443, "users": [
+                    {"id": UUID, "encryption": "none", "flow": "xtls-rprx-vision"}]}]},
+                "streamSettings": {"network": "tcp", "security": "reality", "realitySettings": {
+                    "serverName": "a.example", "publicKey": "K" * 43,
+                    "shortId": "abcd1234", "fingerprint": "chrome"}},
+            },
+            {
+                "tag": "srv2",
+                "protocol": "vless",
+                "settings": {"vnext": [{"address": "5.6.7.8", "port": 8443, "users": [
+                    {"id": UUID, "encryption": "none"}]}]},
+                "streamSettings": {"network": "xhttp", "security": "tls",
+                                   "xhttpSettings": {"path": "/xhttp", "mode": "stream-one"},
+                                   "tlsSettings": {"serverName": "b.example"}},
+            },
+            {"tag": "trojan1", "protocol": "trojan",
+             "settings": {"servers": [{"address": "9.9.9.9", "port": 443, "password": "pw"}]},
+             "streamSettings": {"network": "ws", "security": "tls",
+                                "tlsSettings": {"serverName": "c.example"},
+                                "wsSettings": {"path": "/ws", "headers": {"Host": "c.example"}}}},
+            {"tag": "hy1", "protocol": "hysteria",
+             "settings": {"address": "8.8.8.8", "port": 443, "version": 2},
+             "streamSettings": {"network": "hysteria", "security": "tls",
+                                "hysteriaSettings": {"auth": "auth-token", "version": 2},
+                                "tlsSettings": {"serverName": "d.example", "alpn": ["h3"]}}},
+            {"tag": "direct", "protocol": "freedom", "settings": {}},
+            {"tag": "block", "protocol": "blackhole", "settings": {}},
+        ],
+    },
+    {
+        "remarks": "🇷🇺 Обход глушилок 1 - LTE",
+        "outbounds": [
+            {"tag": "srv1", "protocol": "vless",
+             "settings": {"vnext": [{"address": "1.2.3.4", "port": 443, "users": [
+                 {"id": UUID, "encryption": "none", "flow": "xtls-rprx-vision"}]}]},
+             "streamSettings": {"network": "tcp", "security": "reality", "realitySettings": {
+                 "serverName": "a.example", "publicKey": "K" * 43,
+                 "shortId": "abcd1234", "fingerprint": "chrome"}}},
+        ],
+    },
+]
+
+
+def test_extract_uris_from_xray_json_multiconfig():
+    """Массив Xray-конфигов (Remnawave/Happ) даёт все узлы, кроме freedom/block."""
+    uris = parsers.extract_uris(json.dumps(XRAY_MULTI).encode())
+    # 4 узла в первом конфиге + повтор srv1 во втором (дедуп делает harvest)
+    assert len(uris) == 5
+    v, x, t, h = (parsers.parse_uri(u) for u in uris[:4])
+    assert v is not None and x is not None and t is not None and h is not None
+    assert v.outbound["type"] == "vless" and v.outbound["flow"] == "xtls-rprx-vision"
+    assert v.outbound["tls"]["reality"]["public_key"] == "K" * 43
+    assert v.outbound["tls"]["reality"]["short_id"] == "abcd1234"
+    assert x.outbound["transport"] == {"type": "xhttp", "path": "/xhttp"}
+    assert t.outbound["type"] == "trojan"
+    assert t.outbound["transport"]["type"] == "ws"
+    assert t.outbound["transport"]["headers"]["Host"] == "c.example"
+    assert h.outbound["type"] == "hysteria2" and h.outbound["password"] == "auth-token"
+
+
+def test_extract_uris_prefers_plain_list_over_json():
+    plain = "vless://%s@1.1.1.1:443?encryption=none&security=none#n\n" % UUID
+    assert parsers.extract_uris(plain.encode()) == [plain.strip()]
+    assert parsers.extract_uris(json.dumps(XRAY_MULTI).encode()) != []
+
+
+def test_load_sources_merges_extra_and_expands_env(tmp_path, monkeypatch):
+    """Личный файл источников сливается с общим; ${VAR} берётся из окружения."""
+    import harvest
+    base = tmp_path / "sources.yaml"
+    base.write_text("categories:\n  other:\n    - https://example.com/plain.txt\n", encoding="utf-8")
+    extra = tmp_path / "sources.local.yaml"
+    extra.write_text(
+        "categories:\n"
+        "  other:\n"
+        "    - ${MY_SUB_URL}\n"
+        "    - ${NOT_SET_URL}\n"
+        "source_headers:\n"
+        "  sub.example.live:\n"
+        "    User-Agent: Happ/2.5.0\n"
+        "    x-hwid: ${MY_HWID}\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("MY_SUB_URL", "https://sub.example.live/token")
+    monkeypatch.setenv("MY_HWID", "deadbeef")
+    monkeypatch.delenv("NOT_SET_URL", raising=False)
+    cats, _hints, headers = harvest.load_sources(base, extra)
+    # плейсхолдер без значения выброшен, остальные разрешены
+    assert cats["other"] == ["https://example.com/plain.txt", "https://sub.example.live/token"]
+    hdrs = harvest.headers_for("https://sub.example.live/token", headers)
+    assert hdrs == {"User-Agent": "Happ/2.5.0", "x-hwid": "deadbeef"}
+    assert harvest.headers_for("https://other.example/x", headers) == {}
+    # без переменной окружения источник пропадает целиком
+    monkeypatch.delenv("MY_SUB_URL")
+    monkeypatch.delenv("MY_HWID")
+    cats2, _, headers2 = harvest.load_sources(base, extra)
+    assert cats2["other"] == ["https://example.com/plain.txt"]
+    # незаполненный x-hwid выброшен, User-Agent остался
+    assert harvest.headers_for("https://sub.example.live/token", headers2) == {"User-Agent": "Happ/2.5.0"}
+
+
+def test_load_sources_without_extra_file(tmp_path):
+    import harvest
+    base = tmp_path / "sources.yaml"
+    base.write_text("categories:\n  ru:\n    - https://example.com/ru.txt\n", encoding="utf-8")
+    cats, _hints, headers = harvest.load_sources(base, tmp_path / "missing.yaml")
+    assert cats == {"ru": ["https://example.com/ru.txt"]}
+    assert headers == {}

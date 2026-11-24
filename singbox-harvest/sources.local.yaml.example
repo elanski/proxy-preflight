@@ -1,0 +1,24 @@
+# Личные источники (gitignored). Скопируй в sources.local.yaml и заполни.
+#
+# Зачем: sources.yaml — публичный. Подписка-токен в URL = доступ к чужому
+# аккаунту панели, поэтому такие источники живут только здесь. Значения
+# можно не писать в файл, а брать из окружения: ${ИМЯ_ПЕРЕМЕННОЙ}
+# (локально export, в CI — secrets; незаполненный плейсхолдер = источник
+# пропускается, прогон не падает).
+#
+# Запуск: python singbox-harvest/harvest.py --sources-extra singbox-harvest/sources.local.yaml
+
+categories:
+  other:
+    - ${MY_SUB_URL}
+
+# Заголовки запроса для конкретного источника: ключ — хост или префикс URL.
+# Нужны подпискам, которые отдают данные только «своему» клиенту (Remnawave
+# без x-hwid возвращает заглушку «Приложение не поддерживается! Скачивайте Happ»).
+source_headers:
+  sub.example.live:
+    User-Agent: Happ/2.5.0
+    x-hwid: ${MY_HWID_STABLE}
+    x-device-os: Windows
+    x-ver-os: "10"
+    x-device-model: PC
