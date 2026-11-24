@@ -183,13 +183,139 @@ def xray_json_uris(text: str) -> list[str]:
     return uris
 
 
+# --- sing-box JSON (те же панели, другой шаблон подписки) --------------------
+# Marzban/Remnawave отдают sing-box-конфиг, если клиент не опознан как Xray:
+# outbounds[].type вместо .protocol, tls/transport отдельными объектами.
+# Без этого разбора такая подписка выглядит пустой.
+
+_SB_DEAD = ("direct", "block", "dns", "selector", "urltest", "loadbalance",
+            "wireguard", "tor", "ssh", "socks", "http")
+
+
+def _sb_transport(tr: dict[str, Any]) -> dict[str, str]:
+    t = str(tr.get("type") or "").lower()
+    q: dict[str, str] = {}
+    if t == "ws":
+        q.update(type="ws", path=str(tr.get("path") or "/"))
+        host = (tr.get("headers") or {}).get("Host")
+        if host:
+            q["host"] = str(host)
+    elif t == "grpc":
+        q.update(type="grpc", serviceName=str(tr.get("service_name") or ""))
+    elif t == "httpupgrade":
+        q.update(type="httpupgrade", path=str(tr.get("path") or "/"))
+        if tr.get("host"):
+            q["host"] = str(tr["host"])
+    elif t in ("http", "h2"):
+        q.update(type="http", path=str(tr.get("path") or "/"))
+        host = (tr.get("headers") or {}).get("Host") or tr.get("host")
+        if host:
+            q["host"] = str(host)
+    elif t == "xhttp":
+        q.update(type="xhttp", path=str(tr.get("path") or "/"))
+        if tr.get("host"):
+            q["host"] = str(tr["host"])
+        if tr.get("mode"):
+            q["mode"] = str(tr["mode"])
+    elif t:
+        q["type"] = t
+    return q
+
+
+def _sb_tls(tls: dict[str, Any]) -> dict[str, str]:
+    if not tls or not tls.get("enabled"):
+        return {"security": "none"}
+    q: dict[str, str] = {"security": "tls"}
+    if tls.get("server_name"):
+        q["sni"] = str(tls["server_name"])
+    fp = (tls.get("utls") or {}).get("fingerprint")
+    if fp:
+        q["fp"] = str(fp)
+    if tls.get("alpn"):
+        q["alpn"] = ",".join(str(a) for a in tls["alpn"])
+    reality = tls.get("reality") or {}
+    if reality.get("enabled"):
+        q["security"] = "reality"
+        if reality.get("public_key"):
+            q["pbk"] = str(reality["public_key"])
+        if reality.get("short_id"):
+            q["sid"] = str(reality["short_id"])
+    return q
+
+
+def singbox_outbound_uri(ob: dict[str, Any]) -> str | None:
+    """Один outbound sing-box -> URI прокси."""
+    typ = str(ob.get("type") or "").lower()
+    if not typ or typ in _SB_DEAD:
+        return None
+    server, port = ob.get("server"), ob.get("server_port") or ob.get("port")
+    if not server or not port:
+        return None
+    tag = str(ob.get("tag") or "")
+    frag = "#" + quote(tag, safe="") if tag else ""
+    tls = _sb_tls(ob.get("tls") or {})
+    base = _sb_transport(ob.get("transport") or {})
+    if typ == "vless":
+        uuid = str(ob.get("uuid") or "")
+        if not UUID_RE.match(uuid):
+            return None
+        q = {"encryption": "none"}
+        if ob.get("flow"):
+            q["flow"] = str(ob["flow"])
+        q.update(base)
+        q.update(tls)
+        return f"vless://{uuid}@{server}:{port}?{urlencode(q)}{frag}"
+    if typ == "trojan":
+        pw = ob.get("password")
+        if not pw:
+            return None
+        q = dict(base)
+        q.update(tls if tls["security"] != "none" else {"security": "tls"})
+        return f"trojan://{quote(str(pw), safe='')}@{server}:{port}?{urlencode(q)}{frag}"
+    if typ in ("hysteria2", "hy2"):
+        pw = ob.get("password") or ob.get("auth")
+        if not pw:
+            return None
+        q = {"sni": str((ob.get("tls") or {}).get("server_name") or server), "insecure": "1"}
+        return f"hysteria2://{quote(str(pw), safe='')}@{server}:{port}/?{urlencode(q)}{frag}"
+    if typ == "shadowsocks":
+        method, pw = ob.get("method"), ob.get("password")
+        if not (method and pw):
+            return None
+        userinfo = base64.urlsafe_b64encode(f"{method}:{pw}".encode()).decode().rstrip("=")
+        return f"ss://{userinfo}@{server}:{port}{frag}"
+    return None
+
+
+def singbox_json_uris(text: str) -> list[str]:
+    """sing-box JSON (один конфиг или массив) -> список URI узлов."""
+    stripped = text.strip()
+    if not stripped or stripped[0] not in "[{":
+        return []
+    try:
+        data = json.loads(stripped)
+    except json.JSONDecodeError:
+        return []
+    configs = data if isinstance(data, list) else [data]
+    uris: list[str] = []
+    for cfg in configs:
+        if not isinstance(cfg, dict):
+            continue
+        for ob in cfg.get("outbounds") or []:
+            if isinstance(ob, dict) and "type" in ob:
+                uri = singbox_outbound_uri(ob)
+                if uri:
+                    uris.append(uri)
+    return uris
+
+
 def extract_uris(content: bytes) -> list[str]:
-    """Универсальный разбор подписки: URI-список, base64 или Xray-JSON."""
+    """Универсальный разбор подписки: URI-список, base64, Xray-JSON или sing-box JSON."""
     text = decode_subscription(content)
     uris = find_uris(text)
     if uris:
         return uris
-    return xray_json_uris(text)
+    return xray_json_uris(text) or singbox_json_uris(text)
 
 
 def decode_subscription(content: bytes) -> str:

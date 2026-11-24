@@ -362,3 +362,33 @@ def test_load_sources_without_extra_file(tmp_path):
     cats, _hints, headers = harvest.load_sources(base, tmp_path / "missing.yaml")
     assert cats == {"ru": ["https://example.com/ru.txt"]}
     assert headers == {}
+
+
+def test_extract_uris_from_singbox_json():
+    """sing-box JSON (Marzban/Remnawave без Xray-клиента) даёт те же узлы."""
+    cfg = {
+        "outbounds": [
+            {"type": "selector", "tag": "→ Remnawave", "outbounds": ["n1", "direct"]},
+            {"type": "vless", "tag": "n1", "server": "fra2.example.com", "server_port": 443,
+             "uuid": UUID, "flow": "xtls-rprx-vision",
+             "tls": {"enabled": True, "server_name": "max.ru",
+                     "utls": {"enabled": True, "fingerprint": "chrome"},
+                     "reality": {"enabled": True, "public_key": "K" * 43, "short_id": "e7"}}},
+            {"type": "trojan", "tag": "n2", "server": "1.2.3.5", "server_port": 8443,
+             "password": "pw2",
+             "tls": {"enabled": True, "server_name": "b.example"},
+             "transport": {"type": "ws", "path": "/ws", "headers": {"Host": "b.example"}}},
+            {"type": "hysteria2", "tag": "n3", "server": "1.2.3.6", "server_port": 443,
+             "password": "pw3", "tls": {"enabled": True, "server_name": "c.example"}},
+            {"type": "direct", "tag": "direct"},
+        ]
+    }
+    uris = parsers.extract_uris(json.dumps(cfg).encode())
+    assert len(uris) == 3
+    v, t, h = (parsers.parse_uri(u) for u in uris)
+    assert v is not None and t is not None and h is not None
+    assert v.outbound["type"] == "vless" and v.outbound["flow"] == "xtls-rprx-vision"
+    assert v.outbound["tls"]["reality"]["public_key"] == "K" * 43
+    assert v.outbound["tls"]["utls"]["fingerprint"] == "chrome"
+    assert t.outbound["type"] == "trojan" and t.outbound["transport"]["type"] == "ws"
+    assert h.outbound["type"] == "hysteria2"
