@@ -71,8 +71,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/BarqDev1/vless-aggregator/HEAD/all_universal.txt": {
-    "checked": 19,
-    "alive": 6,
+    "checked": 21,
+    "alive": 8,
     "fail_runs": 0,
     "history": [
       {
@@ -99,15 +99,20 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/Farid-Karimi/Config-Collector/main/vless_iran.txt": {
-    "checked": 15,
-    "alive": 2,
+    "checked": 16,
+    "alive": 3,
     "fail_runs": 0,
     "history": [
       {
@@ -129,9 +134,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -154,8 +164,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/verified/configs.txt": {
-    "checked": 23,
-    "alive": 18,
+    "checked": 25,
+    "alive": 20,
     "fail_runs": 0,
     "history": [
       {
@@ -192,9 +202,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -289,8 +304,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/Nexuspt753/GitHub-Sub-Scanner/HEAD/subs/all.txt": {
-    "checked": 18,
-    "alive": 9,
+    "checked": 19,
+    "alive": 10,
     "fail_runs": 0,
     "history": [
       {
@@ -322,9 +337,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -347,8 +367,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/RichTiTAN/V2rayTested/HEAD/working_configs.txt": {
-    "checked": 6,
-    "alive": 5,
+    "checked": 8,
+    "alive": 7,
     "fail_runs": 0,
     "history": [
       {
@@ -375,9 +395,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -425,8 +450,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/HEAD/Countries/Russia.txt": {
-    "checked": 14,
-    "alive": 11,
+    "checked": 15,
+    "alive": 12,
     "fail_runs": 0,
     "history": [
       {
@@ -463,15 +488,20 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/aishervin/subfine/HEAD/sub.txt": {
-    "checked": 19,
-    "alive": 9,
+    "checked": 21,
+    "alive": 11,
     "fail_runs": 0,
     "history": [
       {
@@ -508,9 +538,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -533,8 +568,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/Darmioniks/proxy-and-vless-collector/HEAD/vless_filtered.txt": {
-    "checked": 20,
-    "alive": 20,
+    "checked": 23,
+    "alive": 23,
     "fail_runs": 0,
     "history": [
       {
@@ -566,9 +601,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 3,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -652,8 +692,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/TelegaVPN/free-vpn-keys/main/sub/base64/vless.txt": {
-    "checked": 17,
-    "alive": 10,
+    "checked": 19,
+    "alive": 12,
     "fail_runs": 0,
     "history": [
       {
@@ -690,9 +730,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -750,8 +795,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/ConfigsHUB.txt": {
-    "checked": 17,
-    "alive": 7,
+    "checked": 18,
+    "alive": 8,
     "fail_runs": 0,
     "history": [
       {
@@ -783,9 +828,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -835,8 +885,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/fifthidea/sub/HEAD/sub/ir-actual.txt": {
-    "checked": 13,
-    "alive": 5,
+    "checked": 14,
+    "alive": 6,
     "fail_runs": 0,
     "history": [
       {
@@ -853,15 +903,20 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-19T03:58:45.667181+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-19T03:58:45.667181+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/NamiraConfigs.txt": {
-    "checked": 19,
-    "alive": 11,
+    "checked": 21,
+    "alive": 13,
     "fail_runs": 0,
     "history": [
       {
@@ -898,15 +953,20 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/fifthidea/sub/HEAD/channels/meliproxyy.txt": {
-    "checked": 17,
-    "alive": 12,
+    "checked": 18,
+    "alive": 13,
     "fail_runs": 0,
     "history": [
       {
@@ -943,9 +1003,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -975,8 +1040,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/HamoonSoleimani/Pr0xySh4rk/HEAD/Pr0xySh4rk_SubBase64.txt": {
-    "checked": 24,
-    "alive": 20,
+    "checked": 27,
+    "alive": 23,
     "fail_runs": 0,
     "history": [
       {
@@ -1013,9 +1078,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 3,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1063,8 +1133,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/Farid-Karimi/Config-Collector/main/mixed_iran.txt": {
-    "checked": 17,
-    "alive": 9,
+    "checked": 19,
+    "alive": 11,
     "fail_runs": 0,
     "history": [
       {
@@ -1091,9 +1161,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1116,8 +1191,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/iboxz/free-v2ray-collector/HEAD/main/mix.txt": {
-    "checked": 14,
-    "alive": 3,
+    "checked": 16,
+    "alive": 4,
     "fail_runs": 0,
     "history": [
       {
@@ -1139,9 +1214,14 @@
         "checked": 1,
         "alive": 0,
         "date": "2026-11-23T13:34:24.094317+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-23T13:34:24.094317+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1164,8 +1244,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/kasesm/Free-Config/main/all_raw.txt": {
-    "checked": 12,
-    "alive": 1,
+    "checked": 14,
+    "alive": 3,
     "fail_runs": 0,
     "history": [
       {
@@ -1177,9 +1257,16 @@
         "checked": 4,
         "alive": 0,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parse_errors": 0,
+    "parser_gap": false
   },
   "https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/HEAD/data/githubmirror/clean/ss.txt": {
     "checked": 12,
@@ -1308,8 +1395,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/ALIILAPRO/v2rayNG-Config/main/server.txt": {
-    "checked": 14,
-    "alive": 3,
+    "checked": 15,
+    "alive": 4,
     "fail_runs": 0,
     "history": [
       {
@@ -1326,9 +1413,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1436,8 +1528,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/subs/balanced-500-tested.txt": {
-    "checked": 11,
-    "alive": 8,
+    "checked": 13,
+    "alive": 10,
     "fail_runs": 0,
     "history": [
       {
@@ -1464,9 +1556,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1506,8 +1603,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/all.txt": {
-    "checked": 21,
-    "alive": 11,
+    "checked": 24,
+    "alive": 13,
     "fail_runs": 0,
     "history": [
       {
@@ -1544,9 +1641,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1629,8 +1731,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/miraali1372/mirsub/HEAD/subscription_b64.txt": {
-    "checked": 23,
-    "alive": 15,
+    "checked": 25,
+    "alive": 17,
     "fail_runs": 0,
     "history": [
       {
@@ -1667,9 +1769,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1710,8 +1817,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/nikita29a/FreeProxyList/main/mirror/1.txt": {
-    "checked": 14,
-    "alive": 6,
+    "checked": 15,
+    "alive": 7,
     "fail_runs": 0,
     "history": [
       {
@@ -1733,9 +1840,14 @@
         "checked": 1,
         "alive": 0,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1790,8 +1902,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/cdn-ws-grpc.txt": {
-    "checked": 15,
-    "alive": 3,
+    "checked": 16,
+    "alive": 4,
     "fail_runs": 0,
     "history": [
       {
@@ -1813,9 +1925,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1838,8 +1955,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/miladtahanian/Config-Collector/HEAD/mixed_iran.txt": {
-    "checked": 14,
-    "alive": 4,
+    "checked": 15,
+    "alive": 5,
     "fail_runs": 0,
     "history": [
       {
@@ -1856,9 +1973,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1899,8 +2021,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/noahclanman/free-xray-gcp/HEAD/output/all/configs.txt": {
-    "checked": 19,
-    "alive": 13,
+    "checked": 21,
+    "alive": 15,
     "fail_runs": 0,
     "history": [
       {
@@ -1937,9 +2059,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -1987,8 +2114,8 @@
     "updated": "2026-11-18T19:47:21.208441+00:00"
   },
   "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/BLACK_VLESS_RUS_mobile.txt": {
-    "checked": 16,
-    "alive": 4,
+    "checked": 17,
+    "alive": 5,
     "fail_runs": 0,
     "history": [
       {
@@ -2020,15 +2147,20 @@
         "checked": 1,
         "alive": 0,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/wuqb2i4f/xray-config-toolkit/main/output/base64/mix-uri": {
-    "checked": 20,
-    "alive": 10,
+    "checked": 21,
+    "alive": 11,
     "fail_runs": 0,
     "history": [
       {
@@ -2065,15 +2197,20 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/ninjastrikers/nexus-nodes/HEAD/configs/all.txt": {
-    "checked": 14,
-    "alive": 9,
+    "checked": 15,
+    "alive": 10,
     "fail_runs": 0,
     "history": [
       {
@@ -2095,15 +2232,20 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/yuesuizhengrong/proxy-subscriptions/HEAD/subscription.txt": {
-    "checked": 16,
-    "alive": 10,
+    "checked": 17,
+    "alive": 11,
     "fail_runs": 0,
     "history": [
       {
@@ -2135,9 +2277,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -2202,9 +2349,9 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/liMilCo/v2r/HEAD/all_configs.txt": {
-    "checked": 12,
-    "alive": 0,
-    "fail_runs": 2,
+    "checked": 13,
+    "alive": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -2215,9 +2362,16 @@
         "checked": 4,
         "alive": 0,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parse_errors": 0,
+    "parser_gap": false
   },
   "https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/confighub.txt": {
     "checked": 12,
@@ -2238,8 +2392,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/mani-moh/pattn/HEAD/subs/categories/iran-optimized.txt": {
-    "checked": 16,
-    "alive": 4,
+    "checked": 17,
+    "alive": 5,
     "fail_runs": 0,
     "history": [
       {
@@ -2261,9 +2415,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -2286,9 +2445,9 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/morpheusadam/v2ray-config/HEAD/subs/bundles/all.txt": {
-    "checked": 12,
-    "alive": 0,
-    "fail_runs": 2,
+    "checked": 13,
+    "alive": 1,
+    "fail_runs": 0,
     "history": [
       {
         "checked": 8,
@@ -2299,13 +2458,20 @@
         "checked": 4,
         "alive": 0,
         "date": "2026-11-18T20:22:36.066990+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-18T20:22:36.066990+00:00"
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parse_errors": 0,
+    "parser_gap": false
   },
   "https://raw.githubusercontent.com/mani-moh/navaroute/HEAD/subs/all.txt": {
-    "checked": 14,
-    "alive": 1,
+    "checked": 16,
+    "alive": 3,
     "fail_runs": 0,
     "history": [
       {
@@ -2327,9 +2493,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-23T13:34:24.094317+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-23T13:34:24.094317+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -2352,8 +2523,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt": {
-    "checked": 16,
-    "alive": 8,
+    "checked": 17,
+    "alive": 9,
     "fail_runs": 0,
     "history": [
       {
@@ -2380,14 +2551,19 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/ninjastrikers/nexus-nodes/HEAD/configs/countries/ru/all.txt": {
-    "checked": 15,
+    "checked": 16,
     "alive": 2,
     "fail_runs": 0,
     "history": [
@@ -2405,9 +2581,16 @@
         "checked": 3,
         "alive": 0,
         "date": "2026-11-18T20:51:13.839475+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-18T20:51:13.839475+00:00"
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parse_errors": 0,
+    "parser_gap": false
   },
   "https://raw.githubusercontent.com/qopq1366/VlessConfig/HEAD/sub.txt": {
     "checked": 12,
@@ -2428,7 +2611,7 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "http://livpn.atwebpages.com/sub.php?token=c829c20769d2112b": {
-    "checked": 10,
+    "checked": 11,
     "alive": 0,
     "fail_runs": 0,
     "history": [
@@ -2461,9 +2644,14 @@
         "checked": 1,
         "alive": 0,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -2634,8 +2822,8 @@
     "parser_gap": false
   },
   "https://dfantomasd.github.io/MyVPN-subscription/public/happ.txt": {
-    "checked": 7,
-    "alive": 7,
+    "checked": 9,
+    "alive": 9,
     "fail_runs": 0,
     "history": [
       {
@@ -2652,15 +2840,20 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://etoneya.su/1": {
-    "checked": 11,
-    "alive": 8,
+    "checked": 12,
+    "alive": 9,
     "fail_runs": 0,
     "history": [
       {
@@ -2687,9 +2880,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -2707,8 +2905,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://gcore.jsdelivr.net/gh/zueston/proxy-hub@main/out/base64.txt": {
-    "checked": 15,
-    "alive": 15,
+    "checked": 17,
+    "alive": 17,
     "fail_runs": 0,
     "history": [
       {
@@ -2735,9 +2933,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -2834,8 +3037,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://leidahub.top/v2ray.txt": {
-    "checked": 15,
-    "alive": 15,
+    "checked": 18,
+    "alive": 18,
     "fail_runs": 0,
     "history": [
       {
@@ -2867,15 +3070,20 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 3,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://limilco.github.io/v2r/sub/1.txt": {
-    "checked": 11,
-    "alive": 10,
+    "checked": 13,
+    "alive": 12,
     "fail_runs": 0,
     "history": [
       {
@@ -2902,15 +3110,20 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://limilco.github.io/v2r/sub/3.txt": {
-    "checked": 9,
-    "alive": 6,
+    "checked": 10,
+    "alive": 7,
     "fail_runs": 0,
     "history": [
       {
@@ -2937,15 +3150,20 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://limilco.github.io/v2r/sub/4.txt": {
-    "checked": 11,
-    "alive": 9,
+    "checked": 12,
+    "alive": 10,
     "fail_runs": 0,
     "history": [
       {
@@ -2972,15 +3190,20 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://limilco.github.io/v2r/sub/5.txt": {
-    "checked": 9,
-    "alive": 4,
+    "checked": 10,
+    "alive": 5,
     "fail_runs": 0,
     "history": [
       {
@@ -3002,9 +3225,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3022,8 +3250,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://proxypool1999.banyunxiaoxi.icu/clash/proxies": {
-    "checked": 20,
-    "alive": 20,
+    "checked": 23,
+    "alive": 23,
     "fail_runs": 0,
     "history": [
       {
@@ -3055,9 +3283,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 3,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3075,8 +3308,8 @@
     "updated": "2026-11-18T20:22:36.066990+00:00"
   },
   "https://pusheen-feed-gateway.mahankenway.workers.dev/outage.txt": {
-    "checked": 6,
-    "alive": 1,
+    "checked": 7,
+    "alive": 2,
     "fail_runs": 0,
     "history": [
       {
@@ -3088,9 +3321,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3141,8 +3379,8 @@
     "parser_gap": false
   },
   "https://raw.githack.com/igareck/vpn-configs-for-russia/main/BLACK_SS%2BAll_RUS.txt": {
-    "checked": 10,
-    "alive": 7,
+    "checked": 11,
+    "alive": 8,
     "fail_runs": 0,
     "history": [
       {
@@ -3164,9 +3402,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3196,8 +3439,8 @@
     "parser_gap": false
   },
   "https://raw.githack.com/igareck/vpn-configs-for-russia/main/Export/v2rayN_PC/Vless-Reality-White-Lists-Rus-Mobile-v2rayN.txt": {
-    "checked": 2,
-    "alive": 1,
+    "checked": 5,
+    "alive": 3,
     "fail_runs": 0,
     "history": [
       {
@@ -3209,9 +3452,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3266,8 +3514,8 @@
     "parser_gap": false
   },
   "https://raw.githack.com/indelingDanil/MyAppVPN-subs/output/vless.txt": {
-    "checked": 19,
-    "alive": 15,
+    "checked": 22,
+    "alive": 18,
     "fail_runs": 0,
     "history": [
       {
@@ -3304,9 +3552,14 @@
         "checked": 3,
         "alive": 3,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 3,
+        "alive": 3,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3369,7 +3622,7 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/barry-far/v2ray-config/main/All_Configs_Sub.txt": {
-    "checked": 3,
+    "checked": 4,
     "alive": 1,
     "fail_runs": 0,
     "history": [
@@ -3382,9 +3635,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-19T03:58:45.667181+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-19T03:58:45.667181+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3448,8 +3706,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/ninjastrikers/nexus-nodes/HEAD/configs/countries/ru/light.txt": {
-    "checked": 6,
-    "alive": 2,
+    "checked": 7,
+    "alive": 3,
     "fail_runs": 0,
     "history": [
       {
@@ -3466,9 +3724,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-23T13:34:24.094317+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-23T13:34:24.094317+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3528,8 +3791,8 @@
     "parser_gap": false
   },
   "https://robin.victoriacross.ir": {
-    "checked": 12,
-    "alive": 12,
+    "checked": 13,
+    "alive": 13,
     "fail_runs": 0,
     "history": [
       {
@@ -3561,9 +3824,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -3678,8 +3946,8 @@
     "parser_gap": false
   },
   "https://tuftytech.github.io/ShellShift/sub_all.txt": {
-    "checked": 12,
-    "alive": 8,
+    "checked": 13,
+    "alive": 9,
     "fail_runs": 0,
     "history": [
       {
@@ -3711,15 +3979,20 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://vless.svinakraft.workers.dev/Top500.txt": {
-    "checked": 8,
-    "alive": 5,
+    "checked": 10,
+    "alive": 7,
     "fail_runs": 0,
     "history": [
       {
@@ -3741,15 +4014,20 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
   "https://vless.svinakraft.workers.dev/fastest.txt": {
-    "checked": 4,
-    "alive": 4,
+    "checked": 5,
+    "alive": 5,
     "fail_runs": 0,
     "history": [
       {
@@ -3766,9 +4044,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-23T13:34:24.094317+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-23T13:34:24.094317+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parse_errors": 0,
     "parser_gap": false
   },
@@ -4076,7 +4359,7 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/Diversan313/apex-parser/main/subs/main/alive_bs.txt": {
-    "checked": 4,
+    "checked": 5,
     "alive": 4,
     "parse_errors": 0,
     "fail_runs": 0,
@@ -4100,9 +4383,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/main/splitted-by-country/United_States.txt": {
@@ -4156,8 +4444,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/Mehinator/Derafsh/main/derafsh_servers.txt": {
-    "checked": 6,
-    "alive": 6,
+    "checked": 8,
+    "alive": 8,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4175,9 +4463,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/ProblemTheCode/SylphNet-public/main/sub/sub.txt": {
@@ -4201,8 +4494,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/R3ZARAHIMI/tg-v2ray-configs-every2h/main/Original-Configs.txt": {
-    "checked": 1,
-    "alive": 1,
+    "checked": 2,
+    "alive": 2,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4210,14 +4503,19 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-19T03:58:45.667181+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-19T03:58:45.667181+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/Shayanthn/V2ray-Tester-Pro/main/working_configs.json": {
-    "checked": 1,
-    "alive": 1,
+    "checked": 2,
+    "alive": 2,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4225,9 +4523,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-19T03:58:45.667181+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-19T03:58:45.667181+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/SoliSpirit/SolVPN/main/Protocols/vless.txt": {
@@ -4271,8 +4574,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/main/sub/URI.yml": {
-    "checked": 6,
-    "alive": 6,
+    "checked": 8,
+    "alive": 8,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4290,9 +4593,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/free-nodes/v2rayfree/main/sub": {
@@ -4311,8 +4619,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/port_8443.txt": {
-    "checked": 4,
-    "alive": 4,
+    "checked": 5,
+    "alive": 5,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4335,14 +4643,19 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/lanzm/MetaFetch/master/list.txt": {
-    "checked": 3,
-    "alive": 2,
+    "checked": 4,
+    "alive": 3,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4355,14 +4668,19 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/mheidari98/.proxy/main/all": {
-    "checked": 1,
-    "alive": 1,
+    "checked": 2,
+    "alive": 2,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4370,9 +4688,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-19T03:58:45.667181+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-19T03:58:45.667181+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/pie-with-jam/5ubscrpt10n-Reborn/main/mini/m1n1-5ub-12.txt": {
@@ -4421,8 +4744,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rekt0ro/ProxyRift/main/subscriptions/all.txt": {
-    "checked": 4,
-    "alive": 4,
+    "checked": 6,
+    "alive": 6,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4435,9 +4758,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rekt0ro/ProxyRift/main/subscriptions/light.txt": {
@@ -4566,8 +4894,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/svinakraft-maker/FlareFeed/main/public/hysteria2.txt": {
-    "checked": 9,
-    "alive": 9,
+    "checked": 10,
+    "alive": 10,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4595,9 +4923,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/svinakraft-maker/FlareFeed/main/public/podpiska.txt": {
@@ -4631,8 +4964,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/sinavm-SVM-vless.txt": {
-    "checked": 7,
-    "alive": 6,
+    "checked": 9,
+    "alive": 8,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4660,9 +4993,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/Freedom-Guard-Builder/Freedom-Finder/main/out/configs/mixed.txt": {
@@ -4711,8 +5049,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/vless.txt": {
-    "checked": 8,
-    "alive": 7,
+    "checked": 9,
+    "alive": 8,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4740,9 +5078,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/luxxuria/harvester/main/ping_tested.txt": {
@@ -4816,8 +5159,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/sakha1370/OpenRay/main/output/site_access/aistudio.txt": {
-    "checked": 3,
-    "alive": 3,
+    "checked": 4,
+    "alive": 4,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4835,9 +5178,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/10ium/base64-encoder/main/encoded/10ium_mixed_iran.txt": {
@@ -4931,8 +5279,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/split/grpc.txt": {
-    "checked": 5,
-    "alive": 5,
+    "checked": 6,
+    "alive": 6,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4955,14 +5303,19 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/FLAT447/v2ray-lists/main/BASE64/BLACK_FULL.txt": {
-    "checked": 3,
-    "alive": 3,
+    "checked": 4,
+    "alive": 4,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -4975,9 +5328,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/main/Z.txt": {
@@ -5016,8 +5374,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/port_2087.txt": {
-    "checked": 3,
-    "alive": 3,
+    "checked": 4,
+    "alive": 4,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5035,9 +5393,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/lanzm/MetaFetch/master/list.b64": {
@@ -5076,8 +5439,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rekt0ro/ProxyRift/main/subscriptions/light-base64.txt": {
-    "checked": 4,
-    "alive": 4,
+    "checked": 6,
+    "alive": 6,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5090,9 +5453,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/countries/JP.txt": {
@@ -5211,8 +5579,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/verified_tls.txt": {
-    "checked": 4,
-    "alive": 3,
+    "checked": 5,
+    "alive": 4,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5230,14 +5598,19 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/sinavm/SVM/main/subscriptions/xray/base64/mix": {
-    "checked": 5,
-    "alive": 4,
+    "checked": 7,
+    "alive": 6,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5255,9 +5628,14 @@
         "checked": 2,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://gitlab.com/igareck/vpn-configs-for-russia/-/raw/main/BLACK_SS%2BAll_RUS.txt": {
@@ -5346,8 +5724,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/pie-with-jam/PulseProxy/main/githubmirror/30.txt": {
-    "checked": 1,
-    "alive": 1,
+    "checked": 2,
+    "alive": 2,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5355,9 +5733,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T00:17:49.489081+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T00:17:49.489081+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rekt0ro/ProxyRift/main/subscriptions/all-base64.txt": {
@@ -5416,8 +5799,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/trojan.txt": {
-    "checked": 4,
-    "alive": 4,
+    "checked": 5,
+    "alive": 5,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5435,9 +5818,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/pie-with-jam/5ubscrpt10n-Reborn/main/mini/m1n1-5ub-16.txt": {
@@ -5641,8 +6029,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/R3ZARAHIMI/tg-v2ray-configs-every2h/main/regions/country_history.json": {
-    "checked": 2,
-    "alive": 2,
+    "checked": 4,
+    "alive": 4,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5650,9 +6038,14 @@
         "checked": 2,
         "alive": 2,
         "date": "2026-11-24T10:15:56.845631+00:00"
+      },
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T10:15:56.845631+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/countries/KZ.txt": {
@@ -5711,8 +6104,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/Delta_Kronecker_vless": {
-    "checked": 3,
-    "alive": 3,
+    "checked": 4,
+    "alive": 4,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5725,9 +6118,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/id/all.txt": {
@@ -5806,8 +6204,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/R3ZARAHIMI/tg-v2ray-configs-every2h/main/conf-week.txt": {
-    "checked": 1,
-    "alive": 1,
+    "checked": 2,
+    "alive": 2,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5815,9 +6213,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt": {
@@ -5896,8 +6299,8 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/pie-with-jam/PulseProxy/main/githubmirror/26.txt": {
-    "checked": 1,
-    "alive": 1,
+    "checked": 2,
+    "alive": 2,
     "parse_errors": 0,
     "fail_runs": 0,
     "history": [
@@ -5905,9 +6308,14 @@
         "checked": 1,
         "alive": 1,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/split/xhttp.txt": {
@@ -5941,7 +6349,7 @@
     "parser_gap": false
   },
   "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/countries/AU.txt": {
-    "checked": 1,
+    "checked": 2,
     "alive": 0,
     "parse_errors": 0,
     "fail_runs": 0,
@@ -5950,9 +6358,209 @@
         "checked": 1,
         "alive": 0,
         "date": "2026-11-24T22:48:09.292207+00:00"
+      },
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-25T08:58:42.310549+00:00"
       }
     ],
-    "updated": "2026-11-24T22:48:09.292207+00:00",
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githack.com/igareck/vpn-configs-for-russia/main/WHITE-CIDR-RU-all.txt": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/ProblemTheCode/SylphNet-public/main/sub/sub_plain.txt": {
+    "checked": 3,
+    "alive": 3,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 3,
+        "alive": 3,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/port_2083.txt": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/pie-with-jam/5ubscrpt10n-Reborn/main/mini/m1n1-5ub-10.txt": {
+    "checked": 3,
+    "alive": 3,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 3,
+        "alive": 3,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/pie-with-jam/5ubscrpt10n-Reborn/main/mini/m1n1-5ub-11.txt": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://www.xrayvip.com/free.txt": {
+    "checked": 2,
+    "alive": 2,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 2,
+        "alive": 2,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/Diversan313/apex-parser/main/subs/main/alive_plain_bl.txt": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/drmikecrypto/PulseConfigs/HEAD/all/configs.txt": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/Freedom-Guard-Builder/Freedom-Finder/main/out/reports/categories.json": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/top100.txt": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/pie-with-jam/5ubscrpt10n-Reborn/main/mini/m1n1-5ub-20.txt": {
+    "checked": 1,
+    "alive": 0,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/pie-with-jam/5ubscrpt10n-Reborn/main/mini/m1n1-5ub-34.txt": {
+    "checked": 1,
+    "alive": 0,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 0,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
+    "parser_gap": false
+  },
+  "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/countries/BG.txt": {
+    "checked": 1,
+    "alive": 1,
+    "parse_errors": 0,
+    "fail_runs": 0,
+    "history": [
+      {
+        "checked": 1,
+        "alive": 1,
+        "date": "2026-11-25T08:58:42.310549+00:00"
+      }
+    ],
+    "updated": "2026-11-25T08:58:42.310549+00:00",
     "parser_gap": false
   }
 }
