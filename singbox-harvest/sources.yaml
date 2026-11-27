@@ -312,10 +312,6 @@ categories:
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/10ium-V2Hub3-trojan
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/10ium-V2Hub3-vless
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/10ium-V2Hub3-vmess
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/Delta-Kronecker_ss
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/Delta-Kronecker_trojan
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/Delta-Kronecker_vmess
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/Delta_Kronecker_vless
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/F0rc3Run_shadowsocks
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/F0rc3Run_vless
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/base64/F0rc3Run_vmess
@@ -329,10 +325,6 @@ categories:
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/10ium-V2Hub3-trojan
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/10ium-V2Hub3-vless
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/10ium-V2Hub3-vmess
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/Delta-Kronecker_ss
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/Delta-Kronecker_trojan
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/Delta-Kronecker_vmess
-  - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/Delta_Kronecker_vless
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/F0rc3Run_vmess
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/robin.nscl.ir.txt
   - https://raw.githubusercontent.com/10Dream/sub-mod/main/sub/normal/sinavm-SVM-vless.txt
@@ -539,7 +531,6 @@ categories:
   - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/Countries/The_Netherlands.txt
   - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/Countries/United_States.txt
   - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/protocols/shadowsocks.txt
-  - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/protocols/trojan.txt
   - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/protocols/vmess.txt
   - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/regions/Asia.txt
   - https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/regions/Europe.txt
